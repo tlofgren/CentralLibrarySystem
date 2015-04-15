@@ -1,0 +1,24 @@
+/* content.css
+ * 
+ * CLS library system
+ * Style for custome content in CLS webpages
+ */
+
+@import url("fontawesome-4.3.0.min.css");
+@import url("framework.css");
+@import url("layout.css");
+
+/* Checkin
+--------------------------------------------------------------------------------------------------------------- */
+.item-entry {
+	padding: 0 0 1.5em 0;
+}
+
+.input-error-msg {
+	display: none;
+	color: red;
+}
+
+.notes {
+	display: none;
+}
