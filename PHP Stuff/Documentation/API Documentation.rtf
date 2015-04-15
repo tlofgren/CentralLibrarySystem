@@ -1,0 +1,203 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red79\green129\blue189;}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
+\pard\sl240\slmult1\b\f0\fs28\lang9 LOGIN FUNCTIONS:\fs22\line\cf1\b0 array admin_login ( username, password )\par
+array librarian_login ( username, password )\par
+array patron_login ( username, password )\par
+
+\pard\sl240\slmult1\tx540\cf0 Parameters:\par
+
+\pard\sl240\slmult1\tx540\tx1080\tab - \i username\i0 : The username requested for login\par
+\tab - \i password\i0 : The password to be checked against the database\par
+Function:\par
+\tab Hashes \i password \i0 and compares it against the associated entry for \i username\i0\par
+Returns:\par
+\tab Associative array.\par
+\tab If the login is successful, the associative array contains the following fields:\par
+\tab\tab -\i id\i0  (the id of the admin/librarian/patron in the database)\par
+\tab If the login fails, the associative array contains the following fields:\par
+\tab\tab -\i error\i0  (a string representation of the error)\par
+\tab\tab -\i error_code\i0  (an error code representing the error type, could be 0, 1, 2)\par
+\b\fs32\par
+ADMIN FUNCTIONS:\b0\fs22\par
+\b\fs28 ADD FUNCTIONS:\par
+
+\pard\sl240\slmult1\cf1\b0\fs22 array add_admin ( arr[ \b username\b0 , \b password \b0 ] )\par
+array add_librarian ( arr[ \b username\b0 , \b password\b0 , permissions... ] )\par
+array add_patron ( arr[ \b username\b0 , \b password\b0 , \b first\b0 , \b last\b0 , email, phone, checkout_limit, \tab renew_limit ] )\par
+array add_mediaitem ( arr[ \b title\b0 , \b media_type\b0 , year, isbn, edition, volume, issue_no ] )\par
+array add_hardcopy ( arr[ \b barcode\b0 , \b mediaitem_id\b0 , \b call_no\b0 , checkout_duration, renew_limit ] )\par
+array add_fine ( arr[ \b patron_id\b0 , \b barcode\b0 , \b amount\b0 , \b reason\b0  ]  )\par
+array add_hold ( arr[ \b patron_id\b0 , \b mediaitem_id\b0  ] )\par
+array add_tags_to_item( item_id, tag_arr[tag_ids...] )\par
+array add_tag ( name, tag_type )\par
+array add_role ( description )\par
+array add_contributor ( arr[first,last] )\par
+array add_contribution_to_item ( item_id, contributor_id, role_id )\par
+
+\pard\sl240\slmult1\tx540\cf0\par
+Parameters:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 - \i arr \i0 : \tab An associative array with various elements depending on the function being called\par
+- \b ELEMENT\b0 : \tab Bolded elements of \i arr\i0  indicate keys that MUST exist and have some \par
+
+\pard\li2160\sl240\slmult1\tx540\tx1080 value to make a valid query. Failing to include these elements results in error.\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 - Not all of these functions take arrays, read the signatures carefully.\par
+\i\par
+
+\pard\sl240\slmult1\tx540\tx1080\i0 Function:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 Adds a record to the associated table based on the given input.\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Returns :\tab Associative array\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 If the query is successful, the associative array is empty\par
+If the query fails, the associative array contains the following fields:\par
+
+\pard\li1440\sl240\slmult1\tx540\tx1080 -\i error\i0  \tab\tab (a string representation of the error)\par
+-\i error_code\i0  \tab (an error code representing the error type, could be 0)\par
+
+\pard\sl240\slmult1\cf1\par
+\cf0\b\fs28 REMOVE FUNCTIONS:\par
+\cf1\b0\fs22\par
+array remove_admin ( id )\par
+array remove_librarian ( id )\par
+array remove_patron ( id )\par
+array remove_mediaitem ( id )\par
+array remove_hardcopy ( barcode )\par
+array remove_fine ( patron_id, hardcopy_barcode )\par
+array remove_hold ( patron_id, mediaitem_id )\par
+array remove_tag_from_item ( item_id, tag_id )\par
+array remove_all_tags_from_item ( item_id )\par
+array remove_tag ( tag_id )\par
+array remove_role ( role_id )\par
+array remove_contributor ( contributor_id )\par
+array remove_contribution_from_item ( item_id, contributor_id, role_id )\par
+array remove_all_contributions_from_item ( item_id )\par
+\par
+\cf0 Parameters:\par
+\par
+\tab -\i id \i0 : The various IDs used to identify which record in the table is to be removed\par
+\par
+Function:\par
+\par
+\tab Removes the identified record from the table using a DELETE query\par
+\par
+Returns : \tab Associative array\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080\par
+If the query is successful, the associative array is empty\par
+If the query fails, the associative array contains the following fields:\par
+
+\pard\li1440\sl240\slmult1\tx540\tx1080 -\i error\i0  (a string representation of the error)\par
+-\i error_code\i0  (an error code representing the error type, could be 0)\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Usage Notes:\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 Use forethought before using these functions. They are irreversible, and they may not always be appropriate. For instance, when a fine is paid, one should use the EDIT function (listed below) for \i pay_fine\i0 , which marks the "paid" field as true, rather than remove the fine from the database altogether. The same is true, for example, with hardcopies. If a hardcopy goes out of circulation, one should update the "status" field rather than remove the hardcopy from the database\par
+\par
+Also, recognize that some functions here will naturally remove linked items. For instance, if one calls \i remove_role\i0 , then all contributions associated with that role will also be removed from the database.\b\fs28\par
+
+\pard\sl240\slmult1\par
+GET FUNCTIONS:\par
+\par
+ITEM HANDLING FUNCTIONS:\par
+\cf1\b0\fs22 array checkout      ( barcode, patron_id )\par
+array checkin         ( barcode )\par
+array renew           ( barcode )\par
+array place_hold   ( media_id, patron_id )\par
+array cancel_hold ( media_id, patron_id )\par
+array \par
+\cf0\b\fs28\par
+\par
+SEARCH ENGINE FUNCTIONS:\par
+//TODO\par
+\par
+HELPER FUNCTIONS:\par
+\cf1\b0\fs22 void clean_string( & str )\par
+
+\pard\sl240\slmult1\tx540\cf0\par
+Parameters :\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080\i str \i0 : \tab The string to be cleaned\par
+
+\pard\sl240\slmult1\tx540\tx1080\i\par
+\i0 Function :\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 Passes \i str\i0  through all string cleansing functions, including \i htmlentities \i0 and \i mysqli::real_escape_string\par
+
+\pard\sl240\slmult1\tx540\tx1080\i0\par
+Returns : \tab Void\par
+\par
+\cf1 mixed check_sql_error( query_result )\par
+\par
+\cf0 Parameters:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080\i query_result \i0 :\tab The result of some mysqli->query( QUERY ) call to be tested for an \par
+
+\pard\li2160\sl240\slmult1\tx540\tx1080 error message\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080\par
+
+\pard\sl240\slmult1\tx540\tx1080 Function:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 Checks \i query_result\i0  for error messages.\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Returns:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 If \i query_result\i0  contains errors, an associative array is returned. The associative array contains the following fields:\par
+
+\pard\li1440\sl240\slmult1\tx540\tx1080 -\i error\i0  (a string representation of the error)\par
+-\i error_code\i0  (an error code representing the error type, will be 0)\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 If no error is found, FALSE is returned\par
+
+\pard\sl240\slmult1\tx540\tx1080\cf1\par
+void surround_in_quotes( & arr )\par
+\par
+\cf0 Parameters:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 - \i arr\i0 : The array to be altered\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Function:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 For each element in \i arr\i0 , that element has a single quote appended to the front and back of the element. The elements in \i arr\i0  must be convertible to strings (PHP does this automatically through type juggling)\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Returns: \tab Void\par
+\par
+\cf1 void append_required_fields( & arr, tablename )\par
+\par
+\cf0 Parameters:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 - \i arr\i0 : The array to be altered\par
+- \i tablename\i0 : The name of the table that \i arr\i0  is meant to add a record to\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Function:\par
+\par
+
+\pard\li720\sl240\slmult1\tx540\tx1080 Looks up a list of required fields based on \i tablename\i0 . For each required field that \i arr\i0  does not contain, \i arr[req_field]\i0  is set to \i 'NULL'\i0 , which will force the MySQL INSERT command to fail and an error returned when it is attempted.\par
+\par
+
+\pard\sl240\slmult1\tx540\tx1080 Returns: \tab Void\par
+
+\pard\sa200\sl276\slmult1\par
+}
+ 
