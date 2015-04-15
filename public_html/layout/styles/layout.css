@@ -11,8 +11,7 @@ File: Layout CSS
 @import url("fontawesome-4.3.0.min.css");
 @import url("framework.css");
 
-/* Rows
---------------------------------------------------------------------------------------------------------------- */
+/* Rows */
 .row0{border-bottom:1px solid;}
 .row1, .row1 a{}
 .row2{border-bottom:1px solid;}
@@ -21,21 +20,25 @@ File: Layout CSS
 .row5, .row5 a{}
 
 
-/* Header
---------------------------------------------------------------------------------------------------------------- */
-#header{padding:30px 0;}
+/* Header */
+#header{padding:28px 0;}
 
 #header #logo{}
-#header #logo h1{margin:0; padding:0; font-size:26px;}
+#header #logo h1{margin:0; padding:0; font-size:40px;}
 
 #header .nospace.inline{text-transform:uppercase; font-size:.8rem;}
 #header .nospace.inline li{margin:0 15px 0 0; padding:0 20px 0 0; border-right:1px solid;}
 #header .nospace.inline li:last-child{margin:0; padding-right:0; border:none;}
 
+#header form{display:block; position:relative; width:100%; max-width:320px;}
+#header input, #topbar button{display:block; height:30px; border:none;}
+#header input{width:100%; min-width:250px; padding:5px 40px 5px 10px; border-radius:8px;}
+#header button{position:absolute; top:0; right:0; width:35px; height:30px; border-radius:0 8px 8px 0; font-size:16px; cursor:pointer;}
+#header button em{display:none;}
 
-/* Top Bar
---------------------------------------------------------------------------------------------------------------- */
-#topbar{padding:30px 0;}
+
+/* Top Bar */
+#topbar{padding:4px 0;}
 
 #topbar form{display:block; position:relative; width:100%; max-width:320px;}
 #topbar input, #topbar button{display:block; height:30px; border:none;}
@@ -44,25 +47,14 @@ File: Layout CSS
 #topbar button em{display:none;}
 
 
-/* Intro
---------------------------------------------------------------------------------------------------------------- */
-#intro{padding:220px 0 100px;}
+/* Intro */
 
-#intro .heading{font-size:80px; text-transform:uppercase; letter-spacing:2px;}
+/* This is the css for the home page text overlay */
+#intro{padding:210px 0 100px;}
+#intro .heading{font-size:20px; text-transform:uppercase; letter-spacing:2px;}
 #intro .btn{padding:20px 30px; font-size:1.4rem; font-weight:normal;}
 
-
-/* CTA - Call To Action
---------------------------------------------------------------------------------------------------------------- */
-#cta{padding:50px 0;}
-
-#cta .heading{margin-bottom:0;}
-#cta p{margin:0; padding:0;}
-#cta .btn{display:block;}
-
-
-/* Content Area
---------------------------------------------------------------------------------------------------------------- */
+/* Content Area */
 .container{padding:80px 0;}
 
 /* Content */
@@ -90,16 +82,14 @@ File: Layout CSS
 .sidebar .sdb_holder:last-child{margin-bottom:0;}
 
 
-/* Footer CTA / Info
---------------------------------------------------------------------------------------------------------------- */
+/* Footer CTA / Info */
 #footercta{padding:50px 0; text-align:center;}
 #footercta .heading{text-transform:uppercase;}
 #footercta .heading, #footercta p{margin-bottom:15px;}
 
 
-/* Footer
---------------------------------------------------------------------------------------------------------------- */
-#footer{padding:80px 0;}
+/* Footer */
+#footer{padding:50px 0;}
 
 #footer .title{margin:0 0 30px 0; padding:0 0 8px 0; border-bottom:1px solid; font-size:16px; text-transform:uppercase;}
 
@@ -113,21 +103,12 @@ File: Layout CSS
 #footer button{padding:6px 12px 8px; font-weight:bold; text-transform:uppercase; cursor:pointer;}
 
 
-/* Copyright
---------------------------------------------------------------------------------------------------------------- */
-#copyright{padding:30px 0;}
+/* Copyright */
+#copyright{padding:10px 0;}
 #copyright *{margin:0; padding:0;}
 
 
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-
-
-/* Navigation
---------------------------------------------------------------------------------------------------------------- */
+/* Navigation */
 nav ul, nav ol{margin:0; padding:0; list-style:none;}
 
 #mainav, #breadcrumb, .sidebar nav{line-height:normal;}
@@ -189,8 +170,7 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #backtotop:hover{opacity:1;}
 
 
-/* Tables
---------------------------------------------------------------------------------------------------------------- */
+/* Tables */
 table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top;}
 table, th{table-layout:auto;}
 table{width:100%; margin-bottom:15px;}
@@ -198,22 +178,13 @@ th, td{padding:5px 8px;}
 td{border-width:0 1px;}
 
 
-/* Gallery
---------------------------------------------------------------------------------------------------------------- */
+/* Gallery */
 #gallery{display:block; width:100%; margin-bottom:50px;}
 #gallery figure figcaption{display:block; width:100%; clear:both;}
 #gallery li{margin-bottom:30px;}
 
 
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-
-
-/* Colours
---------------------------------------------------------------------------------------------------------------- */
+/* Colours */
 body{color:#888888; background-color:#2F2F2F;}
 a{color:#93C0C5;}
 hr, .borderedbox{border-color:#D7D7D7;}
@@ -236,7 +207,8 @@ label span{color:#FF0000; background-color:inherit;}
 
 /* Header */
 #header .nospace.inline li{border-color:#D7D7D7;}
-
+#header input{color:inherit; background-color:#F5F5F5;}
+#header button{color:#FFFFFF; background-color:#93C0C5; box-shadow:none; border:none}
 
 /* Top Bar */
 #topbar input{color:inherit; background-color:#F5F5F5;}
@@ -284,20 +256,11 @@ tr:nth-child(even), #comments li:nth-child(even){color:inherit; background-color
 table a, #comments a{background-color:inherit;}
 
 
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-
-
-/* Media Queries
---------------------------------------------------------------------------------------------------------------- */
+/* Media Queries */
 @-ms-viewport{width:device-width;}
 
 
-/* Smartphone + Tablet
---------------------------------------------------------------------------------------------------------------- */
+/* Smartphone + Tablet */
 @media screen and (min-width:180px) and (max-width:750px) {
 	.imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
 	.fl_left, .fl_right{display:block; float:none;}
@@ -337,15 +300,13 @@ table a, #comments a{background-color:inherit;}
 }
 
 
-/* Max Wrapper Width - Laptop, Desktop etc.
---------------------------------------------------------------------------------------------------------------- */
+/* Max Wrapper Width - Laptop, Desktop etc. */
 @media screen and (min-width:978px) {
 	#header, #topbar, #breadcrumb, #intro, #cta, .container, #footercta, #footer, #copyright{max-width:978px;}
 }
 
 
-/* Other
---------------------------------------------------------------------------------------------------------------- */
+/* Other */
 @media screen and (max-width:650px) {
 	.scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
 	.scrollable table{margin:0; padding:0; white-space:nowrap;}
