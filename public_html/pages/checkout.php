@@ -25,21 +25,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
   <script src="./scripts/checkout.js"></script>
 
-  <script type="text/javascript">
-  $(document).ready(function(){
-  $("#checkoutSelect").hide();
 
-  $('#patronId').keypress(function(e) {
-    if(e.which == 13) {
-      
-      $("#patronSelect").hide();
-      $("#checkoutSelect").show();
-
-    }
-});
-
-});
-  </script>
   </head>
   <body id="top">
   <?php require_once('banner.html'); ?>
@@ -99,12 +85,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <!-- ################################################################################################ -->
       <div class="content three_quarter"> 
         <!-- ################################################################################################ -->
-        <h1>Check in items</h1>
-        <div class="item-entry"> <!-- TODO: make custome css for this class? -->
-          <label for="checkin-field">Item ID:</label>
-          <input type="text" id="checkin-field" maxlength="15" />
-          <span class="input-error-msg" id="itemID-error">Please enter a valid ID.</span>
-        </div>
+        
 
         <fieldset id='patronSelect'>
     <div>
@@ -116,6 +97,7 @@ Licence URI: http://www.os-templates.com/template-terms
   
      <fieldset id='checkoutSelect'>
      <div>
+      <label>Book#: </label>
       <input type='text' id='bookId'>
      </div>
      <h2>Checkout Table</h2>
