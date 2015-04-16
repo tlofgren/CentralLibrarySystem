@@ -50,15 +50,14 @@ function place_hold($mediaitem_id,$patron_id)
 		{ //The patron exists.
 			$date = new DateTime();
 			$time_placed = $date;
-			$date->add(DateInterval::createFromDateString("3 days"));
+			$expiration_date = $date->add(DateInterval::createFromDateString("3 days"));
 			
-			//$arr = array('patron_id'=>$patron_id, 'mediaitem_id'=>$mediaitem_id,
-			//	'time_placed'=>$date->format('Y-m-d'), 'expiration_date'=>$date->format('Y-m-d'));
-			//	return add_hold($arr);
-			$query = "INSERT INTO hold('patron_id', 'mediaitem_id', 'time_placed', 'expiration_date')
-				VALUES($patron_id, $mediaitem_id, $time_placed->format('Y-m-d'), $date->format('Y-m-d'))";
-				
-			$mysqli->query($query);
+			$arr = array('patron_id'=>$patron_id, 'mediaitem_id'=>$mediaitem_id,
+					'time_placed'=>$date->format('Y-m-d'), 'expiration_date'=>$expiration_date->format('Y-m-d'));
+				return add_hold($arr);
+			
+			$query = "INSERT INTO `hold` (`patron_id`, `mediaitem_id`, `time_placed`, `expiration_date`)
+				VALUES ($patron_id, $mediaitem_id, $time_placed, $expiration_date)";
 		}
 		
 		else

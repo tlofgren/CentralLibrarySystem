@@ -38,9 +38,9 @@ function verify($input, $expected_output, $function_name)
 		$messages[] = "<fieldset class = 'failure'><legend>Failure, no match</legend><h3>Input :</h3><pre>";
 	}
 	$arrays[] 	= $input;
-	$messages[] = "</pre><h3>Expected Output :</h3><pre>";
+	$messages[] = "</pre><h3>Expected :</h3><pre>";
 	$arrays[] 	= $expected_output;
-	$messages[] = "</pre><h3>Produced Output :</h3><pre>";
+	$messages[] = "</pre><h3>Procuded :</h3><pre>";
 	$arrays[] 	= $result;
 	$messages[] = "</pre></fieldset>";
 	
