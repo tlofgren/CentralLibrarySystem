@@ -14,7 +14,7 @@ require_once('Queries.php');
 if (isset($_POST['itemId']))
 {
   $result = get_book_by_barcode($_POST['itemId']);
-  echo json_encode($result);	//TODO: change to $result
+  echo json_encode($result);
 }
 // print_r($_POST);
 ?>

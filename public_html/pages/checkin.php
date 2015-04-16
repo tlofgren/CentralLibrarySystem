@@ -81,6 +81,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <label for="checkin-field">Item ID:</label>
               <input type="text" id="checkin-field" name="checkin-field" maxlength="15" />
               <span class="input-error-msg" id="itemID-error">Please enter a valid ID.</span>
+              <input type="submit" name="submitItemID" id="submitItemID" value="Go" />
             </form>
           </div>
           <div class="scrollable">
@@ -88,7 +89,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <thead>
                 <tr>
                   <th>Title</th>
-                  <th>Author</th>
+                  <th>Author(s)</th>
                   <th>Call Number</th>
                   <th>Status</th>
                 </tr>
@@ -113,36 +114,8 @@ Licence URI: http://www.os-templates.com/template-terms
                   <td>Value 7</td>
                   <td><span id="specialStatus">I'm special</span></td>
                 </tr>
-                <tr>
-                  <td>Value 9</td>
-                  <td>Value 10</td>
-                  <td>Value 11</td>
-                  <td>Value 12</td>
-                </tr>
-                <tr>
-                  <td>Value 13</td>
-                  <td><a href="#">Value 14</a></td>
-                  <td>Value 15</td>
-                  <td>Value 16</td>
-                </tr>
               </tbody>
             </table>
-            <!--<form>
-              <input type="text" name="f1" id="f1"/>
-              <input type="text" name='f2' id="f2"/>
-              <input type="submit" name="sub" id="sub"/>
-            </form> -->
-            <p id="results">results:<br /></p>
-            <pre>
-              <?php print_r($_POST);
-              if (isset($_POST))
-              {
-                echo json_encode($_POST);
-              }
-              // $key = json_decode($_POST['idInput']);
-              // echo $key;
-              ?>
-            </pre>
           </div> <!-- scrollable -->
           <!-- ################################################################################################ -->
         </div> <!-- three quarter -->

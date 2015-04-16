@@ -30,23 +30,34 @@ $(document).ready(function(){
   });
 
   $("#checkin-form").submit(function(event){
-    var idInput = $(this).children("#checkin-field").val();
-    // alert("in submit function:");
-    $.post("../../PHP Stuff/check_in_items.php", {'itemId' : idInput}, function(data){
-      // alert("posted successfully? " + data);
-      // $('#specialStatus').html(data);
-      // var postArray = [];
-      // for (var d in data)
-        // postArray.push(data[d] + "FROG");
-      var item = JSON.parse(data);
-      // var post = [];
-      // for (a in p)
-      //   post.push(p[a]);
-      // $('#specialStatus').html(item.itemId);
-      console.log("returned " + item);
-      $('#checkInTable tr').last().html("<td>" + item.title +"</td>");
-      // document.getElementById('specialStatus').innerHTML = item.itemId + " " + item.dummyKey;
-    });
+    var field = $(this).children("#checkin-field");
+    if (isItemIDValid(field.val()))
+    {
+      field.siblings("#itemID-error").css("display", "none"); //hide error msg
+      $.post("../../PHP Stuff/check_in_items.php", {'itemId' : idInput}, function(data){
+          var item = JSON.parse(data);
+          console.log("returned " + item);
+          if (item.error !== undefined)
+          {
+            var newRow = document.createElement("tr");
+            var cells = "<td>" + item.title + "</td><td>";
+            // item.contributors.forEach(function(value,index,item.contributors){
+            //   cells += value + ", ";
+            // });
+            cells += "<td>" + item.title + "</td>" +
+                     "<td>" + item.title + "</td>";
+            $('#checkInTable tbody').last().html("<td>" + item.title +"</td>");
+          }
+          else
+          {
+            $('#itemID-error').html("There was an error connecting to the catalog. Please contact your web administrator.");
+          }
+        });
+    }
+    else
+    {
+      field.siblings("#itemID-error").css("display", "block"); //display error msg
+    }
     event.preventDefault();
   });
 
