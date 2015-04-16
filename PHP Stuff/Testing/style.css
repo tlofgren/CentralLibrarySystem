@@ -18,3 +18,27 @@ fieldset
 {
 	padding-left:	4em;
 }
+
+fieldset.success
+{
+	border-color: #00FF00;
+	background-color: #66CC66;
+}
+
+fieldset.failure
+{
+	border-color: #FF0000;
+	background-color: #CC6666;
+}
+
+fieldset.BlockSuccess
+{
+	border-color: #00AA00;
+	background-color: #669966;
+}
+
+fieldset.BlockFailure
+{
+	border-color: #AA0000;
+	background-color: #996666;
+}

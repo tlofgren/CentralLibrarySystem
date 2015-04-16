@@ -5,3 +5,8 @@ ERRORS:
 2 - bad password
 3 - id not found
 4 – barcode not found
+5 - book must stay in library
+6 - patron not found
+7 - checkout limit exceeded
+8 – combination not found
+

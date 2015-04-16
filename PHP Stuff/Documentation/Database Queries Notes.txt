@@ -7,11 +7,6 @@ Sa	4-5+ Tentative.
 Su	
 
 Priorities:
-	Get book from barcode
-	check in
-	change status
-	get user information from user id
-
 Searching:
 	By:
 		Author

@@ -174,4 +174,33 @@ function append_required_fields(&$arr,$tablename)
 			$arr['type'] = 'NULL';
 	}
 }
+
+function is_possible_enum_val($val,$field)
+{
+	//Enum possibilities
+	$hardcopy_status = array('Damaged/In Repair', 'Lost', 'In Transit', 'Out of Circulation', 'Normal');
+	$tags_type = array('title','subject','genre','language');
+	$fine_reason = array('Damage','Lost','Overdue','Other');
+	$mediaitem_media_type = array('Book','DVD','VHS','CD','Cassette','Projected Medium',
+							'Posters and Art','Newspaper','Periodical','Musical Score',
+							'Software','Map');
+
+	$possibilities = array();
+	if($field == "hardcopy_status")
+		$possibilities = $hardcopy_status;
+	if($field == "tags_type")
+		$possibilities = $tags_type;
+	if($field == "fine_reason")
+		$possibilities = $fine_reason;
+	if($field == "mediaitem_media_type")
+		$possibilities = $mediaitem_media_type;
+	foreach($possibilities as $option)
+	{
+		if($val == $option)
+		{
+			return true;
+		}
+	}
+	return false;
+}
 ?>

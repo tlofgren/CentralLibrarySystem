@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2015 at 03:53 PM
+-- Generation Time: Apr 16, 2015 at 02:49 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `cls`
 --
+CREATE DATABASE IF NOT EXISTS `cls` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `cls`;
 
 -- --------------------------------------------------------
 
@@ -54,6 +56,13 @@ CREATE TABLE IF NOT EXISTS `checkedout` (
   `due_date` date NOT NULL,
   `renew_count` tinyint(3) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `checkedout`
+--
+
+INSERT INTO `checkedout` (`patron_id`, `hardcopy_barcode`, `due_date`, `renew_count`) VALUES
+(1, 1, '2015-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `hardcopy` (
   `mediaitem_id` int(10) unsigned NOT NULL,
   `copy_no` tinyint(3) unsigned NOT NULL,
   `call_no` varchar(20) NOT NULL,
-  `status` enum('Available','Checked Out','Overdue','Damaged/In Repair','Lost','In Transit','Out of Circulation','On Hold') NOT NULL,
+  `status` enum('Damaged/In Repair','Lost','In Transit','Out of Circulation','Normal') NOT NULL DEFAULT 'Normal',
   `checkout_duration` tinyint(3) unsigned NOT NULL,
   `renew_limit` tinyint(3) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -129,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `hardcopy` (
 --
 
 INSERT INTO `hardcopy` (`barcode`, `mediaitem_id`, `copy_no`, `call_no`, `status`, `checkout_duration`, `renew_limit`) VALUES
-(1, 1, 1, '', 'Available', 0, 1);
+(1, 1, 1, '', 'Lost', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -210,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `mediaitem` (
   `edition` tinyint(3) unsigned DEFAULT NULL,
   `volume` int(10) unsigned DEFAULT NULL,
   `issue_no` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=87 ;
 
 --
 -- Dumping data for table `mediaitem`
@@ -218,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `mediaitem` (
 
 INSERT INTO `mediaitem` (`id`, `title`, `year`, `isbn`, `media_type`, `edition`, `volume`, `issue_no`) VALUES
 (1, 'The Book of Mormon', 1900, 0, 'Book', NULL, NULL, NULL),
-(2, 'The Hunger Games', 2010, 24234256, 'Book', NULL, NULL, NULL);
+(75, 'The Hunger Games', 2010, 24234256, 'Book', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -389,7 +398,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `mediaitem`
 --
 ALTER TABLE `mediaitem`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `patron`
 --

@@ -6,7 +6,7 @@
 		<title>Test File!</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body>	
+	<body>
 
 
 <?php
@@ -17,51 +17,43 @@
 //$error_descriptions[E_NOTICE]  = "This is just an informal notice";
 
 require_once "../Queries.php";
+require_once "TestFunctions.php";
+require_once "Testdata.php";
+
+//	Debug stuff.
+//	echo "<pre>";
+//	print_r($input_expected_output_pairs);
+//	echo "</pre>";
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	functionTestBlock(standard_login_IEO_pairs(), 'login');
+	
+	functionTestBlock(standard_add_mediaitem_IEO_pairs(), 'add_mediaitem');
+	
+	functionTestBlock(standard_get_user_by_id_IEO_pairs(), 'get_user_by_id');
+	
+	functionTestBlock(standard_get_book_by_mediaItem_id_IEO_pairs(), 'get_book_by_mediaItem_id');
+	
+	functionTestBlock(standard_get_book_by_barcode_IEO_pairs(), 'get_book_by_barcode');
+	
+	functionTestBlock(standard_delete_from_admin_IEO_pairs(), 'delete_from_admin');
+	
+	functionTestBlock(standard_change_status_IEO_pairs(), 'change_status');
+	
+	functionTestBlock(standard_check_in_IEO_pairs(), 'check_in');
+	
+	functionTestBlock(standard_check_out_IEO_pairs(), 'check_out');
+	
+	functionTestBlock(standard_remove_hold_IEO_pairs(), 'remove_hold');
 ?>
-		<fieldset> 	<legend>	login()		</legend>
-			<?php//$result = get_librarian_permissions(1); ?>
-			<pre><?php	print_r(login("Tester", "Hello World!", "librarian"));	?><pre>
-		</fieldset>
-		<fieldset> 	<legend>	add_mediaitem()	</legend>
-			<?php
-			$book1 = array('title'=>'The Hunger Games',
-						'year'=>'2010','isbn'=>'24234256',
-						'media_type'=>'book');
-			$book2 = array('title'=>'The Bible',
-						'year'=>'0');
-			$book3 = array('year'=>'2014','isbn'=>'213457',
-						'media_type'=>'book');
-			?>
-			<pre><?php 	print_r(add_mediaitem($book1)); ?></pre>
-			<pre><?php 	print_r(add_mediaitem($book2)); ?></pre>
-			<pre><?php print_r(add_mediaitem($book3)); ?></pre>
-		</fieldset>
-		<fieldset> 	<legend>	get_user_by_id()	</legend>
-			<pre><?php	print_r(get_user_by_id(1));	?></pre>
-			<pre><?php	print_r(get_user_by_id(0)); ?></pre>
-		</fieldset>
-		<fieldset> 	<legend>	Test : get_book_by_mediaItem_id()	</legend>
-			<h4>get_book_by_mediaItem_id(0)</h4>
+		
+<!--		<fieldset> 	<legend>	check_out()	</legend>
+			<p>Success Expected</p>
+			<pre><?php	//print_r(check_out(1, 1));	?></pre>
 			<p>Failure Expected</p>
-			<pre><?php 	print_r(get_book_by_mediaItem_id(0)); ?></pre>
-			<p>Success Expected</p>
-			<pre><?php	print_r(get_book_by_mediaItem_id(1)); ?></pre>
-			<p>Success Expected</p>
-			<pre><?php 	print_r(get_book_by_mediaItem_id(2)); ?></pre>
+			<pre><?php	//print_r(check_out(0, 0));	?></pre>
 		</fieldset>
-		<fieldset> 	<legend>	get_book_by_barcode()	</legend>
-			<p>Success Expected</p>
-			<pre><?php	print_r(get_book_by_barcode(1));	?></pre>
-			<p>Failure Expected</p>
-			<pre><?php	print_r(get_book_by_barcode(0));	?></pre>
-		</fieldset>
-		<fieldset> 	<legend>	delete_from_admin()	</legend>
-			<p>Failure Expected</p>
-			<pre><?php	print_r(delete_from_admin(1));	?></pre>
-			<p>Success Expected</p>
-			<pre><?php	print_r(delete_from_admin(3));	?></pre>
-			<p>Empty Expected</p>
-			<pre><?php	print_r(delete_from_admin(-1));	?></pre>
-		</fieldset>
+-->
 	</body>
 </html>

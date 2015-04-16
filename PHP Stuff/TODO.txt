@@ -1,0 +1,13 @@
+-Check/finish the append_required_fields function in Helpers.php
+-Add a check for fine to the check_out function for Patrons
+-Write get functions for various fields
+	- Is there an instance where we do not want to basically return an entire record (excepting patron and librarian)? 
+
+- There are a lot of errors that were not visible in the old version of testfile (now color-coded). We should figure out what to do about everything in red.
+	
+- I think we have a lot of repeated code that maybe should be functions, such as
+	- userid_exists(userid)
+	- hardcopy_exists(barcode)
+	- hardcopy_exists(mediaitemid)
+	- mediaitem_exists(mediaitemid)
+	
