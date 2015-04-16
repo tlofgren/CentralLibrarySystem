@@ -84,7 +84,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </form>
           </div>
           <div class="scrollable">
-            <table>
+            <table id="checkInTable">
               <thead>
                 <tr>
                   <th>Title</th>

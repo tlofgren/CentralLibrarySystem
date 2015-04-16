@@ -32,17 +32,20 @@ $(document).ready(function(){
   $("#checkin-form").submit(function(event){
     var idInput = $(this).children("#checkin-field").val();
     // alert("in submit function:");
-    $.post("test.php", {'itemId' : JSON.stringify(idInput)}, function(data){
+    $.post("../../PHP Stuff/check_in_items.php", {'itemId' : idInput}, function(data){
       // alert("posted successfully? " + data);
       // $('#specialStatus').html(data);
       // var postArray = [];
       // for (var d in data)
         // postArray.push(data[d] + "FROG");
-      var p = JSON.parse(data);
-      var post = [];
-      for (a in p)
-        post.push(p[a]);
-      console.log(postArray);
+      var item = JSON.parse(data);
+      // var post = [];
+      // for (a in p)
+      //   post.push(p[a]);
+      // $('#specialStatus').html(item.itemId);
+      console.log("returned " + item);
+      $('#checkInTable tr').last().html("<td>" + item.title +"</td>");
+      // document.getElementById('specialStatus').innerHTML = item.itemId + " " + item.dummyKey;
     });
     event.preventDefault();
   });

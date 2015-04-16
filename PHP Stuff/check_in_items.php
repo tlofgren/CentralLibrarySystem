@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
-  <!-- <h1>Debugging only page</h1> -->
 <?php
 /* check_in_items.php
  * CLS
@@ -13,12 +9,12 @@ check POST array for vars
 call functions to check in items
 */
 
+require_once('Queries.php');
+
 if (isset($_POST['itemId']))
 {
-  $_POST['dummyKey'] = 'dummyValue';
-  echo json_encode($_POST);
+  $result = get_book_by_barcode($_POST['itemId']);
+  echo json_encode($result);	//TODO: change to $result
 }
 // print_r($_POST);
 ?>
-</body>
-</html>
