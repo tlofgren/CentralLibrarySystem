@@ -1,0 +1,45 @@
+function change_status($barcode, $new_status)
+{
+	global $mysqli;
+	
+	clean_string($barcode);
+	clean_string($new_status);
+
+	$status_query = "UPDATE `hardcopy` SET `status`= $new_status WHERE `hardcopy_barcode` = $barcode";
+	$result = mysqli->query($status_query);
+	
+	if($temp = check_sql_error($result))
+		return $temp;
+					
+	//Check if query returns a number of rows that were changed
+	if($row = $result->fetch_assoc())
+		return $row
+
+	else //Empty query, no rows changed
+	{
+		$result = array();
+		$result['error'] = "barcode not found";			
+		$result['error_code'] = 4;
+		return $result;
+	}
+}
+
+function check_in($barcode)
+{
+	global $mysqli;
+	
+	clean_string($barcode);
+	
+	$check_out_query = "DELETE FROM checked_out` WHERE `hardcopy_barcode` = $barcode";
+	$result = mysqli->query($check_in_query);
+	
+	if(!$result) 
+	{
+		$result = array();
+		$result['error'] = "barcode not found";			
+		$result['error_code'] = 4;
+	}
+	else $result = array();
+	
+	return $result;
+}

@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+    
+    
+
 	$("#checkoutSelect").hide();
 
 	$('#patronId').keypress(function(e) {
@@ -10,13 +14,40 @@ $(document).ready(function(){
     }
 });
 
-	$('#bookId').keypress(function(e) {
+	$('#checkout-field').keypress(function(e) {
     if(e.which == 13) {
     	
-        var result = addBook(this.value);
+       //var result = addBook(this.value);
         
+
             }
+
             });
+
+  $("#checkout-form").submit(function(event){
+    var idInput = $("#checkout-field").val();
+   // alert (idInput);
+    $.post("../../PHP Stuff/check_out_items.php", {'itemId' : idInput}, function(data){
+
+      
+      var item = JSON.parse(data);
+      
+      console.log("returned " + item);
+      var newRow = "<tr><td><input type='checkbox' ></td><td>" + item.title +"</td><td> fake author</td><td>" + item.id + "</td><td>Fake Due Date</td></tr>";
+      addBook(newRow);
+      // $('#checkoutTable tr').last().html("<td>" + item.title +"</td>");
+
+      // $.ajax({
+      //   url: "../../PHP Stuff/check_out_items.php",
+      //   data: "{'itemId' : idInput}",
+      //   success: function(data){
+      //     alert
+      //   }
+
+      // })
+    });
+    event.preventDefault();
+  });
 
 	$('button').click(function(){
         $("table input[type='checkbox']:checked").parent().parent().remove();
@@ -31,6 +62,7 @@ rows = ["<tr> <td><input type='checkbox' ></td> <td>Harry Potter</td> <td>JK Row
         "<tr> <td><input type='checkbox'></td> <td>Interracial Hole Stretchers 2</td> <td>Dave</td><td>2</td> <td>03/14/1999</td> </tr>"];
 
 function addBook(n){
-    var newbook = rows[n];
-    document.getElementById("checkoutTable").insertRow(-1).innerHTML = newbook;
-}
+   
+   document.getElementById("checkoutTable").insertRow(-1).innerHTML = n;
+   
+   }

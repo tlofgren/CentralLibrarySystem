@@ -14,7 +14,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-  <title>Check in | My Librarian Account | CLS</title>
+  <title>Check Out | My Librarian Account | CLS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
@@ -86,7 +86,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="content three_quarter"> 
         <!-- ################################################################################################ -->
         
-
+  
         <fieldset id='patronSelect'>
     <div>
       <label>Patron#: </label>
@@ -96,9 +96,10 @@ Licence URI: http://www.os-templates.com/template-terms
 
   
      <fieldset id='checkoutSelect'>
+      <form id='checkout-form' >
      <div>
-      <label>Book#: </label>
-      <input type='text' id='bookId'>
+      <label for='checkout-field'>Book#: </label>
+      <input type='text' id='checkout-field' name='checkout-field'>
      </div>
      <h2>Checkout Table</h2>
      <div class="scrollable">
@@ -121,7 +122,9 @@ Licence URI: http://www.os-templates.com/template-terms
       <div>
         <button>Cancel Checkout</button>
       </div>
-
+  
+      
+      </form>
       </fieldset>
       <div class="clear"></div>
     </main>
