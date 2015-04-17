@@ -14,6 +14,11 @@ function goodbye_world()
 		$result = $mysqli->query("TRUNCATE $table");
 }
 
+function hello_world()
+{
+	
+}
+
 function verify($input, $expected_output, $function_name)
 {
 	$parsed_input = "";

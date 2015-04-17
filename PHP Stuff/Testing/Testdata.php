@@ -1,21 +1,21 @@
 <?php
-	$book1 = array
+	$mediaitem1 = array
 		(
 			'title'			=>	'The Hunger Games',
 			'year'			=>	'2010',
 			'isbn'			=>	'24234256',
-			'media_type'	=>	'book'
+			'media_type'	=>	'Book'
 		);
-	$book2 = array
+	$mediaitem2 = array
 		(
 			'title'			=>	'The Bible',
 			'year'			=>	'0'
 		);
-	$book3 = array
+	$mediaitem3 = array
 		(
 			'year'			=>	'2014',
 			'isbn'			=>	'213457',
-			'media_type'	=>	'book'
+			'media_type'	=>	'Book'
 		);
 
 	// A template for all these.
@@ -73,7 +73,7 @@
 					'title' 		=> 'The Hunger Games', 
 					'year' 			=> '2010',
 					'isbn' 			=> '24234256',
-					'media_type' 	=> 'book'
+					'media_type' 	=> 'Book'
 				)
 			), 
 			array
@@ -103,7 +103,7 @@
 				(
 					'year' 			=> '2014',
 					'isbn' 			=> '213457',
-					'media_type' 	=> 'book'
+					'media_type' 	=> 'Book'
 				)
 			), 
 			array
@@ -225,7 +225,7 @@
 		return $input_expected_output_pairs;
 	}
 	
-	function standard_get_book_by_mediaItem_id_IEO_pairs()
+	function standard_get_mediaitem_by_mediaItem_id_IEO_pairs()
 	{
 		$input_expected_output_pairs = array();
 		$input_expected_output_pairs[] = generate_IEO_pair
@@ -293,7 +293,7 @@
 		return $input_expected_output_pairs;
 	}
 	
-	function standard_get_book_by_barcode_IEO_pairs()
+	function standard_get_mediaitem_by_barcode_IEO_pairs()
 	{
 		$input_expected_output_pairs = array();
 		$input_expected_output_pairs[] = generate_IEO_pair
@@ -443,8 +443,8 @@
 				), 
 				array
 				(
-					'error' 		=> 'No such barcode exists in database',
-					'error_code' 	=> 'Decide on this'
+					'error' 		=> 'barcode not found',
+					'error_code' 	=> 4
 				)
 			);
 		$input_expected_output_pairs[] = generate_IEO_pair
@@ -485,14 +485,14 @@
 				), 
 				array
 				(
-					'error' 		=> 'No such book exists',
+					'error' 		=> 'barcode not found',
 					'error_code' 	=> 4
 				)
 			);
 			
 		return $input_expected_output_pairs;
 	}
-	
+
 	function standard_remove_hold_IEO_pairs()
 	{
 		$input_expected_output_pairs = array();
@@ -583,17 +583,4 @@
 			
 		return $input_expected_output_pairs;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 ?>

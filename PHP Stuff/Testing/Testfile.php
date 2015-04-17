@@ -27,15 +27,19 @@ require_once "Testdata.php";
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	//Clear database and repopulate it
+	//goodbye_world();
+	//hello_world();
+
 	functionTestBlock(standard_login_IEO_pairs(), 'login');
 	
 	functionTestBlock(standard_add_mediaitem_IEO_pairs(), 'add_mediaitem');
 	
 	functionTestBlock(standard_get_user_by_id_IEO_pairs(), 'get_user_by_id');
 	
-	functionTestBlock(standard_get_book_by_mediaItem_id_IEO_pairs(), 'get_item_by_mediaItem_id');
+	functionTestBlock(standard_get_mediaitem_by_mediaItem_id_IEO_pairs(), 'get_mediaitem_by_mediaitem_id');
 	
-	functionTestBlock(standard_get_book_by_barcode_IEO_pairs(), 'get_item_by_barcode');
+	functionTestBlock(standard_get_mediaitem_by_barcode_IEO_pairs(), 'get_mediaitem_by_barcode');
 	
 	functionTestBlock(standard_delete_from_admin_IEO_pairs(), 'delete_from_admin');
 	
