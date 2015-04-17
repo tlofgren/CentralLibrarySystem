@@ -11,7 +11,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <title>CLS</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -35,7 +35,7 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <!-- ################################################################################################ -->
 <!-- This is the home page main background and text -->
-<div class="wrapper bgded" style="background-image:url('CLS_images/CLSbook.jpg');">
+<div class="wrapper bgded" style="background-image:url('../CLS_images/CLSbook.jpg');">
   <section id="intro"> 
     <h2 class="heading uppercase">Lorem ipsum dolor</h2>
 	<h2 class="heading uppercase">sit amet do elit,</h2>
@@ -52,7 +52,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- main body -->
     <div class="group">
       <div class="one_half first"> 
-        <figure><a href="#"><img class="borderedbox inspace-10 btmspace-30" src="CLS_images/CLSboy.jpg" alt=""></a>
+        <figure><a href="#"><img class="borderedbox inspace-10 btmspace-30" src="../CLS_images/CLSboy.jpg" alt=""></a>
           <figcaption class="borderedbox inspace-30 bg-white">
             <h2 class="heading">Curabitur eget elit sit amet purus congue lacinia</h2>
             <p>Aenean semper elementum tellus, ut placerat leo. Quisque vehicula, urna sit amet pulvinar dapibus, dui leo egestas augue, eget molestie augue diam nec ante. Fusce quis feugiat urna.</p>
@@ -63,14 +63,14 @@ Licence URI: http://www.os-templates.com/template-terms
       </div>
       <div class="one_half"> 
         <!-- ################################################################################################ -->
-        <figure class="btmspace-30"><a href="#"><img class="borderedbox inspace-10 btmspace-10" src="CLS_images/CLStable.jpg" alt=""></a>
+        <figure class="btmspace-30"><a href="#"><img class="borderedbox inspace-10 btmspace-10" src="../CLS_images/CLStable.jpg" alt=""></a>
           <figcaption class="borderedbox inspace-30 bg-white">
             <h2 class="heading">Nulla facilisi aliquam purus urna porta non</h2>
             <p>Sed eget ultricies sem. Proin quis lacus egestas, adipiscing nunc ornare, gravida diam donec luctus.</p>
             <footer><a class="btn" href="#">Read More <span class="fa fa-arrow-right"></span></a></footer>
           </figcaption>
         </figure>
-        <figure><a href="#"><img class="borderedbox inspace-10 btmspace-10" src="CLS_images/CLSstatue.jpg" alt=""></a>
+        <figure><a href="#"><img class="borderedbox inspace-10 btmspace-10" src="../CLS_images/CLSstatue.jpg" alt=""></a>
           <figcaption class="borderedbox inspace-30 bg-white">
             <h2 class="heading">Curabitur a sapien tincidunt ullamcorper mauris sit amet</h2>
             <p>Aenean semper elementum tellus, ut placerat leo. Quisque vehicula, urna sit amet pulvinar dapibus.</p>

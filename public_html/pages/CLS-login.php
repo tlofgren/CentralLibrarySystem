@@ -11,9 +11,13 @@ Licence URI: http://www.os-templates.com/template-terms
 <title>Login</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
+<?php session_start(); 
+?>
+<!-- ################################################################################################ -->
+<?php require_once "../PHP stuff/Queries.php"; ?>
 <!-- ################################################################################################ -->
 <!-- include the banner section -->
 <?php require_once "CLS-banner.php"; ?>
@@ -35,20 +39,135 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <!-- ################################################################################################ -->
 <!-- This is the home page main background and text -->
+<?php 
+if(!isset($_SESSION['loginSuccess'])) {
+?>
 	<div class="container">
 		<header id="login" class="clear">
-			<form class="clear" method="post" action="#">
+			<form method="post" action="CLS-login.php" id="loginForm">
+			<!-- <form class="clear" method="post" action="CLS-login.php"> -->
 				<fieldset>
 				<legend>Login:</legend>
 					<h2>Login</h2>
-					<p><input type="text" value="" placeholder="Username"></p>
-					<p><input type="password" placeholder="Password"></p>
-					<button class="fa fa-sign-in" type="submit" title="Login"><em>Login</em></button>
+					<p><input type="text" name="user" placeholder="Username"></p>
+					<p><input type="password" name="pass" placeholder="Password"></p>
+					<button class="fa fa-sign-in" type="submit" name="login" title="Login"><em>Login</em></button>
 					<p class="forgot">Forgot your password? <a href="">Click here to reset it.</a></p>
+					<!-- ########## php login code ########## -->
+					<?php
+						if(isset($_POST["login"])) {
+							if(isset($_POST["user"]) && isset($_POST["pass"])) {
+								// echo "<p>User: $_POST[user]</p>";
+								// echo "<p>Password: $_POST[pass]</p>";
+								$loginArray = login($_POST['user'], $_POST['pass'], 'librarian');
+								if (array_key_exists('error', $loginArray)) {
+									?>
+									<p class="error">Unrecognized Username or Password.</p>
+									<?php
+									// echo "<p>ERROR - Unable to login</p>";
+									// echo "<p>Error code $loginArray[error_code]</p>";
+								}
+								if (array_key_exists('id', $loginArray)) { ?>
+									<?php
+									$_SESSION['loginSuccess'] = true;
+									$_SESSION['user'] = $_POST['user'];
+									$_SESSION['time'] = date(' h:i:s');
+									header("Refresh:0");
+								}
+							}
+						}
+					?>
 				</fieldset>
 			<form>
 		</div>
-	</div><!-- container -->
+	</div>
+<?php 
+} ?>
+<!-- container -->
+<!-- ################################################################################################ -->
+<?php 
+if(isset($_SESSION['loginSuccess'])) { ?>
+<div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/02.png')";>
+      <div class="overlay">
+        <div id="breadcrumb" class="clear"> 
+          <!-- ################################################################################################ -->
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">My Librarian Account</a></li>
+            <li><a href="#">Check In Items</a></li>
+          </ul>
+          <!-- ################################################################################################ -->
+        </div>
+      </div>
+    </div>
+    <!-- ################################################################################################ -->
+    <div class="wrapper row3">
+      <main class="container clear"> 
+        <!-- main body -->
+        <!-- ################################################################################################ -->
+        <div class="sidebar one_quarter first"> 
+          <!-- ################################################################################################ -->
+          <!-- <h6>Lorem ipsum dolor</h6> -->
+          <nav class="sdb_holder">
+            <ul>
+              <li><a href="#">Check In</a></li>
+              <li><a href="#">Check Out</a>
+                <ul>
+                  <li><a href="#">Navigation - Level 2</a></li>
+                  <li><a href="#">Navigation - Level 2</a></li>
+                </ul>
+              </li>
+        			<li><a href="#">Holds</a></li>
+        			<li><a href="#">Fines</a></li>
+              <li><a href="#">Manage Catalog</a>
+                <ul>
+                  <li><a href="#">Navigation - Level 2</a></li>
+                  <li><a href="#">Navigation - Level 2</a>
+                    <ul>
+                      <li><a href="#">Navigation - Level 3</a></li>
+                      <li><a href="#">Navigation - Level 3</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <!-- ################################################################################################ -->
+        </div>
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <div class="content three_quarter"> 
+        <!-- ################################################################################################ -->
+		<!-- main body content goes here -->
+	    <?php 
+	    $user = $_SESSION["user"];
+	    $time = $_SESSION["time"];
+	    echo "<p>Welcome $user</p>";
+	    echo "<p>Logged in at: $time</p>";
+		?>
+		<form method="post" action="CLS-login.php" id="loginForm">
+			<button class="logout" type="submit" name="logout" title="Logout"><em>Logout</em></button>
+			<?php
+				if(isset($_POST["logout"])) {
+					unset($_SESSION['loginSuccess']);
+					unset($_SESSION['user']);
+					unset($_SESSION['time']);
+					session_destroy(); ?>
+					<script type="text/javascript">
+						document.getElementById('loginForm').submit(); // SUBMIT FORM
+					</script>
+					<?php
+				}
+			?>
+		<form>
+        <!-- ################################################################################################ -->
+        </div> <!-- three quarter -->
+        <!-- ################################################################################################ -->
+        <!-- / main body -->
+        <div class="clear"></div>
+      </main>
+    </div> <!-- row3 -->
+<?php } ?>
 <!-- ################################################################################################ -->
 <!-- include the footer section -->
 <?php require_once "CLS-footer.php"; ?>
