@@ -23,7 +23,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-  <script src="./scripts/checkout.js"></script>
+  <script src="./scripts/holds.js"></script>
 
 
   </head>
@@ -88,35 +88,27 @@ Licence URI: http://www.os-templates.com/template-terms
         
   
         <fieldset id='patronSelect'>
-          <form id='patron-form'>
-              <div>
-                <label for='patron-field'>Patron#: </label>
-                <input type='text' id='patron-field' name='patron-field'>
-              </div>
-          </form>
+    <div>
+      <label>Patron#: </label>
+      <input type='text' id='patronId'>
+    </div>
     </fieldset>
 
   
-     <fieldset id='checkoutSelect'>
-      <p id='userInfo'>
-
-      </p>
-      <form id='checkout-form' >
-     <div>
-      <label for='checkout-field'>Book#: </label>
-      <input type='text' id='checkout-field' name='checkout-field'>
-     </div>
-     <h2>Checkout Table</h2>
+     <fieldset id='availableHoldsField'>
+      <form id='available-holds-form' >
+    
+     <h2>Available Holds</h2>
      <div class="scrollable">
 
-        <table id="checkoutTable">
+        <table id="availableHoldsTable">
           <thead>
             <tr>
               <th>Select</th>
               <th>Title</th>
               <th>Author</th>
               <th>Call Number</th>
-              <th>Due Date</th>
+              <th>Available Until</th>
             </tr>
           </thead>
           <tbody>
@@ -125,7 +117,36 @@ Licence URI: http://www.os-templates.com/template-terms
         </table>
       </div>
       <div>
-        <button>Cancel Checkout</button>
+        <button>Cancel Holds</button>
+      </div>
+  
+      
+      </form>
+      </fieldset>
+
+
+      <fieldset id='unavailableHoldsField'>
+      <form id='unavailable-holds-form' >
+     <h2>Unavailable Holds</h2>
+     <div class="scrollable">
+
+        <table id="unavailableHoldsTable">
+          <thead>
+            <tr>
+              <th>Select</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Call Number</th>
+              <th>Position in queue</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <button>Cancel Holds</button>
       </div>
   
       

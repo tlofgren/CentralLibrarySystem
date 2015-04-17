@@ -3,13 +3,15 @@ $(document).ready(function(){
     
     
 
-	$("#checkoutSelect").hide();
+	$("#availableHoldsField").hide();
+  $("#unavailableHoldsField").hide();
 
 	$('#patronId').keypress(function(e) {
     if(e.which == 13) {
     	
     	$("#patronSelect").hide();
-    	$("#checkoutSelect").show();
+    	$("#availableHoldsField").show();
+      $("#unavailableHoldsField").show();
 
     }
 });
@@ -23,24 +25,6 @@ $(document).ready(function(){
             }
 
             });
-
-  $("#patron-form").submit(function(event){
-    alert ($("#patron-field").val());
-    var idInput = $("#patron-field").val();
-    
-    $.post("../../PHP Stuff/check_out_items.php", {'patronId' : idInput}, function(data){
-
-      
-      var user = JSON.parse(data);
-      
-      console.log("returned " + user);
-      var userName = user.first + ' ' + user.last;
-      displayUser(userName);
-
-      
-    });
-    event.preventDefault();
-  });
 
   $("#checkout-form").submit(function(event){
     var idInput = $("#checkout-field").val();
@@ -67,7 +51,6 @@ $(document).ready(function(){
       addBook(newRow);
       
     });
-    event.stopImmediatePropagation();
     event.preventDefault();
   });
 
@@ -86,8 +69,3 @@ function addBook(n){
    document.getElementById("checkoutTable").insertRow(-1).innerHTML = n;
    
    }
-
-
-function displayUser(name){
-  document.getElementById("userInfo").innerHTML = "Patron: " + name;
-}
