@@ -2,10 +2,6 @@
 <!--
 Template Name: Orizon
 Author: <a href="http://www.os-templates.com/">OS Templates</a>
-<!DOCTYPE html>
-<!--
-Template Name: Orizon
-Author: <a href="http://www.os-templates.com/">OS Templates</a>
 Author URI: http://www.os-templates.com/
 Licence: Free to use under our free template licence terms
 Licence URI: http://www.os-templates.com/template-terms
@@ -26,25 +22,10 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
-    <div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/02.png')";>
-      <div class="overlay">
-        <div id="breadcrumb" class="clear"> 
-          <!-- ################################################################################################ -->
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">My Librarian Account</a></li>
-            <li><a href="#">Check In Items</a></li>
-          </ul>
-          <!-- ################################################################################################ -->
-        </div>
-      </div>
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
     <div class="wrapper row3">
       <main class="container clear"> 
         <!-- main body -->
+        <?php if (isset($_SESSION['loginSuccess'])) { ?>
         <!-- ################################################################################################ -->
         <div class="sidebar one_quarter first"> 
           <!-- ################################################################################################ -->
@@ -118,8 +99,11 @@ Licence URI: http://www.os-templates.com/template-terms
           <!-- ################################################################################################ -->
         </div> <!-- three quarter -->
         <!-- ################################################################################################ -->
+        <?php } else {
+          require_once('not_logged_in.html');
+        } ?>
         <!-- / main body -->
-        <div class="clear"></div>
+        <!-- <div class="clear"></div> -->
       </main>
     </div> <!-- row3 -->
     <?php require_once('footer.html'); ?>
