@@ -18,7 +18,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body id="top">
-    <?php require_once('banner.html'); ?>
+    <?php require_once('CLS-banner.php'); ?>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
@@ -46,29 +46,26 @@ Licence URI: http://www.os-templates.com/template-terms
           <!-- ################################################################################################ -->
           <!-- <h6>Lorem ipsum dolor</h6> -->
           <nav class="sdb_holder">
-            <ul>
-              <li><a href="#">Check In</a></li>
-              <li><a href="#">Check Out</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                </ul>
-              </li>
-        			<li><a href="#">Holds</a></li>
-        			<li><a href="#">Fines</a></li>
-              <li><a href="#">Manage Catalog</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a>
-                    <ul>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </nav>
+          <ul>
+            <li><a href="checkin.php">Check In</a></li>
+            <li><a href="checkout.php">Check Out</a>
+             
+            </li>
+            <li><a href="holds.php">Holds</a></li>
+            <li><a href="#">Fines</a></li>
+            <li><a href="#">Manage Catalog</a>
+              <ul>
+                <li><a href="#">Navigation - Level 2</a></li>
+                <li><a href="#">Navigation - Level 2</a>
+                  <ul>
+                    <li><a href="#">Navigation - Level 3</a></li>
+                    <li><a href="#">Navigation - Level 3</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
           <!-- ################################################################################################ -->
         </div>
         <!-- ################################################################################################ --><!--  <button name="submitItemID" id="submitItemID" value="Go" /> -->
@@ -124,7 +121,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="clear"></div>
       </main>
     </div> <!-- row3 -->
-    <?php require_once('footer.html'); ?>
+    <?php require_once('CLS-footer.php'); ?>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->

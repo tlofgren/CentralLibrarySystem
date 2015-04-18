@@ -28,7 +28,7 @@ Licence URI: http://www.os-templates.com/template-terms
 
   </head>
   <body id="top">
-  <?php require_once('banner.html'); ?>
+  <?php require_once('CLS-banner.php'); ?>
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
@@ -39,7 +39,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">My Librarian Account</a></li>
-          <li><a href="#">Check In Items</a></li>
+          <li><a href="#">Check out Items</a></li>
         </ul>
         <!-- ################################################################################################ -->
       </div>
@@ -57,14 +57,11 @@ Licence URI: http://www.os-templates.com/template-terms
         <!-- <h6>Lorem ipsum dolor</h6> -->
         <nav class="sdb_holder">
           <ul>
-            <li><a href="#">Check In</a></li>
-            <li><a href="#">Check Out</a>
-              <ul>
-                <li><a href="#">Navigation - Level 2</a></li>
-                <li><a href="#">Navigation - Level 2</a></li>
-              </ul>
+            <li><a href="checkin.php">Check In</a></li>
+            <li><a href="checkout.php">Check Out</a>
+             
             </li>
-      			<li><a href="#">Holds</a></li>
+      			<li><a href="holds.php">Holds</a></li>
       			<li><a href="#">Fines</a></li>
             <li><a href="#">Manage Catalog</a>
               <ul>
@@ -132,7 +129,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="clear"></div>
     </main>
   </div>
-  <?php require_once('footer.html'); ?>
+  <?php require_once('CLS-footer.php'); ?>
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->

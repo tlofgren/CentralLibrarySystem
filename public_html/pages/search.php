@@ -1,3 +1,9 @@
+/*
+	Fake search page, to test placing holds
+
+*/
+
+
 <!DOCTYPE html>
 <!--
 Template Name: Orizon
@@ -14,7 +20,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-  <title>Holds | My Librarian Account | CLS</title>
+  <title>Search Results | CLS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
@@ -23,12 +29,12 @@ Licence URI: http://www.os-templates.com/template-terms
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-  <script src="./scripts/holds.js"></script>
+  <script src="./scripts/checkout.js"></script>
 
 
   </head>
   <body id="top">
-  <?php require_once('CLS-banner.php'); ?>
+  <?php require_once('banner.html'); ?>
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
@@ -55,14 +61,17 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="sidebar one_quarter first"> 
         <!-- ################################################################################################ -->
         <!-- <h6>Lorem ipsum dolor</h6> -->
-          <nav class="sdb_holder">
+        <nav class="sdb_holder">
           <ul>
-            <li><a href="checkin.php">Check In</a></li>
-            <li><a href="checkout.php">Check Out</a>
-             
+            <li><a href="#">Check In</a></li>
+            <li><a href="#">Check Out</a>
+              <ul>
+                <li><a href="#">Navigation - Level 2</a></li>
+                <li><a href="#">Navigation - Level 2</a></li>
+              </ul>
             </li>
-            <li><a href="holds.php">Holds</a></li>
-            <li><a href="#">Fines</a></li>
+      			<li><a href="#">Holds</a></li>
+      			<li><a href="#">Fines</a></li>
             <li><a href="#">Manage Catalog</a>
               <ul>
                 <li><a href="#">Navigation - Level 2</a></li>
@@ -83,76 +92,47 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="content three_quarter"> 
         <!-- ################################################################################################ -->
         
+        <form id='searchBar' >
+        	<label for='search-bar'>Search For: 
+      		<input type='text' id='search-bar' name='search-bar'>
+      		</label>
+        </form>
+
+        <form action='search.php' method='post'>
+        	<fieldset>
+        		<?php 
+        			$callNum = 1;
+        			?>
+        	<div>
+        		<label>Title: Book of Mormon</label>
+        	</div>
+        	<div>
+        		<label>Author: Christ, Jesus</label>
+        	</div>
+        	<div>
+        		<label>Call #: 1</label>
+        	</div>
+        	<div>
+        		<label>Holds: 0</label>
+        	</div>
+        	<div>
+        		<label>Holds: 0</label>
+        	</div>
+
+        	<div>
+        		
+        		<input type='submit' id='placeHold' name='placeHold' value='Place Hold'/>
+
+        	</div>
+
+        	</fieldset>
+        </form>
   
-        <fieldset id='patronSelect'>
-    <div>
-      <label>Patron#: </label>
-      <input type='text' id='patronId'>
-    </div>
-    </fieldset>
-
-  
-     <fieldset id='availableHoldsField'>
-      <form id='available-holds-form' >
-    
-     <h2>Available Holds</h2>
-     <div class="scrollable">
-
-        <table id="availableHoldsTable">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Call Number</th>
-              <th>Available Until</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <button>Cancel Holds</button>
-      </div>
-  
-      
-      </form>
-      </fieldset>
-
-
-      <fieldset id='unavailableHoldsField'>
-      <form id='unavailable-holds-form' >
-     <h2>Unavailable Holds</h2>
-     <div class="scrollable">
-
-        <table id="unavailableHoldsTable">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Call Number</th>
-              <th>Position in queue</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <button>Cancel Holds</button>
-      </div>
-  
-      
-      </form>
-      </fieldset>
+        
       <div class="clear"></div>
     </main>
   </div>
-  <?php require_once('CLS-footer.php'); ?>
+  <?php require_once('footer.html'); ?>
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
