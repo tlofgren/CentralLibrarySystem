@@ -5,14 +5,14 @@ $(document).ready(function(){
 
 	$("#checkoutSelect").hide();
 
-	$('#patronId').keypress(function(e) {
-    if(e.which == 13) {
+// 	$('#patronId').keypress(function(e) {
+//     if(e.which == 13) {
     	
-    	$("#patronSelect").hide();
-    	$("#checkoutSelect").show();
+//     	$("#patronSelect").hide();
+//     	$("#checkoutSelect").show();
 
-    }
-});
+//     }
+// });
 
 	$('#checkout-field').keypress(function(e) {
     if(e.which == 13) {
@@ -25,16 +25,20 @@ $(document).ready(function(){
             });
 
   $("#patron-form").submit(function(event){
-    alert ($("#patron-field").val());
+    
+    $("#patronSelect").hide();
+      $("#checkoutSelect").show();
+
     var idInput = $("#patron-field").val();
     
-    $.post("../../PHP Stuff/check_out_items.php", {'patronId' : idInput}, function(data){
+    $.post("../../PHP Stuff/check_out_items.php", {'patronId' : idInput,}, function(data){
 
-      
+      setCookie("patron_id", idInput);
       var user = JSON.parse(data);
-      
+      // global var patron_id = idInput;
       console.log("returned " + user);
       var userName = user.first + ' ' + user.last;
+
       displayUser(userName);
 
       
@@ -45,14 +49,15 @@ $(document).ready(function(){
   $("#checkout-form").submit(function(event){
     var idInput = $("#checkout-field").val();
    // alert (idInput);
-    $.post("../../PHP Stuff/check_out_items.php", {'itemId' : idInput}, function(data){
+   var patron_id = getCookie("patron_id");
+    $.post("../../PHP Stuff/check_out_items.php", {'itemId' : idInput, 'patron':patron_id}, function(data){
 
       
       var item = JSON.parse(data);
       
       console.log("returned " + item);
       var contributorArray = item.contributors;
-      var authArray = contributorArray.authors;
+      
       console.log("authors" + authArray);
       var authList = '';
       for (var i in contributorArray) {
@@ -67,7 +72,6 @@ $(document).ready(function(){
       addBook(newRow);
       
     });
-    event.stopImmediatePropagation();
     event.preventDefault();
   });
 
@@ -77,7 +81,17 @@ $(document).ready(function(){
 
 });
 
+ 
+function setCookie(key, value) {
+            var expires = new Date();
+            expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+            document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+        }
 
+function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
 
 
 

@@ -21,7 +21,8 @@ if (isset($_POST['patronId']))
 
 if (isset($_POST['itemId']))
 {
-  $result = get_item_by_barcode($_POST['itemId']);
+	check_out($_POST['itemId'],$_POST['patron'] );
+  $result = get_mediaitem_by_mediaitem_id($_POST['itemId']);
   echo json_encode($result);	//TODO: change to $result
 }
 
