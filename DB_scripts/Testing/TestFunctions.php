@@ -2,6 +2,7 @@
 
 require_once "../Queries.php";
 
+// Do not call this function, ever, unless you REALLY mean it. It kills all records of everything in the entire database.
 function goodbye_world()
 {
 	global $mysqli;
@@ -14,7 +15,7 @@ function goodbye_world()
 		$result = $mysqli->query("TRUNCATE $table");
 }
 
-function hello_world()
+function generate_test_entries()
 {
 	
 }

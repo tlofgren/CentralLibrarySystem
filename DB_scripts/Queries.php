@@ -1,8 +1,10 @@
 <?php
 // copyright SSD
-require_once "Connect.php";
-include_once "Hashing.php";
-include_once "Helpers.php";
+require_once "Helpers/Connect.php";
+require_once "Helpers/Hashing.php";
+require_once "Helpers/Adders.php";
+require_once "Helpers/Getters.php";
+require_once "Helpers/Removers.php";
 
 function login($username, $password, $table)
 {
@@ -37,7 +39,9 @@ function login($username, $password, $table)
 		}
 		if($row = $result->fetch_assoc())
 		{
-			return $row;
+			$copy = $row;
+			$copy['user_type'] = $table;
+			return $copy;
 		}
 		else //Empty password query
 		{
@@ -59,8 +63,8 @@ function login($username, $password, $table)
 function get_librarian_permissions($id)
 {
 	global $mysqli;
-	$result = $mysqli->query("SELECT `id`, `check_in`, `check_out`, `add_mediaitem`,
-		`remove_mediaitem`, `add_patron`, `remove_patron`, `manage_accounts`,
+	$result = $mysqli->query("SELECT `id`, `check_in`, `check_out`, `add_book`,
+		`remove_book`, `add_patron`, `remove_patron`, `manage_accounts`,
 		`pay_fines`, `extend_due_date`, `waive_fines`, `edit_media_entry`,
 		`add_tag` FROM `librarian` WHERE `id`=$id");
 
@@ -74,155 +78,12 @@ function get_librarian_permissions($id)
 	return $err;
 }
 
-function get_hardcopy_by_barcode($barcode)
-{
-	global $mysqli;
-	$check_for_item_query = "SELECT * FROM `hardcopy` WHERE `barcode` = $barcode";
-	$item_result = $mysqli->query($check_for_item_query);
-	if(check_sql_error($item_result))
-		return FALSE;
-	if($item = $item_result->fetch_assoc())
-		return $item;
-	return FALSE;
-}
-
-function get_checkouts_by_patron_id($id)
-{
-	global $mysqli;
-	$checkout_result = $mysqli->query("SELECT * FROM `checkedout` WHERE `patron_id` = $id");
-	if(check_sql_error($checkout_result))
-		return FALSE;
-	$checkout_list = array();
-	while($checkout_list[] = $checkout_result->fetch_assoc());
-	return $checkout_list;
-}
-
-function get_patron_by_id($id)
-{
-	global $mysqli;
-	$patron_result = $mysqli->query("SELECT `id`, `username`, `first`,
-								`last`, `email`, `phone`, `checkout_limit`,
-								`renew_limit` FROM `patron` WHERE `id`=$id");
-	if(check_sql_error($patron_result))
-		return FALSE;
-	if($patron = $patron_result->fetch_assoc())
-		return $patron;
-	return FALSE;
-}
-
-function add_to_table($arr,$tablename)
-{
-	global $mysqli;
-	
-	surround_in_quotes($arr);
-	append_required_fields($arr, $tablename);
-	$fields = array_keys($arr);
-	$vals = array_values($arr);
-	
-	$query = "INSERT INTO `$tablename`(`".implode("`, `", $fields)."`)
-		VALUES (".implode(", ", $vals).")";
-	
-	$result = $mysqli->query($query);
-
-	if($temp = check_sql_error($result))
-		return $temp;
-	
-	return array();
-}
-
-function delete_from_table($fieldname,$key,$tablename)
-{
-	global $mysqli;
-	
-	$query = "DELETE FROM $tablename WHERE $fieldname='$key'";
-	
-	$result = $mysqli->query($query);
-
-	if($temp = check_sql_error($result))
-		return $temp;
-	
-	return array();
-}
-
-function delete_from_admin($id)
-{
-	return delete_from_table('id',$id,'admin');
-}
-
-function add_mediaitem($arr)
-{
-	return add_to_table($arr,'mediaitem');
-}
-
-function add_patron($arr)
-{
-	return add_to_table($arr,'patron');
-}
-
-function add_admin($arr)
-{
-	return add_to_table($arr,'admin');
-}
-
-function add_tag($arr)
-{
-	return add_to_table($arr,'tag');
-}
-
-function add_librarian($arr)
-{
-	return add_to_table($arr,'librarian');
-}
-
-function add_itemtag($arr)
-{
-	return add_to_table($arr,'itemtag');
-}
-
-function add_fine($arr)
-{
-	return add_to_table($arr,'fine');
-}
-
-function add_checkedout($arr)
-{
-	return add_to_table($arr,'checkedout');
-}
-
-function add_hold($arr)
-{
-	return add_to_table($arr,'hold');
-}
-
-function add_hardcopy($arr)
-{
-	return add_to_table($arr,'hardcopy');
-}
-
-function add_contributor($arr)
-{
-	return add_to_table($arr,'contributor');
-}
-
-function add_contribution($arr)
-{
-	return add_to_table($arr,'contribution');
-}
-
-function add_role($arr)
-{
-	return add_to_table($arr,'role');
-}
-
-function get_mediaitem_by_barcode($barcode)
+function get_copy_info($barcode)
 {
 	global $mysqli;
 	
 	$mediaItemIdQuery 	= "SELECT * FROM `hardcopy` WHERE `barcode` = $barcode";
-	
 	$result = $mysqli->query($mediaItemIdQuery);
-	
-	$mediaitem_id = 0;
 	
 	if($temp = check_sql_error($result))
 	{
@@ -233,25 +94,45 @@ function get_mediaitem_by_barcode($barcode)
 		if($row = $result->fetch_assoc())
 		{
 			$mediaitem_id = $row['mediaitem_id'];
-			$pending_result = get_mediaitem_by_mediaitem_id($mediaitem_id);
+			$pending_result = get_general_item_info($mediaitem_id);
 			
 			foreach($row as $key => $value)
 			{
 				$pending_result[$key] = $value;
 			}
 			
+			$isCheckedOutQuery 	= "SELECT `due_date`, `renew_count` FROM `checkedout` WHERE `hardcopy_barcode` = $barcode";
+			$result2 = $mysqli->query($isCheckedOutQuery);
+			
+			if($temp2 = check_sql_error($result2))
+			{
+				return $temp2;
+			}
+			else
+			{
+				if($row2 = $result2->fetch_assoc())
+				{
+					foreach($row2 as $key => $value)
+					{
+						$pending_result[$key] = $value;
+					}
+				}
+			}
+	
 			return $pending_result;
 		}
-	}
-	
-	return array
+		else
+		{
+			return array
 			(
 				'error'			=>	'Not found',
 				'error_code'	=> 	1
 			);
+		}
+	}
 }
 
-function get_mediaitem_by_mediaitem_id($mediaitem_id)
+function get_general_item_info($mediaitem_id)
 {
 	global $mysqli;
 
@@ -466,7 +347,7 @@ function check_in($barcode)
 	$check_for_item_query = "SELECT * FROM `checkedout` WHERE `hardcopy_barcode` = $barcode"; 
 	$result = $mysqli->query($check_for_item_query);
 	
-	if($temp = check_sql_error($result))	//SHOULD THIS BE ASSIGNMENT??? - TYLER L.
+	if($temp = check_sql_error($result))
 		return $temp;
 	
 	if($result->fetch_assoc())
@@ -474,7 +355,7 @@ function check_in($barcode)
 		return delete_from_table('hardcopy_barcode',$barcode,'checkedout');
 	}
 	
-	return array('error'=>"item not checked out", 'error_code'=>9);	//ALSO, WHY ARE ALL THE ERROR CODES MAGIC NUMBERS???
+	return array('error'=>"item not checked out", 'error_code'=>9);
 }
 
 
@@ -521,6 +402,10 @@ function place_hold($mediaitem_id,$patron_id)
 						'time_placed'		=>	$string1,
 						'expiration_date'	=>	$string2
 					);
+					
+//			echo "<pre>";
+//			print_r($arr);
+//			echo "</pre>";
 			
 			return add_hold($arr);
 		}
