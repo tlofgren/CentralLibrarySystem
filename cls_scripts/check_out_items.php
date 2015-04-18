@@ -9,7 +9,7 @@ check POST array for vars
 call functions to check in items
 */
 
-require_once('Queries.php');
+require_once('../DB_scripts/Queries.php');
 
 
 if (isset($_POST['patronId']))
@@ -27,7 +27,7 @@ if (isset($_POST['patronId']))
 if (isset($_POST['itemId']))
 {
 	check_out($_POST['itemId'],$_POST['patron'] );
-  $result = get_mediaitem_by_barcode($_POST['itemId']);
+  $result = get_copy_info($_POST['itemId']);
   echo json_encode($result);	//TODO: change to $result
 }
 

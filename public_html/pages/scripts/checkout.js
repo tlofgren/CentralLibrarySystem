@@ -14,7 +14,7 @@ $(document).ready(function(){
     
     var idInput = $("#patron-field").val();
     
-    $.post("../../PHP Stuff/check_out_items.php", {'patronId' : idInput,}, function(data){
+    $.post("../../cls_scripts/check_out_items.php", {'patronId' : idInput,}, function(data){
 
      
       var user = JSON.parse(data);
@@ -42,7 +42,7 @@ $(document).ready(function(){
   $("#checkout-form").submit(function(event){
     var idInput = $("#checkout-field").val();
    var patron_id = getCookie("patron_id");
-    $.post("../../PHP Stuff/check_out_items.php", {'itemId' : idInput, 'patron':patron_id}, function(data){
+    $.post("../../cls_scripts/check_out_items.php", {'itemId' : idInput, 'patron':patron_id}, function(data){
 
       
       var item = JSON.parse(data);
@@ -58,7 +58,7 @@ $(document).ready(function(){
         });
       }
       var newRowa = "<tr><td>" + item.title +"</td><td>";
-       var newRowb =  authList + "</td><td>" + item.mediaitem_id + "</td><td>Fake Due Date</td></tr>";
+       var newRowb =  authList + "</td><td>" + item.mediaitem_id + "</td><td>" + item.due_date +"</td></tr>";
        var newRow = newRowa + newRowb;
       addBook(newRow);
     }
