@@ -17,7 +17,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <?php session_start(); 
 ?>
 <!-- ################################################################################################ -->
-<?php require_once "../PHP stuff/Queries.php"; ?>
+<?php require_once "../../DB_scripts/Queries.php"; ?>
 <!-- ################################################################################################ -->
 <!-- include the banner section -->
 <?php require_once "CLS-banner.php"; ?>
@@ -29,7 +29,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <ul class="clear">
         <li><a href="CLS-home.php">Home</a></li>
 		<li class="active"><a href="CLS-login.php">My Library Account</a></li>
-		<li><a href="#">Catalog</a></li>
+		<li><a href="CLS-search.php">Search Catalog</a></li>
         <li><a href="#">Request a Room</a></li>
 		<li><a href="#">About The Library</a></li>
         <li><a href="#">Contact Us</a></li>
@@ -39,13 +39,10 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <!-- ################################################################################################ -->
 <!-- This is the home page main background and text -->
-<?php 
-if(!isset($_SESSION['loginSuccess'])) {
-?>
+<?php if(!isset($_SESSION['loginSuccess'])) { ?>
 	<div class="container">
 		<header id="login" class="clear">
 			<form method="post" action="CLS-login.php" id="loginForm">
-			<!-- <form class="clear" method="post" action="CLS-login.php"> -->
 				<fieldset>
 				<legend>Login:</legend>
 					<h2>Login</h2>
@@ -72,6 +69,7 @@ if(!isset($_SESSION['loginSuccess'])) {
 									$_SESSION['loginSuccess'] = true;
 									$_SESSION['user'] = $_POST['user'];
 									$_SESSION['time'] = date(' h:i:s');
+									$_SESSION['id'] = $loginArray;
 									header("Refresh:0");
 								}
 							}
@@ -87,27 +85,21 @@ if(!isset($_SESSION['loginSuccess'])) {
 <!-- ################################################################################################ -->
 <?php 
 if(isset($_SESSION['loginSuccess'])) { ?>
-<div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/02.png')";>
+<div class="wrapper row2 bgded" >
       <div class="overlay">
         <div id="breadcrumb" class="clear"> 
-          <!-- ################################################################################################ -->
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">My Librarian Account</a></li>
-            <li><a href="#">Check In Items</a></li>
+            <li><a href="CLS-home.php">Home</a></li>
+            <li><a href="CLS-login.php">My Librarian Account</a></li>
           </ul>
-          <!-- ################################################################################################ -->
         </div>
       </div>
-    </div>
-    <!-- ################################################################################################ -->
-    <div class="wrapper row3">
-      <main class="container clear"> 
-        <!-- main body -->
-        <!-- ################################################################################################ -->
+</div>
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+	<main class="container clear"> 
+	<!-- main body -->
         <div class="sidebar one_quarter first"> 
-          <!-- ################################################################################################ -->
-          <!-- <h6>Lorem ipsum dolor</h6> -->
           <nav class="sdb_holder">
             <ul>
               <li><a href="#">Check In</a></li>
@@ -125,48 +117,43 @@ if(isset($_SESSION['loginSuccess'])) { ?>
                   <li><a href="#">Navigation - Level 2</a>
                     <ul>
                       <li><a href="#">Navigation - Level 3</a></li>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
+                     <li><a href="#">Navigation - Level 3</a></li>
+				</li>
             </ul>
-          </nav>
-          <!-- ################################################################################################ -->
-        </div>
-        <!-- ################################################################################################ -->
-        <!-- ################################################################################################ -->
-        <div class="content three_quarter"> 
-        <!-- ################################################################################################ -->
-		<!-- main body content goes here -->
-	    <?php 
-	    $user = $_SESSION["user"];
-	    $time = $_SESSION["time"];
-	    echo "<p>Welcome $user</p>";
-	    echo "<p>Logged in at: $time</p>";
-		?>
-		<form method="post" action="CLS-login.php" id="loginForm">
-			<button class="logout" type="submit" name="logout" title="Logout"><em>Logout</em></button>
+        </nav>
+    </div>
+<div class="content three_quarter"> 
+<!-- ################################################################################################ -->
+<!-- main body content goes here -->
+<?php
+$user = $_SESSION["user"];
+$time = $_SESSION["time"];
+echo "<p>Welcome $user</p>";
+echo "<p>Logged in at: $time</p>";
+?>
+<form method="post" action="CLS-login.php" id="loginForm">
+	<button class="logout" type="submit" name="logout" title="Logout"><em>Logout</em></button>
+	<?php
+		if(isset($_POST["logout"])) {
+			unset($_SESSION['loginSuccess']);
+			unset($_SESSION['user']);
+			unset($_SESSION['time']);
+			unset($_SESSION['id']);
+			session_destroy(); ?>
+			<script type="text/javascript">
+				document.getElementById('loginForm').submit(); // SUBMIT FORM
+			</script>
 			<?php
-				if(isset($_POST["logout"])) {
-					unset($_SESSION['loginSuccess']);
-					unset($_SESSION['user']);
-					unset($_SESSION['time']);
-					session_destroy(); ?>
-					<script type="text/javascript">
-						document.getElementById('loginForm').submit(); // SUBMIT FORM
-					</script>
-					<?php
-				}
-			?>
-		<form>
-        <!-- ################################################################################################ -->
-        </div> <!-- three quarter -->
-        <!-- ################################################################################################ -->
-        <!-- / main body -->
-        <div class="clear"></div>
-      </main>
-    </div> <!-- row3 -->
+		}
+	?>
+<form>
+<!-- ################################################################################################ -->
+</div> <!-- three quarter -->
+<!-- ################################################################################################ -->
+<!-- / main body -->
+<div class="clear"></div>
+</main>
+</div> <!-- row3 -->
 <?php } ?>
 <!-- ################################################################################################ -->
 <!-- include the footer section -->
