@@ -10,3 +10,5 @@
      so the conditional body is in the wrong place
 	
 - check_in()	needed implementation : is overdue -> make fine
+
+- make error codes non-magic numbers?

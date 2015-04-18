@@ -48,7 +48,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <nav class="sdb_holder">
             <ul>
               <li><a href="#">Check In</a></li>
-              <li><a href="#">Check Out</a>
+              <li><a href="checkout.php">Check Out</a>
                 <ul>
                   <li><a href="#">Navigation - Level 2</a></li>
                   <li><a href="#">Navigation - Level 2</a></li>
@@ -95,25 +95,19 @@ Licence URI: http://www.os-templates.com/template-terms
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <!-- <tr>
                   <td>1984</td>
                   <td>George Orwell</td>
                   <td>AB C12.34 1948</td>
                   <td>
-                    <select id="status1" class='status' name="item_status_options" size="1" > <!--onchange=itemStatusChanged(this)-->
+                    <select class='item_status' name="item_status_options" size="1" >
             					<option value="Checked_in" selected>Checked in</option>
             					<option value="Damaged">Damaged</option>
             					<option value="Status3">Status 3</option>
           					</select>
   				        </td>
                   <td class="notes">notes</td>
-                </tr>
-                <tr>
-                  <td>Value 5</td>
-                  <td>Value 6</td>
-                  <td>Value 7</td>
-                  <td><span id="specialStatus">I'm special</span></td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div> <!-- scrollable -->

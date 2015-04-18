@@ -4,42 +4,25 @@
   */
 
 $(document).ready(function(){
-  // $("#checkin-field").keyup(function(event){
-  //   if (event.which == 13)  //enter key
-  //   {
-  //     var input = $(this).val();
-  //     if (isItemIDValid(input))
-  //     {
-  //       alert("valid number: " + input);
-  //       //query database
-  //       // $.post("../../php/check_in_items.php", {key:input}, function(){
-  //       //   alert("YES IT WORKED!");
-  //       // });
-  //       // $.post("./checkin.php", {id:input}, function(){
-  //       //   alert("test worked posting to same page");
-  //       // });
-        
-  //       //if found, check in book
-  //       $(this).siblings("#itemID-error").css("display", "none"); //hide error msg
-  //     }
-  //     else
-  //     {
-  //       $(this).siblings("#itemID-error").css("display", "block");
-  //     }
-  //   }
-  // });
-
   $("#checkin-form").submit(function(event){
     var field = $(this).children("#checkin-field");
+    var statusMenu = "<select class='item_status' name='item_status_options' size='1' >\n" +
+                        "<option value='Normal' selected>Checked in</option>\n" +
+                        "<option value='Damaged/In Repair'>Damaged/In Repair</option>\n" +
+                        "<option value='In Transit'>In Transit</option>\n" +
+                        "<option value='Lost'>Lost</option>\n" +
+                      "</select>\n" +
+                      "<span class='statusChangeNotification'>status changed</span>\n";
     if (isItemIDValid(field.val()))
     {
+      $('#checkInTable')
       field.siblings("#itemID-error").css("display", "none"); //hide error msg
       $.post("../../PHP Stuff/check_in_items.php", {'itemId' : field.val()}, function(data){
           var item = JSON.parse(data);
           if (item.error == undefined)
           {
             var newRow = document.createElement("tr");
-            var cells = "<td>" + item.title + "</td><td>";
+            var cells = "<td>" + item.title + "</td>\n<td>";
             for (var role in item.contributors)
             {
               item.contributors[role].forEach(function(value){
@@ -47,14 +30,14 @@ $(document).ready(function(){
               });
             }
             cells = cells.substring(0, cells.length - 2);
-            cells += "<td>" + item.call_no + "</td>" +
-                     "<td>" + item.status + "</td>";    //TODO: make status a dropdown with a class
+            cells += "<td>" + item.call_no + "</td>\n" +
+                     "<td>\n" + statusMenu + "\n</td>"; //\n<td class='statusChangeNotification'></td>
             newRow.innerHTML = cells;
             $('#checkInTable').append(newRow);
           }
           else
           {
-            console.log("error set in response");
+            console.log("error set in response from database");
             $('#itemID-error').html("There was an error connecting to the catalog. Please contact your web administrator.");
             field.siblings("#itemID-error").css("display", "block");
           }
@@ -68,24 +51,14 @@ $(document).ready(function(){
   });
 
   $("#status1").change(function(){
-    // alert("You changed status to " + $('[name="item_status_options[]"]').val());
-    if ($(this).val() === "Damaged")
-    {
-      alert("You changed status to Damaged");
+    // if ($(this).val() !== "Normal")
+    // {
+    //   alert("You changed status to " + $(this).val());
       
-    }
+    // }
+    alert("You changed status to " + $(this).val());
+
   });
-
-  // $("#sub").click(function(event){
-  //   // alert("in click event");
-  //   event.preventDefault(); //$(this).serialize()
-  //   alert("f1 = " + $(this).children('#f1').val());
-  //   // $.post("./checkin.php", {id:$('#f1').val()}, function(){
-  //   //       alert("test worked posting to same page for form?");
-  //   //     });
-
-    
-  // });
 });
 
  function isItemIDValid(input)
