@@ -9,7 +9,7 @@ check POST array for vars
 call functions to check in items
 */
 
-require_once('Queries.php');
+require_once('../DB_scripts/Queries.php');
 
 if (isset($_POST['itemId']))
 {

@@ -17,7 +17,7 @@ $(document).ready(function(){
     {
       $('#checkInTable')
       field.siblings("#itemID-error").css("display", "none"); //hide error msg
-      $.post("../../PHP Stuff/check_in_items.php", {'itemId' : field.val()}, function(data){
+      $.post("../../cls_scripts/check_in_items.php", {'itemId' : field.val()}, function(data){
           var item = JSON.parse(data);
           if (item.error == undefined)
           {
