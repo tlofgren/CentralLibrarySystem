@@ -112,7 +112,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <table id="checkoutTable">
           <thead>
             <tr>
-              <th>Select</th>
+              
               <th>Title</th>
               <th>Author</th>
               <th>Call Number</th>
@@ -124,9 +124,7 @@ Licence URI: http://www.os-templates.com/template-terms
           </tbody>
         </table>
       </div>
-      <div>
-        <button>Cancel Checkout</button>
-      </div>
+      
   
       
       </form>

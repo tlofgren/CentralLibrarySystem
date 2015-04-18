@@ -18,12 +18,19 @@ if (isset($_POST['patronId']))
   echo json_encode($result);	//TODO: change to $result
 }
 
+// if (isset($_POST['return']))
+// {
+//   $result = check_in($_POST['return']);
+//   echo json_encode($result);	//TODO: change to $result
+// }
 
 if (isset($_POST['itemId']))
 {
 	check_out($_POST['itemId'],$_POST['patron'] );
-  $result = get_mediaitem_by_mediaitem_id($_POST['itemId']);
+  $result = get_mediaitem_by_barcode($_POST['itemId']);
   echo json_encode($result);	//TODO: change to $result
 }
+
+
 
 ?>
