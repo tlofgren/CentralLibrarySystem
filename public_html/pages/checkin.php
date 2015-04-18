@@ -20,10 +20,36 @@ Licence URI: http://www.os-templates.com/template-terms
   <body id="top">
     <?php 
       session_start();
-      require_once('banner.html');
+      require_once('CLS-banner.php');
     ?>
     <!-- ################################################################################################ -->
+    <!-- this is the links bar of the CLS pages -->
+    <div class="wrapper row1">
+      <div id="topbar" class="clear"> 
+        <nav id="mainav" class="fl_left">
+          <ul class="clear">
+            <li><a href="CLS-home.php">Home</a></li>
+        <li><a href="CLS-login.php">My Library Account</a></li>
+        <li class="active"><a href="CLS-search.php">Search Catalog</a></li>
+            <li><a href="#">Request a Room</a></li>
+        <li><a href="#">About The Library</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <!-- ################################################################################################ -->
+    <div class="wrapper row2 bgded" >
+      <div class="overlay">
+        <div id="breadcrumb" class="clear"> 
+          <ul>
+            <li><a href="CLS-home.php">Home</a></li>
+            <li><a href="CLS-login.php">My Librarian Account</a></li>
+            <li><a href="checkin.php">Check in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!-- ################################################################################################ -->
     <div class="wrapper row3">
       <main class="container clear"> 
@@ -110,7 +136,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <!-- <div class="clear"></div> -->
       </main>
     </div> <!-- row3 -->
-    <?php require_once('footer.html'); ?>
+    <?php require_once('CLS-footer.php'); ?>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
