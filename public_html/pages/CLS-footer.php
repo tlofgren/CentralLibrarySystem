@@ -23,7 +23,7 @@
       <ul class="nospace linklist">
         <li><a href="CLS-home.php">Home Page</a></li>
 		<li><a href="CLS-login.php">My Library Account</a></li>
-		<li><a href="#">Catalog</a></li>
+		<li><a href="CLS-search.php">Search Catalog</a></li>
         <li><a href="#">Request a Room</a></li>
 		<li><a href="#">About The Library</a></li>
         <li><a href="#">Contact Us</a></li>
