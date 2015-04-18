@@ -2,6 +2,10 @@
 <!--
 Template Name: Orizon
 Author: <a href="http://www.os-templates.com/">OS Templates</a>
+<!DOCTYPE html>
+<!--
+Template Name: Orizon
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
 Author URI: http://www.os-templates.com/
 Licence: Free to use under our free template licence terms
 Licence URI: http://www.os-templates.com/template-terms
@@ -18,7 +22,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body id="top">
-    <?php require_once('CLS-banner.php'); ?>
+    <?php require_once('banner.html'); ?>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
@@ -46,26 +50,29 @@ Licence URI: http://www.os-templates.com/template-terms
           <!-- ################################################################################################ -->
           <!-- <h6>Lorem ipsum dolor</h6> -->
           <nav class="sdb_holder">
-          <ul>
-            <li><a href="checkin.php">Check In</a></li>
-            <li><a href="checkout.php">Check Out</a>
-             
-            </li>
-            <li><a href="holds.php">Holds</a></li>
-            <li><a href="#">Fines</a></li>
-            <li><a href="#">Manage Catalog</a>
-              <ul>
-                <li><a href="#">Navigation - Level 2</a></li>
-                <li><a href="#">Navigation - Level 2</a>
-                  <ul>
-                    <li><a href="#">Navigation - Level 3</a></li>
-                    <li><a href="#">Navigation - Level 3</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+            <ul>
+              <li><a href="#">Check In</a></li>
+              <li><a href="checkout.php">Check Out</a>
+                <ul>
+                  <li><a href="#">Navigation - Level 2</a></li>
+                  <li><a href="#">Navigation - Level 2</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Holds</a></li>
+              <li><a href="#">Fines</a></li>
+              <li><a href="#">Manage Catalog</a>
+                <ul>
+                  <li><a href="#">Navigation - Level 2</a></li>
+                  <li><a href="#">Navigation - Level 2</a>
+                    <ul>
+                      <li><a href="#">Navigation - Level 3</a></li>
+                      <li><a href="#">Navigation - Level 3</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
           <!-- ################################################################################################ -->
         </div>
         <!-- ################################################################################################ --><!--  <button name="submitItemID" id="submitItemID" value="Go" /> -->
@@ -92,25 +99,19 @@ Licence URI: http://www.os-templates.com/template-terms
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <!-- <tr>
                   <td>1984</td>
                   <td>George Orwell</td>
                   <td>AB C12.34 1948</td>
                   <td>
-                    <select id="status1" class='status' name="item_status_options" size="1" > <!--onchange=itemStatusChanged(this)-->
-            					<option value="Checked_in" selected>Checked in</option>
-            					<option value="Damaged">Damaged</option>
-            					<option value="Status3">Status 3</option>
-          					</select>
-  				        </td>
+                    <select class='item_status' name="item_status_options" size="1" >
+                      <option value="Checked_in" selected>Checked in</option>
+                      <option value="Damaged">Damaged</option>
+                      <option value="Status3">Status 3</option>
+                    </select>
+                  </td>
                   <td class="notes">notes</td>
-                </tr>
-                <tr>
-                  <td>Value 5</td>
-                  <td>Value 6</td>
-                  <td>Value 7</td>
-                  <td><span id="specialStatus">I'm special</span></td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </div> <!-- scrollable -->
@@ -121,7 +122,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="clear"></div>
       </main>
     </div> <!-- row3 -->
-    <?php require_once('CLS-footer.php'); ?>
+    <?php require_once('footer.html'); ?>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
