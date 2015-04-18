@@ -466,7 +466,7 @@ function check_in($barcode)
 	$check_for_item_query = "SELECT * FROM `checkedout` WHERE `hardcopy_barcode` = $barcode"; 
 	$result = $mysqli->query($check_for_item_query);
 	
-	if($temp = check_sql_error($result))
+	if($temp = check_sql_error($result))	//SHOULD THIS BE ASSIGNMENT??? - TYLER L.
 		return $temp;
 	
 	if($result->fetch_assoc())
@@ -474,7 +474,7 @@ function check_in($barcode)
 		return delete_from_table('hardcopy_barcode',$barcode,'checkedout');
 	}
 	
-	return array('error'=>"item not checked out", 'error_code'=>9);
+	return array('error'=>"item not checked out", 'error_code'=>9);	//ALSO, WHY ARE ALL THE ERROR CODES MAGIC NUMBERS???
 }
 
 

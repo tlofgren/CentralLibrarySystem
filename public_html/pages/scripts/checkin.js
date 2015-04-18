@@ -1,4 +1,4 @@
- /*CLS
+ /* CLS
   * checkin.js
   * 
   */
@@ -36,31 +36,27 @@ $(document).ready(function(){
       field.siblings("#itemID-error").css("display", "none"); //hide error msg
       $.post("../../PHP Stuff/check_in_items.php", {'itemId' : field.val()}, function(data){
           var item = JSON.parse(data);
-          // console.log("returned " + item);
-          console.log(item.id);
           if (item.error == undefined)
           {
-            console.log("error is not set");
             var newRow = document.createElement("tr");
             var cells = "<td>" + item.title + "</td><td>";
-            console.log("cells initialized to " + cells);
-            for (var i in item.contributors)
+            for (var role in item.contributors)
             {
-              item.contributors.Author.forEach(function(value){
-                console.log("value=" + value);
+              item.contributors[role].forEach(function(value){
                 cells += value.last + ", " + value.first + "; ";
               });
-              cells += "<td>" + item.call_no + "</td>" +
-                       "<td>" + item.status + "</td>";
             }
+            cells = cells.substring(0, cells.length - 2);
+            cells += "<td>" + item.call_no + "</td>" +
+                     "<td>" + item.status + "</td>";    //TODO: make status a dropdown with a class
             newRow.innerHTML = cells;
-            console.log(cells);
             $('#checkInTable').append(newRow);
           }
           else
           {
             console.log("error set in response");
             $('#itemID-error').html("There was an error connecting to the catalog. Please contact your web administrator.");
+            field.siblings("#itemID-error").css("display", "block");
           }
         });
     }
