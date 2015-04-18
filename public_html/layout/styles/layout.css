@@ -36,6 +36,13 @@ File: Layout CSS
 #header button{position:absolute; top:0; right:0; width:35px; height:30px; border-radius:0 8px 8px 0; font-size:16px; cursor:pointer;}
 #header button em{display:none;}
 
+/*Login Page*/
+#login form{display:block; position:relative; width:100%; max-width:320px;}
+#login input, #topbar button{display:block; height:30px; border:none;}
+#login input{width:100%; min-width:250px; padding:5px 40px 5px 10px; border-radius:8px;}
+#login button{position:absolute; top:89px; right:0; width:35px; height:30px; border-radius:0 8px 8px 0; font-size:16px; cursor:pointer;}
+#login button em{display:none;}
+
 
 /* Top Bar */
 #topbar{padding:4px 0;}
@@ -101,6 +108,8 @@ File: Layout CSS
 #footer input, #footer button{border:none; border-radius:8px;}
 #footer input{display:block; width:100%; padding:8px;}
 #footer button{padding:6px 12px 8px; font-weight:bold; text-transform:uppercase; cursor:pointer;}
+
+button.logout{padding:6px 12px 8px; border-radius:8px; font-size:16px; cursor:pointer; color:#FFFFFF; background-color:#93C0C5; box-shadow:none; border:none}
 
 
 /* Copyright */
@@ -209,6 +218,12 @@ label span{color:#FF0000; background-color:inherit;}
 #header .nospace.inline li{border-color:#D7D7D7;}
 #header input{color:inherit; background-color:#F5F5F5;}
 #header button{color:#FFFFFF; background-color:#93C0C5; box-shadow:none; border:none}
+
+/* Login */
+#login .nospace.inline li{border-color:#D7D7D7;}
+#login input{color:inherit; background-color:#F5F5F5;}
+#login button{color:#FFFFFF; background-color:#93C0C5; box-shadow:none; border:none}
+.error{color:#FF0000}
 
 /* Top Bar */
 #topbar input{color:inherit; background-color:#F5F5F5;}
