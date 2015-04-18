@@ -18,14 +18,18 @@ Licence URI: http://www.os-templates.com/template-terms
   <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body id="top">
-    <?php require_once('banner.html'); ?>
+    <?php 
+      session_start();
+      require_once('banner.html');
+    ?>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <div class="wrapper row3">
       <main class="container clear"> 
         <!-- main body -->
-        <?php if (isset($_SESSION['loginSuccess'])) { ?>
+        <?php
+          if (isset($_SESSION['loginSuccess'])) { ?>
         <!-- ################################################################################################ -->
         <div class="sidebar one_quarter first"> 
           <!-- ################################################################################################ -->

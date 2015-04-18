@@ -13,7 +13,7 @@ require_once('../DB_scripts/Queries.php');
 
 if (isset($_POST['itemId']))
 {
-  $result = get_mediaitem_by_barcode($_POST['itemId']);
+  $result = get_copy_info($_POST['itemId']);
   echo json_encode($result);
 }
 // print_r($_POST);
