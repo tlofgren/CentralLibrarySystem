@@ -71,7 +71,7 @@ Licence URI: http://www.os-templates.com/template-terms
           </nav>
           <!-- ################################################################################################ -->
         </div>
-        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ --><!--  <button name="submitItemID" id="submitItemID" value="Go" /> -->
         <!-- ################################################################################################ -->
         <div class="content three_quarter"> 
           <!-- ################################################################################################ -->
@@ -81,7 +81,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <label for="checkin-field">Item ID:</label>
               <input type="text" id="checkin-field" name="checkin-field" maxlength="15" />
               <span class="input-error-msg" id="itemID-error">Please enter a valid ID.</span>
-              <input type="submit" name="submitItemID" id="submitItemID" value="Go" />
+             
             </form>
           </div>
           <div class="scrollable">

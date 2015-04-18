@@ -4,52 +4,62 @@
   */
 
 $(document).ready(function(){
-  $("#checkin-field").keyup(function(event){
-    if (event.which == 13)  //enter key
-    {
-      var input = $(this).val();
-      if (isItemIDValid(input))
-      {
-        alert("valid number: " + input);
-        //query database
-        // $.post("../../php/check_in_items.php", {key:input}, function(){
-        //   alert("YES IT WORKED!");
-        // });
-        // $.post("./checkin.php", {id:input}, function(){
-        //   alert("test worked posting to same page");
-        // });
+  // $("#checkin-field").keyup(function(event){
+  //   if (event.which == 13)  //enter key
+  //   {
+  //     var input = $(this).val();
+  //     if (isItemIDValid(input))
+  //     {
+  //       alert("valid number: " + input);
+  //       //query database
+  //       // $.post("../../php/check_in_items.php", {key:input}, function(){
+  //       //   alert("YES IT WORKED!");
+  //       // });
+  //       // $.post("./checkin.php", {id:input}, function(){
+  //       //   alert("test worked posting to same page");
+  //       // });
         
-        //if found, check in book
-        $(this).siblings("#itemID-error").css("display", "none"); //hide error msg
-      }
-      else
-      {
-        $(this).siblings("#itemID-error").css("display", "block");
-      }
-    }
-  });
+  //       //if found, check in book
+  //       $(this).siblings("#itemID-error").css("display", "none"); //hide error msg
+  //     }
+  //     else
+  //     {
+  //       $(this).siblings("#itemID-error").css("display", "block");
+  //     }
+  //   }
+  // });
 
   $("#checkin-form").submit(function(event){
     var field = $(this).children("#checkin-field");
     if (isItemIDValid(field.val()))
     {
       field.siblings("#itemID-error").css("display", "none"); //hide error msg
-      $.post("../../PHP Stuff/check_in_items.php", {'itemId' : idInput}, function(data){
+      $.post("../../PHP Stuff/check_in_items.php", {'itemId' : field.val()}, function(data){
           var item = JSON.parse(data);
-          console.log("returned " + item);
-          if (item.error !== undefined)
+          // console.log("returned " + item);
+          console.log(item.id);
+          if (item.error == undefined)
           {
+            console.log("error is not set");
             var newRow = document.createElement("tr");
             var cells = "<td>" + item.title + "</td><td>";
-            // item.contributors.forEach(function(value,index,item.contributors){
-            //   cells += value + ", ";
-            // });
-            cells += "<td>" + item.title + "</td>" +
-                     "<td>" + item.title + "</td>";
-            $('#checkInTable tbody').last().html("<td>" + item.title +"</td>");
+            console.log("cells initialized to " + cells);
+            for (var i in item.contributors)
+            {
+              item.contributors.Author.forEach(function(value){
+                console.log("value=" + value);
+                cells += value.last + ", " + value.first + "; ";
+              });
+              cells += "<td>" + item.call_no + "</td>" +
+                       "<td>" + item.status + "</td>";
+            }
+            newRow.innerHTML = cells;
+            console.log(cells);
+            $('#checkInTable').append(newRow);
           }
           else
           {
+            console.log("error set in response");
             $('#itemID-error').html("There was an error connecting to the catalog. Please contact your web administrator.");
           }
         });
