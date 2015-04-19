@@ -10,13 +10,13 @@ $stoplist = array
 	'/\bare\b/i',
 	'/\ba\b/i',
 	'/\bif\b/i',
-	'/\bnot\b/i'
-	'/\ban\b/i'
-	'/\bthis\b/i'
-	'/\bthat\b/i'
-	'/\bwith\b/i'
-	'/\bat\b/i'
-	'/\bis\b/i'
+	'/\bnot\b/i',
+	'/\ban\b/i',
+	'/\bthis\b/i',
+	'/\bthat\b/i',
+	'/\bwith\b/i',
+	'/\bat\b/i',
+	'/\bis\b/i',
 	'/\bby\b/i',
 	'/\bwas\b/i',
 	'/\bwere\b/i',

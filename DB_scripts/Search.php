@@ -1,5 +1,5 @@
 <?php
-require_once 'Helpers/Helpers.php'
+require_once "Helpers/Helpers.php";
 
 function search_by_subject($str)
 {
@@ -33,7 +33,6 @@ function search_all($str)
 	$results = get_hits($str,'genre',$results);
 	$results = get_hits($str,'language',$results);
 	$results = get_hits($str,'contributor',$results);
-	return array_keys($results);
 	return array_keys($results);
 }
 ?>

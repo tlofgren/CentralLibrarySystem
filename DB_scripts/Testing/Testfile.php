@@ -38,8 +38,8 @@ require_once "Testdata.php";
 	
 //	functionTestBlock(	standard_login_IEO_pairs(), 					'login');
 //	functionTestBlock(	standard_get_librarian_permissions_IEO_pairs(), 'get_librarian_permissions');
-//	functionTestBlock(	standard_get_general_item_info_IEO_pairs(), 	'get_general_item_info');
-//	functionTestBlock(	standard_get_copy_info_IEO_pairs(), 			'get_copy_info');
+	functionTestBlock(	standard_get_general_item_info_IEO_pairs(), 	'get_general_item_info');
+	functionTestBlock(	standard_get_copy_info_IEO_pairs(), 			'get_copy_info');
 //	functionTestBlock(	standard_get_user_by_id_IEO_pairs(), 			'get_user_by_id');
 //	functionTestBlock(	standard_change_status_IEO_pairs(), 			'change_status');
 //	functionTestBlock(	standard_check_out_IEO_pairs(), 				'check_out');

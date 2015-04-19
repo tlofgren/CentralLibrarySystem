@@ -10,3 +10,9 @@
      so the conditional body is in the wrong place
 	
 - check_in()	needed implementation : is overdue -> make fine
+
+- check_out() can't check out if book is on hold or if patron has fine
+
+- For each hard copy, display either due date or "Available"
+
+- Don't check out if already checked out?

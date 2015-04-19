@@ -276,23 +276,46 @@
 					'issue_no' 		=> 	'',
 					'tags' => Array
 						(
-							0 => 'Religous',
+							0 => 'Religious',
 							1 => 'Mormon'
 						),
 
 					'contributors' => Array
+					(
+						'Author' => Array
 						(
-							'Author' => Array
+							0 => Array
 								(
-									0 => Array
-										(
-											'first'	=> 'Jesus',
-											'last' 	=> 'Christ'
-										)
-
+									'first'	=> 'Jesus',
+									'last' 	=> 'Christ'
 								)
 
-						)
+						),
+						
+						'Director' => Array
+							(
+								'0' => Array
+									(
+										'first' => 'Jesus',
+										'last' => 'Christ'
+									),
+
+								'1' => Array
+									(
+										'first' => 'Michael',
+										'last' => 'Bay'
+									),
+
+							)
+
+						),
+
+					'barcodes'=> Array
+						(
+							'0' => 1
+						),
+						
+					'num_holds'			=> 1
 				)
 			);
 		$input_expected_output_pairs[] = generate_IEO_pair
@@ -375,7 +398,13 @@
 						)
 
 					),
+
+					'barcodes'=> Array
+						(
+							'0' => 1
+						),
 					
+					'num_holds'			=> 1,
 					'barcode' 			=> 1,
 					'mediaitem_id' 		=> 1,
 					'copy_no' 			=> 1,

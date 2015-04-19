@@ -119,7 +119,7 @@ function get_copy_info($barcode)
 					}
 				}
 			}
-	
+
 			return $pending_result;
 		}
 		else
@@ -141,78 +141,89 @@ function get_general_item_info($mediaitem_id)
 	
 	$result = $mysqli->query($mediaItemInfoQuery);
 	
-	$mediaitem = array();
+	if($error = check_sql_error($result))
+		return $error;
 	
-	if(!$result)
+	$mediaitem = array();
+
+	if($row = $result->fetch_assoc())
 	{
-		// bad things happen \die?
+		$mediaitem_id = $row['id'];
+		
+		foreach($row as $key => $value)
+		{
+			$mediaitem[$key] = $value;
+		}
 	}
 	else
 	{
-		if($row = $result->fetch_assoc())
-		{
-			$mediaitem_id = $row['id'];
-			
-			foreach($row as $key => $value)
-			{
-				$mediaitem[$key] = $value;
-			}
-		}
-		else
-		{
-			$mediaitem['error'] = 'Not found';
-			$mediaitem['error_code'] = 1;
-			return $mediaitem;
-		}
+		$mediaitem['error'] = 'Not found';
+		$mediaitem['error_code'] = 1;
+		return $mediaitem;
 	}
 	
-	$tagsQuery 			= "SELECT `name` FROM `tag` JOIN `itemtag` ON tag_id = tag.id WHERE mediaitem_id = $mediaitem_id";
+	$tagsQuery = "SELECT `name` FROM `tag` JOIN `itemtag` ON tag_id = tag.id WHERE mediaitem_id = $mediaitem_id";
 	
 	$result = $mysqli->query($tagsQuery);
 	
-	
-	if(!$result)
+	if($error = check_sql_error($result))
+		return $error;
+
+
+	$tags = array();
+	for($i = 0; $row = $result->fetch_assoc(); $i++)
 	{
-		// it's ok to find no tags, just don't do anything then.
-	}
-	else
-	{
-		$tags = array();
-		for($i = 0; $row = $result->fetch_assoc(); $i++)
-		{
-			$tags[$i] = $row['name'];
-		}
-		
-		$mediaitem['tags'] = $tags;
+		$tags[$i] = $row['name'];
 	}
 	
+	$mediaitem['tags'] = $tags;
+
 	$contributors = array();
 	
 	$contibutionsQuery 	= "SELECT `first`, `last`, `description` FROM `contribution` JOIN `contributor` ON contributor_id = contributor.id JOIN `role` ON role_id = role.id WHERE mediaitem_id = $mediaitem_id";
 	
 	$result = $mysqli->query($contibutionsQuery);
 	
-	if(!$result)
+	if($error = check_sql_error($result))
+		return $error;
+
+	while($row = $result->fetch_assoc())
 	{
-		// it's ok to find no contributors, just don't do anything then.
-	}
-	else
-	{
-		while($row = $result->fetch_assoc())
+		if(isset($contributors[$row['description']]))
 		{
-			if(isset($contributors[$row['description']]))
-			{
-				$contributors[$row['description']][] = array('first' => $row['first'], 'last' => $row['last']);
-			}
-			else
-			{
-				$contributors[$row['description']] = array();
-				$contributors[$row['description']][] = array('first' => $row['first'], 'last' => $row['last']);
-			}
+			$contributors[$row['description']][] = array('first' => $row['first'], 'last' => $row['last']);
+		}
+		else
+		{
+			$contributors[$row['description']] = array();
+			$contributors[$row['description']][] = array('first' => $row['first'], 'last' => $row['last']);
 		}
 	}
-	
+
 	$mediaitem['contributors'] = $contributors;
+	
+	$barcodes = array();
+	
+	$barcodes_query = "SELECT `barcode` FROM `hardcopy` WHERE `mediaitem_id` = $mediaitem_id";
+	
+	$result = $mysqli->query($barcodes_query);
+	if($error = check_sql_error($result))
+		return $error;
+	
+	while($row = $result->fetch_assoc())
+	{
+		$barcodes[] = $row['barcode'];
+	}
+	
+	$mediaitem['barcodes'] = $barcodes;
+	
+	$holds_query = "SELECT * FROM `hold` WHERE `mediaitem_id` = $mediaitem_id";
+	
+	$result = $mysqli->query($holds_query);
+	if($error = check_sql_error($result))
+		return $error;
+
+	$mediaitem['num_holds'] = $result->num_rows;
 	
 	return $mediaitem;
 }
@@ -458,7 +469,7 @@ function remove_hold($mediaitem_id, $patron_id)
 
 function add_item($arr)
 {	
-//	$debugging = true;
+	$debugging = true;
 
 	$report = array();
 	
@@ -501,6 +512,10 @@ function add_item($arr)
 	$checkout_duration 	= clean_exists_make_empty_if_not($arr, 'checkout_duration'); 
 	$renew_limit 		= clean_exists_make_empty_if_not($arr, 'renew_limit'); 
 	
+	if($issue_no == '')
+	{
+		$issue_no = 'NULL';
+	}
 	if($isbn == '')	// recentchange
 	{
 		$isbn == 'NULL';
@@ -568,6 +583,15 @@ function add_item($arr)
 		
 		$preexisting_mediaitem = get_mediaitem($mediaitem_description);
 		
+		if(isset($debugging))
+		{
+			echo "<pre>";
+			print_r($preexisting_mediaitem);
+			echo "</pre>";	
+		}
+	
+		$mediaitem_id = $preexisting_mediaitem[0]['id'];
+	
 		$report['mediaitem'] = 'added';
 	}
 	else
@@ -630,6 +654,13 @@ function add_item($arr)
 		'checkout_duration' => $checkout_duration,
 		'renew_limit' 		=> $renew_limit
 	);
+	
+	if(isset($debugging))
+	{
+		echo "<pre>";
+		print_r($hardcopy_description);
+		echo "</pre>";	
+	}
 
 	$add_hardcopy_result = add_hardcopy($hardcopy_description);
 		

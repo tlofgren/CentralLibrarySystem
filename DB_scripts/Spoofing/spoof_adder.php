@@ -1,29 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset = "utf-8">
+		<title>Test File!</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+
 <?php
 
 require_once "../Queries.php";
 
 $new_item = array
 (
-	'id' 			=> 	1,
-	'title' 		=> 	'The Book of Mormon',
-	'year' 			=> 	1900,
-	'isbn' 			=> 	0,
+	'title' 		=> 	'Harry Potter and the Sorcerers Stone',
+	'year' 			=> 	1999,
+	'isbn'			=>	131415,
 	'media_type'	=> 	'Book',
+	'edition'		=>	1,
+	'volume'		=>	1,
+	
 	'tags' => Array
 	(
 		0 => array
 		(
-			'name' => 'Religious',
+			'name' => 'School',
 			'type' => 'Subject'
 		),
 		1 => array
 		(
-			'name' => 'Religious',
+			'name' => 'Fantasy',
 			'type' => 'Genre'
 		),
 		2 => array
 		(
-			'name' => 'Mormon',
+			'name' => 'Magic',
 			'type' => 'Subject'
 		)
 	),
@@ -34,37 +46,16 @@ $new_item = array
 		(
 			0 => Array
 			(
-				'first'	=> 'Jesus',
-				'last' 	=> 'Christ'
+				'first'	=> 'J. K.',
+				'last' 	=> 'Rowling'
 			)
 
-		),
-		'Director' => Array
-		(
-			'0' => Array
-			(
-				'first' => 'Jesus',
-				'last' 	=> 'Christ'
-			),
-			
-			'1' => Array
-			(
-				'first' => 'Michael',
-				'last' 	=> 'Bay'
-			)
 		)
-
 	),
 	
-	'barcode' 			=> 1,
-	'mediaitem_id' 		=> 1,
-	'copy_no' 			=> 1,
-	'call_no' 			=> '',
-	'status' 			=> 'Lost',
-	'checkout_duration' => 0,
-	'renew_limit' 		=> 1,
-	'due_date' 			=> '2015-04-18',
-	'renew_count'		=> 0
+	'barcode' 			=> 11111,
+	'call_no' 			=> 131415,
+	'renew_limit' 		=> 1
 );
 
 echo "<pre>";
@@ -73,3 +64,5 @@ print_r($result);
 echo "</pre>";
 
 ?>
+	</body>
+</html>

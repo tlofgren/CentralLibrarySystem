@@ -292,9 +292,9 @@ function get_hits($str,$tag_type,$results = array())
 	
 	//Throws out useless words and parses string
 	$str = strtolower($str);
-	include 'Stoplist.php';
+	include "Stoplist.php";
 	$str = preg_replace($stoplist, "", $str);
-	$words = $str.explode(" ",$str);
+	$words = preg_split("/[\s,]+/",$str);
 	
 	//Build results array
 	foreach($words as $word)
@@ -302,7 +302,7 @@ function get_hits($str,$tag_type,$results = array())
 		$query_result = $mysqli->query("SELECT mediaitem_id FROM itemtag
 										JOIN tag ON tag_id = tag.id
 										JOIN mediaitem ON mediaitem_id = mediaitem.id
-										WHERE name = $word AND tag.type = '$tag_type'");
+										WHERE name = '$word' AND tag.type = '$tag_type'");
 		if($error = check_sql_error($query_result))
 			return $error;
 		while($row = $query_result->fetch_assoc())
@@ -313,7 +313,8 @@ function get_hits($str,$tag_type,$results = array())
 			else
 				$results[$id] = 1;
 		}
-		return arsort($results);
 	}
+	arsort($results);
+	return $results;
 }
 ?>
