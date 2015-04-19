@@ -24,7 +24,13 @@ Licence URI: http://www.os-templates.com/template-terms
         <nav id="mainav" class="fl_left">
           <ul class="clear">
             <li class="active"><a href="CLS-home.php">Home</a></li>
-        		<li><a href="CLS-login.php">My Library Account</a></li>
+        		<li class="drop"><a href="CLS-login.php">My Library Account</a>
+              <ul>
+                <li><a href="checkout.php">Check out</a></li>
+                <li><a href="checkin.php">Check in</a></li>
+                <li><a href="CLS-login.php">Logout</a></li> <!-- TODO: make logout success page -->
+              </ul>
+            </li>
         		<li><a href="CLS-search.php">Search Catalog</a></li>
             <li><a href="#">Request a Room</a></li>
     		    <li><a href="#">About The Library</a></li>

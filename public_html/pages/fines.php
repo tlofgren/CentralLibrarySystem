@@ -43,7 +43,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <ul>
             <li><a href="CLS-home.php">Home</a></li>
             <li><a href="CLS-login.php">My Librarian Account</a></li>
-            <li><a href="checkin.php">Check in</a></li>
+            <li><a href="#">CURRENT PAGE</a></li>
           </ul>
         </div>
       </div>
@@ -58,7 +58,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="sidebar one_quarter first"> 
           <nav class="sdb_holder">
             <ul>
-              <li class="active"><a href="checkin.php">Check In</a></li>
+              <li class="active"><a href="checkin.php">Check In</a></li>  <!-- CHANGE ACTIVE TO CURRENT PAGE -->
               <li><a href="checkout.php">Check Out</a></li>
               <li><a href="holds.php">Holds</a></li>
               <li><a href="fines.php">Fines</a></li>
@@ -79,30 +79,9 @@ Licence URI: http://www.os-templates.com/template-terms
         <!-- ################################################################################################ -->
         <!-- ################################################################################################ -->
         <div class="content three_quarter"> 
-          <h1>Check in items</h1>
-          <div class="item-entry"> <!-- TODO: make custom css for this class? -->
-            <form id="checkin-form">
-              <label for="checkin-field">Item ID:</label>
-              <input type="text" id="checkin-field" name="checkin-field" maxlength="15" />
-              <span class="input-error-msg" id="itemID-error">Please enter a valid ID.</span>
-            </form> <!-- TODO <button name="submitItemID" id="submitItemID" value="Go" /> -->
+          <h1>PAGE TITLE</h1>
+          <div>
           </div>
-          <div class="scrollable">
-            <table id="checkInTable">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Author(s)</th>
-                  <th>Call Number</th>
-                  <th>Barcode</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-              <!-- filled in as user enters items -->
-              </tbody>
-            </table>
-          </div> <!-- scrollable -->
           <!-- ################################################################################################ -->
         </div> <!-- three quarter -->
         <!-- ################################################################################################ -->
@@ -123,6 +102,6 @@ Licence URI: http://www.os-templates.com/template-terms
     <script src="../layout/scripts/jquery.min.js"></script>
     <script src="../layout/scripts/jquery.backtotop.js"></script>
     <script src="../layout/scripts/jquery.mobilemenu.js"></script>
-    <script src="./scripts/checkin.js"></script>
+    <script src="./scripts/SCRIPTNAME.js"></script> <!-- TODO: REFERENCE OUTSIDE SCRIPTS HERE -->
   </body>
 </html>
