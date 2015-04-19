@@ -1,6 +1,120 @@
 <?php
 require_once "Helpers.php";
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Trying my hand at a basis function.
+
+function select_from_table($arr,$tablename)
+{
+//	$debugging = true;		// Comment this out to stop debugging.
+	
+	global $mysqli;
+	
+	if(isset($debugging))
+	{
+		echo "<pre>";
+		print_r($arr);
+		echo "</pre>";
+	}
+	
+	$newarr = array();
+	
+	foreach($arr as $key => $val)
+	{
+		if($val === 'NULL')
+		{
+			$newarr[] = "`$key` IS NULL";
+		}
+		else
+		{
+			$newarr[] = "`$key` = '$val'";
+		}
+	}
+	
+	$query = "SELECT * FROM `$tablename` WHERE ".implode(" AND ", $newarr);
+	
+	if(isset($debugging))
+	{
+		echo "<p>$query</p>";
+	}
+	
+	$result = $mysqli->query($query);
+
+	if($temp = check_sql_error($result))
+		return $temp;
+	
+	$success = false;
+	
+	$final = array();
+	
+	while($row = $result->fetch_assoc())
+	{
+		/*
+		if($row == array())
+		{
+			return array
+			(
+				'error'			=> 'Not found',
+				'error_code'	=> 1
+			);
+		}*/
+		$success = true;
+		$final[] = $row;
+	}
+	
+	if($success)
+	{
+		return $final;
+	}
+	
+	return array
+	(
+		'error'			=> 'Not found',
+		'error_code'	=> 1
+	);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function get_contribution($where)
+{
+	return select_from_table($where, 'contribution');
+}
+
+function get_contributor($where)
+{
+	return select_from_table($where, 'contributor');
+}
+
+function get_itemtag($where)
+{
+	return select_from_table($where, 'itemtag');
+}
+
+function get_mediaitem($where)
+{
+	return select_from_table($where, 'mediaitem');
+}
+
+function get_hardcopy($where)
+{
+	return select_from_table($where, 'hardcopy');
+}
+
+function get_role($where)
+{
+	return select_from_table($where, 'role');
+}
+
+function get_tag($where)
+{
+	return select_from_table($where, 'tag');
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 function get_checkouts_by_patron_id($id)
 {
 	global $mysqli;

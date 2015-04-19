@@ -12,12 +12,96 @@ function goodbye_world()
 				'fine','hardcopy','hold','itemtag',
 				'mediaitem','role','tag');
 	foreach($tables as $table)
-		$result = $mysqli->query("TRUNCATE $table");
+		$result = $mysqli->query("TRUNCATE `$table`");
 }
 
 function generate_test_entries()
 {
+	$item1 = array
+	(
+		'id' 			=> 	1,
+		'title' 		=> 	'The Book of Mormon',
+		'year' 			=> 	1900,
+		'isbn' 			=> 	0,
+		'media_type'	=> 	'Book',
+		'tags' => Array
+		(
+			0 => array
+			(
+				'name' => 'Religious',
+				'type' => 'Subject'
+			),
+			1 => array
+			(
+				'name' => 'Religious',
+				'type' => 'Genre'
+			),
+			0 => array
+			(
+				'name' => 'Mormon',
+				'type' => 'Subject'
+			)
+		),
+
+		'contributors' => Array
+		(
+			'Author' => Array
+			(
+				0 => Array
+				(
+					'first'	=> 'Jesus',
+					'last' 	=> 'Christ'
+				)
+
+			),
+			'Director' => Array
+			(
+				'0' => Array
+				(
+					'first' => 'Jesus',
+					'last' 	=> 'Christ'
+				),
+				
+				'1' => Array
+				(
+					'first' => 'Michael',
+					'last' 	=> 'Bay'
+				)
+			)
+
+		),
+		
+		'barcode' 			=> 1,
+		'mediaitem_id' 		=> 1,
+		'copy_no' 			=> 1,
+		'call_no' 			=> '',
+		'status' 			=> 'Lost',
+		'checkout_duration' => 0,
+		'renew_limit' 		=> 1,
+		'due_date' 			=> '2015-04-18',
+		'renew_count'		=> 0
+	);
 	
+	add_item($item1);
+	
+	add_librarian(array
+	(
+		'username' => 'tester',
+		'password_hash' => 'Hello World!',
+		'salt' 				=> 	5,
+		'check_in' 			=>	1,
+		'check_out'			=>	1,
+		'add_book'			=>	1,
+		'remove_book'		=>	1,
+		'add_patron'		=> 	1,
+		'remove_patron'		=>	1,
+		'manage_accounts'	=>	1,
+		'pay_fines'			=>	1,
+		'extend_due_date'	=>	1,
+		'waive_fines'		=>	1,
+		'edit_media_entry'	=>	1,
+		'add_tag'			=>	1
+	));
 }
 
 function verify($input, $expected_output, $function_name)

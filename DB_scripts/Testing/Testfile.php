@@ -36,7 +36,7 @@ require_once "Testdata.php";
 	
 //	/*
 	
-	functionTestBlock(	standard_login_IEO_pairs(), 					'login');
+//	functionTestBlock(	standard_login_IEO_pairs(), 					'login');
 //	functionTestBlock(	standard_get_librarian_permissions_IEO_pairs(), 'get_librarian_permissions');
 //	functionTestBlock(	standard_get_general_item_info_IEO_pairs(), 	'get_general_item_info');
 //	functionTestBlock(	standard_get_copy_info_IEO_pairs(), 			'get_copy_info');
@@ -46,6 +46,8 @@ require_once "Testdata.php";
 //	functionTestBlock(	standard_check_in_IEO_pairs(), 					'check_in');
 //	functionTestBlock(	standard_place_hold_IEO_pairs(), 				'place_hold');
 //	functionTestBlock(	standard_remove_hold_IEO_pairs(), 				'remove_hold');
+	functionTestBlock(	standard_add_item_IEO_pairs(), 					'add_item');
+
 	
 //	*/
 	
@@ -53,23 +55,23 @@ require_once "Testdata.php";
 //	
 // Adders.php
 
-//	/*
+	/*
 
 	// add_to_table
 	
-//	functionTestBlock(standard_add_admin_IEO_pairs(), 		'add_admin');
+//	functionTestBlock(standard_add_admin_IEO_pairs(), 			'add_admin');
 	// add_checkedout
-	// add_contribution
-	// add_contributor
+//	functionTestBlock(standard_add_contribution_IEO_pairs(),	'add_contribution');
+//	functionTestBlock(standard_add_contributor_IEO_pairs(), 	'add_contributor');
 	// add_fine
-	// add_hardcopy
-//	functionTestBlock(standard_add_hold_IEO_pairs(), 		'add_hold');
-//	functionTestBlock(standard_add_itemtag_IEO_pairs(), 	'add_itemtag');
+	functionTestBlock(standard_add_hardcopy_IEO_pairs(), 		'add_hardcopy');
+//	functionTestBlock(standard_add_hold_IEO_pairs(), 			'add_hold');
+//	functionTestBlock(standard_add_itemtag_IEO_pairs(), 		'add_itemtag');
 	// add_librarian
-//	functionTestBlock(standard_add_mediaitem_IEO_pairs(), 	'add_mediaitem');
+//	functionTestBlock(standard_add_mediaitem_IEO_pairs(), 		'add_mediaitem');
 	// add_patron
-//	functionTestBlock(standard_add_role_IEO_pairs(), 		'add_role');
-//	functionTestBlock(standard_add_tag_IEO_pairs(), 		'add_tag');
+//	functionTestBlock(standard_add_role_IEO_pairs(), 			'add_role');
+//	functionTestBlock(standard_add_tag_IEO_pairs(), 			'add_tag');
 	
 //*/
 	
@@ -77,10 +79,16 @@ require_once "Testdata.php";
 //	
 // Getters.php
 
+//	/*
+
+//	functionTestBlock(standard_select_from_table_IEO_pairs(), 		'select_from_table');
+
+//	functionTestBlock(standard_get_mediaitem_IEO_pairs(), 			'get_mediaitem');
 	//	get_checkouts_by_patron_id
 	//	get_hardcopy_by_barcode
 	//	***get_patron_by_id
 	
+//	*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	
@@ -94,14 +102,16 @@ require_once "Testdata.php";
 	
 //*/
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+// Helpers.php
+
+	/*
+
+//	functionTestBlock(standard_clean_exists_make_empty_if_not_IEO_pairs(), 			'clean_exists_make_empty_if_not');
+
+//	*/
+
 ?>
-		
-<!--		<fieldset> 	<legend>	check_out()	</legend>
-			<p>Success Expected</p>
-			<pre><?php	//print_r(check_out(1, 1));	?></pre>
-			<p>Failure Expected</p>
-			<pre><?php	//print_r(check_out(0, 0));	?></pre>
-		</fieldset>
--->
 	</body>
 </html>

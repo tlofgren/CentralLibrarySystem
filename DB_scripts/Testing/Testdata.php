@@ -1,22 +1,81 @@
 <?php
-	$mediaitem1 = array
+	$item1 = array
+	(
+		'id' 			=> 	1,
+		'title' 		=> 	'The Book of Mormon',
+		'year' 			=> 	1900,
+		'isbn' 			=> 	0,
+		'media_type'	=> 	'Book',
+		'tags' => Array
 		(
-			'title'			=>	'The Hunger Games',
-			'year'			=>	'2010',
-			'isbn'			=>	'24234256',
-			'media_type'	=>	'Book'
-		);
+			0 => array
+			(
+				'name' => 'Religious',
+				'type' => 'Subject'
+			),
+			1 => array
+			(
+				'name' => 'Religious',
+				'type' => 'Genre'
+			),
+			2 => array
+			(
+				'name' => 'Mormon',
+				'type' => 'Subject'
+			)
+		),
+
+		'contributors' => Array
+		(
+			'Author' => Array
+			(
+				0 => Array
+				(
+					'first'	=> 'Jesus',
+					'last' 	=> 'Christ'
+				)
+
+			),
+			'Director' => Array
+			(
+				'0' => Array
+				(
+					'first' => 'Jesus',
+					'last' 	=> 'Christ'
+				),
+				
+				'1' => Array
+				(
+					'first' => 'Michael',
+					'last' 	=> 'Bay'
+				)
+			)
+
+		),
+		
+		'barcode' 			=> 1,
+		'mediaitem_id' 		=> 1,
+		'copy_no' 			=> 1,
+		'call_no' 			=> '',
+		'status' 			=> 'Lost',
+		'checkout_duration' => 0,
+		'renew_limit' 		=> 1,
+		'due_date' 			=> '2015-04-18',
+		'renew_count'		=> 0
+	);
 	$mediaitem2 = array
-		(
-			'title'			=>	'The Bible',
-			'year'			=>	'0'
-		);
+	(
+		'title'			=>	'The Hunger Games',
+		'year'			=>	'2010',
+		'isbn'			=>	'24234256',
+		'media_type'	=>	'Book'
+	);
 	$mediaitem3 = array
-		(
-			'year'			=>	'2014',
-			'isbn'			=>	'213457',
-			'media_type'	=>	'Book'
-		);
+	(
+		'year'			=>	'2014',
+		'isbn'			=>	'213457',
+		'media_type'	=>	'Book'
+	);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// A template for all these.
@@ -284,24 +343,38 @@
 					'volume' 		=> 	'',
 					'issue_no' 		=> 	'',
 					'tags' => Array
-						(
-							0 => 'Religous',
-							1 => 'Mormon'
-						),
+					(
+						0 => 'Religious',
+						1 => 'Mormon'
+					),
 
 					'contributors' => Array
+					(
+						'Author' => Array
 						(
-							'Author' => Array
-								(
-									0 => Array
-										(
-											'first'	=> 'Jesus',
-											'last' 	=> 'Christ'
-										)
-
-								)
+							0 => Array
+							(
+								'first'	=> 'Jesus',
+								'last' 	=> 'Christ'
+							)
 
 						),
+						'Director' => Array
+						(
+							'0' => Array
+							(
+								'first' => 'Jesus',
+								'last' 	=> 'Christ'
+							),
+							
+							'1' => Array
+							(
+								'first' => 'Michael',
+								'last' 	=> 'Bay'
+							)
+						)
+
+					),
 					
 					'barcode' 			=> 1,
 					'mediaitem_id' 		=> 1,
@@ -573,6 +646,505 @@
 		return $input_expected_output_pairs;
 	}
 	
+	function standard_add_item_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+/*		$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 		=> 	'Test',
+						'year' 			=> 	100,
+						'isbn' 			=> 	0,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => 'Stupid',
+								1 => 'Religious',
+								2 => 'Other'
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'barcode' 			=> 1,
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'error'			=>	"Barcode 1 is already in use",
+					'error_code'	=>	10
+				)
+			);
+		$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 		=> 	'Test',
+						'year' 			=> 	100,
+						'isbn' 			=> 	0,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => 'Stupid',
+								1 => 'Religious',
+								2 => 'Other'
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'barcode' 			=> 100000,
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'error'			=>	"Duplicate entry '0' for key 'isbn'",
+					'error_code'	=>	0
+				)
+			);
+			$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 		=> 	'Test',
+						'year' 			=> 	100,
+						'isbn' 			=> 	200,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => 'Stupid',
+								1 => 'Religious',
+								2 => 'Other'
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'error'			=> 	'Required field missing',
+					'error_code'	=>	11
+				)
+			);
+			$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'year' 			=> 	100,
+						'isbn' 			=> 	200,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => 'Stupid',
+								1 => 'Religious',
+								2 => 'Other'
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'barcode' 			=> 100000,
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'error'			=> 	'Required field missing',
+					'error_code'	=>	11
+				)
+			);
+			$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 			=> 	'The Book of Mormon',
+						'year' 				=> 	1900,
+						'isbn' 				=> 	0,
+						'media_type'		=> 	'Book',
+						'barcode' 			=> 100000,
+						'copy_no' 			=> 1,
+					)
+				),
+				
+				array
+				(
+					'mediaitem'	=>	'already exists'
+				)
+			);
+*/			$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 		=> 	'Test',
+						'year' 			=> 	100,
+						'isbn' 			=> 	200,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => array
+								(
+									'name' => 'Stupid',
+									'type' => 'genre'
+								),
+								1 => array
+								(
+									'name' => 'Religious',
+									'type' => 'genre'
+								),
+								2 => array
+								(
+									'name' => 'Other',
+									'type' => 'language'
+								)
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'barcode' 			=> 100000,
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'mediaitem'	=>	'added',
+					'hardcopy'	=>	'added',
+					'barcode'	=> 	100000
+				)
+			);
+			
+			$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 		=> 	'Test',
+						'year' 			=> 	100,
+						'isbn' 			=> 	200,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => array
+								(
+									'name' => 'Stupid',
+									'type' => 'genre'
+								),
+								1 => array
+								(
+									'name' => 'Religious',
+									'type' => 'genre'
+								),
+								2 => array
+								(
+									'name' => 'Other',
+									'type' => 'language'
+								)
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'barcode' 			=> 1000001,
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'mediaitem'	=>	'already exists',
+					'hardcopy'	=>	'added',
+					'barcode'	=> 	1000001
+				)
+			);
+			$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				
+				array
+				(
+					array
+					(
+						'title' 		=> 	'Test',
+						'year' 			=> 	100,
+						'isbn' 			=> 	200,
+						'media_type'	=> 	'Book',
+						'edition' 		=> 	'',
+						'volume' 		=> 	'',
+						'issue_no' 		=> 	'',
+						'tag' => Array
+							(
+								0 => array
+								(
+									'name' => 'Stupid',
+									'type' => 'genre'
+								),
+								1 => array
+								(
+									'name' => 'Religious',
+									'type' => 'genre'
+								),
+								2 => array
+								(
+									'name' => 'Other',
+									'type' => 'language'
+								)
+							),
+
+						'contributor' => Array
+							(
+								'Author' => Array
+									(
+										0 => Array
+											(
+												'first'	=> 'Jesus',
+												'last' 	=> 'Christ'
+											),
+										1 => Array
+											(
+												'first'	=> 'Michael',
+												'last' 	=> 'Bay'
+											)
+
+									),
+								'Producer' => Array
+									(
+										0 => Array
+											(
+												'first' => 'Santa',
+												'last'  => 'Claus'
+											)
+									)
+							),
+						
+						'barcode' 			=> 1000002,
+						'copy_no' 			=> 1,
+						'call_no' 			=> '',
+						'status' 			=> 'Normal',
+						'checkout_duration' => 0,
+						'renew_limit' 		=> 1,
+					)
+				),
+				
+				array
+				(
+					'mediaitem'	=>	'already exists',
+					'hardcopy'	=>	'added',
+					'barcode'	=> 	1000002
+				)
+			);
+		return $input_expected_output_pairs;
+	}
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	
 // Adders.php
@@ -647,6 +1219,246 @@
 		return $input_expected_output_pairs;
 	}
 
+	function standard_add_contribution_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'role_id' 			=> 7,
+					'contributor_id'	=> 1,
+					'mediaitem_id'		=> 1
+				)
+			), 
+			array
+			() 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'role_id' 			=> 7,
+					'contributor_id'	=> 1,
+					'mediaitem_id'		=> 1
+				)
+			), 
+			array
+			(
+				
+			)
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'role_id' 			=> 0,
+					'contributor_id'	=> 1,
+					'mediaitem_id'		=> 1
+				)
+			), 
+			array
+			() 
+		);
+		
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'role_id' 			=> 7,
+					'contributor_id'	=> 0,
+					'mediaitem_id'		=> 1
+				)
+			), 
+			array
+			() 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'role_id' 			=> 7,
+					'contributor_id'	=> 1,
+					'mediaitem_id'		=> 0
+				)
+			), 
+			array
+			() 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'role_id' 			=> 0,
+					'contributor_id'	=> 0,
+					'mediaitem_id'		=> 0
+				)
+			), 
+			array
+			() 
+		);
+		
+		return $input_expected_output_pairs;
+	}
+	
+	function standard_add_contributor_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'first' 		=> 'Michael', 
+					'last'			=> 'Bay'
+				)
+			), 
+			array
+			() 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'first' 		=> 'Michael', 
+					'last'			=> 'Bay'
+				)
+			), 
+			array
+			(
+				'error' 		=> 'Duplicate entry \'Michael-Bay\' for key \'first\'', 
+				'error_code' 	=> 0
+			)
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(
+			array
+			(
+				array
+				(
+					'last'			=> 'Bay'
+				)
+			), 
+			array
+			()
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'first' 		=> 'Michael'
+				)
+			), 
+			array
+			(
+				'error' 		=> 'Column \'last\' cannot be null', 
+				'error_code' 	=> 0
+			)
+		);
+		
+		return $input_expected_output_pairs;
+	}
+	
+	function standard_add_hardcopy_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'mediaitem_id' 		=> 0, 
+					'copy_no' 			=> 1,
+					'call_no' 			=> 24234256,
+					'status' 			=> 'Normal',
+					'checkout_duration'	=> 10,
+					'renew_limit'		=> 0
+				)
+			), 
+			array
+			(
+				'error' 		=> 'Column \'barcode\' cannot be null', 
+				'error_code' 	=> 0
+			) 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'barcode'			=> 1337,
+					'mediaitem_id' 		=> 0, 
+					'copy_no' 			=> 1,
+					'call_no' 			=> 24234256,
+					'status' 			=> 'Normal',
+					'checkout_duration'	=> 10,
+					'renew_limit'		=> 0
+				)
+			), 
+			array
+			(
+				'error' 		=> 'Cannot add or update a child row: a foreign key constraint fails (`cls`.`hardcopy`, CONSTRAINT `hardcopy_ibfk_1` FOREIGN KEY (`mediaitem_id`) REFERENCES `mediaitem` (`id`))', 
+				'error_code' 	=> 0
+			) 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'barcode'			=> 1337,
+					'mediaitem_id' 		=> 1
+				)
+			), 
+			array
+			(
+				'error' 		=> 'Column \'copy_no\' cannot be null', 
+				'error_code' 	=> 0
+			) 
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(	
+				array
+				(
+					'barcode'			=> 1337,
+					'mediaitem_id' 		=> 1, 
+					'copy_no' 			=> 2,
+					'call_no' 			=> 24234256,
+					'status' 			=> 'Normal',
+					'checkout_duration'	=> 10,
+					'renew_limit'		=> 0
+				)
+			), 
+			array
+			(
+			) 
+		);
+		
+		return $input_expected_output_pairs;
+	}
+	
 	function standard_add_hold_IEO_pairs()
 	{
 		$input_expected_output_pairs = array();
@@ -944,6 +1756,166 @@
 //	
 // Getters.php
 
+	function standard_select_from_table_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(
+				array
+				(
+					'barcode' => 1
+				),
+				
+				'hardcopy'
+			), 
+			array
+			(
+				array
+				(
+					'barcode' 			=> 1,
+					'mediaitem_id' 		=> 1,
+					'copy_no' 			=> 1,
+					'call_no' 			=> '',
+					'status' 			=> 'Lost',
+					'checkout_duration' => 0,
+					'renew_limit' 		=> 1
+				)
+			)
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(
+				array
+				(
+					'id' => 1
+				),
+				
+				'mediaitem'
+			), 
+			array
+			(
+				array
+				(
+					'id' 			=> 1,
+					'title' 		=> 'The Book of Mormon',
+					'year' 			=> 1900,
+					'isbn' 			=> 0,
+					'media_type' 	=> 'Book',
+					'edition' 		=> '',
+					'volume' 		=> '',
+					'issue_no' 		=> ''
+				)
+			)
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(
+				array
+				(
+					'id' => 0
+				),
+				
+				'tag'
+			), 
+			array
+			(
+				'error' 	=> 'Not found',
+				'error_code'	=> 1
+			)
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(
+				array
+				(
+					'id' => 1,
+					'media_type' => 'Book'
+				),
+				
+				'mediaitem'
+			), 
+			array
+			(
+				array
+				(
+					'id' 			=> 1,
+					'title' 		=> 'The Book of Mormon',
+					'year' 			=> 1900,
+					'isbn' 			=> 0,
+					'media_type' 	=> 'Book',
+					'edition' 		=> '',
+					'volume' 		=> '',
+					'issue_no' 		=> ''
+				)
+			)
+		);
+			
+		return $input_expected_output_pairs;
+	}
+	
+	function standard_get_mediaitem_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+		
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(
+				array
+				(
+					'id' => 1
+				)
+			), 
+			array
+			(
+				array
+				(
+					'id' 			=> 1,
+					'title' 		=> 'The Book of Mormon',
+					'year' 			=> 1900,
+					'isbn' 			=> 0,
+					'media_type' 	=> 'Book',
+					'edition' 		=> '',
+					'volume' 		=> '',
+					'issue_no' 		=> ''
+				)
+			)
+		);
+		$input_expected_output_pairs[] = generate_IEO_pair
+		(	
+			array
+			(
+				array
+				(
+					'id' => 1,
+					'media_type' => 'Book'
+				),
+				
+				'mediaitem'
+			), 
+			array
+			(
+				array
+				(
+					'id' 			=> 1,
+					'title' 		=> 'The Book of Mormon',
+					'year' 			=> 1900,
+					'isbn' 			=> 0,
+					'media_type' 	=> 'Book',
+					'edition' 		=> '',
+					'volume' 		=> '',
+					'issue_no' 		=> ''
+				)
+			)
+		);
+			
+		return $input_expected_output_pairs;
+	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //	
@@ -967,6 +1939,43 @@
 		return $input_expected_output_pairs;
 	}
 	
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	
+// Helpers.php
+	
+	function standard_clean_exists_make_empty_if_not_IEO_pairs()
+	{
+		$input_expected_output_pairs = array();
+		$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				array
+				(
+					array
+					(
+						'title' => 'Book of Mormon'
+					),
+					'title'
+				), 
+				
+				'Book of Mormon'
+			);
+		$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				array
+				(
+					array
+					(
+						'nothing' => 1
+					),
+					'title'
+				), 
+				
+				''
+			);
+			
+		return $input_expected_output_pairs;
+	}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 ?>
