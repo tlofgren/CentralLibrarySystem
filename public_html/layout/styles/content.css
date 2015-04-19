@@ -10,8 +10,8 @@
 
 /* Checkin elements
 --------------------------------------------------------------------------------------------------------------- */
-.h3 {
-	
+.barcode {
+	font-size: 10px;
 }
 
 .item-entry {
@@ -29,4 +29,6 @@
 
 .statusChangeNotification {
 	display: none;
+	color: #238923;
+	font-size: 12px;
 }

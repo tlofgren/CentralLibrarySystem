@@ -71,7 +71,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </ul>
           </nav>
         </div>
-        <!-- ################################################################################################ --><!--  <button name="submitItemID" id="submitItemID" value="Go" /> -->
+        <!-- ################################################################################################ -->
         <!-- ################################################################################################ -->
         <div class="content three_quarter"> 
           <h1>Check in items</h1>
@@ -80,7 +80,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <label for="checkin-field">Item ID:</label>
               <input type="text" id="checkin-field" name="checkin-field" maxlength="15" />
               <span class="input-error-msg" id="itemID-error">Please enter a valid ID.</span>
-            </form>
+            </form> <!-- TODO <button name="submitItemID" id="submitItemID" value="Go" /> -->
           </div>
           <div class="scrollable">
             <table id="checkInTable">
@@ -89,6 +89,7 @@ Licence URI: http://www.os-templates.com/template-terms
                   <th>Title</th>
                   <th>Author(s)</th>
                   <th>Call Number</th>
+                  <th>Barcode</th>
                   <th>Status</th>
                 </tr>
               </thead>
