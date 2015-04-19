@@ -22,7 +22,8 @@ session_start();
 // This function needs to pass the integer item id (from a media item in the database) as its argument.
 // The item id will be passed to this page using $_GET or $_SESSION when the link is generated on the search page.
 // At the moment it is hard coded to 1 which is the BOM.
-$itemInfo = get_general_item_info(1); 
+$id = $_GET['link'];
+$itemInfo = get_general_item_info($id); 
 ?>
 <!-- ################################################################################################ -->
 <!-- include the banner section -->
@@ -100,8 +101,8 @@ if(isset($_SESSION['loginSuccess'])) { ?>
 <!-- This page displays the general information about a specific media item -->
 <?php 
 if(isset($_SESSION['loginSuccess'])) { ?>
-<div class="mainav">
-	<header id="login" class="clear">
+<div>
+	<header>
 		<form method="post" action="CLS-search.php" id="search">
 			<fieldset>
 			<legend>Media Item Information:</legend>
@@ -154,12 +155,12 @@ if(isset($_SESSION['loginSuccess'])) { ?>
 							echo ": ";
 							if(isset($itemInfo['contributors'][$paramName]['0']['first'])) {
 								echo $itemInfo['contributors'][$paramName]['0']['first'];
+								echo " ";
 							}
-							echo " ";
 							if(isset($itemInfo['contributors'][$paramName]['0']['last'])) {
 								echo $itemInfo['contributors'][$paramName]['0']['last'];
 							}
-							?>
+						?>
 						</li>
 					<?php } ?>
 				</ul>

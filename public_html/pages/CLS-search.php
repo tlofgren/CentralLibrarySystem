@@ -82,29 +82,54 @@ if(isset($_SESSION['loginSuccess'])) { ?>
 	  </li>
 	</ul>
   </nav>
-  <!-- ################################################################################################ -->
 </div>
-<!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <div class="content three_quarter"> 
-<!-- ################################################################################################ -->
 <!-- main body content goes here -->
-<!-- This is the home page main background and text -->
+<!-- This page displays the results of a search -->
 <?php 
 if(isset($_SESSION['loginSuccess'])) {
-?>
-<div class="container">
-	<header id="login" class="clear">
-		<form method="post" action="CLS-search.php" id="search">
-			<fieldset>
-			<legend>Search:</legend>
-				<h2>Search</h2>
-				<p>Some stuff</p>
-			</fieldset>
-		<form>
+	$searchResult = array(1, 1, 1);
+	?>
+	<div>
+		<header>
+			<form method="post" action="CLS-search.php" id="search">
+				<fieldset>
+				<legend>Search:</legend>
+					<h2>Search Results:</h2>
+					<ul>
+						<?php 
+						foreach($searchResult as $id) {
+							$itemInfo = get_general_item_info($id); 
+							echo '<li>';
+							echo '<a href="CLS-item-info.php?link=' . $id . '">';
+							if(isset($itemInfo['title'])) {
+								echo $itemInfo['title'];
+							}
+							echo '</a>';
+							if(isset($itemInfo['contributors'])) {
+								echo ", ";
+								foreach(array_keys($itemInfo['contributors']) as $paramName)
+								if(isset($itemInfo['contributors'][$paramName]['0']['first'])) {
+									echo $itemInfo['contributors'][$paramName]['0']['first'];
+									echo " ";
+								}
+								if(isset($itemInfo['contributors'][$paramName]['0']['last'])) {
+									echo $itemInfo['contributors'][$paramName]['0']['last'];
+								}
+							}
+							if(isset($itemInfo['year'])) {
+								echo ", ";
+								echo $itemInfo['year'];
+							}
+							echo '</li>';
+						} ?>
+					</ul>
+				</fieldset>
+			<form>
+		</div>
 	</div>
-</div>
-<?php 
+	<?php 
 } ?>
 <!-- ################################################################################################ -->
 </div> <!-- three quarter -->
