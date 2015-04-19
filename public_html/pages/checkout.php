@@ -29,16 +29,31 @@ Licence URI: http://www.os-templates.com/template-terms
   </head>
   <body id="top">
   <?php require_once('CLS-banner.php'); ?>
+  <!-- this is the links bar of the CLS pages -->
+<div class="wrapper row1">
+  <div id="topbar" class="clear"> 
+    <nav id="mainav" class="fl_left">
+      <ul class="clear">
+        <li><a href="CLS-home.php">Home</a></li>
+    <li class="active"><a href="CLS-login.php">My Library Account</a></li>
+    <li><a href="CLS-search.php">Search Catalog</a></li>
+        <li><a href="#">Request a Room</a></li>
+    <li><a href="#">About The Library</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
-  <div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/02.png');">
+  <div class="wrapper row3 bgded" >
     <div class="overlay">
       <div id="breadcrumb" class="clear"> 
         <!-- ################################################################################################ -->
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">My Librarian Account</a></li>
+          <li><a href="CLS-home.php">Home</a></li>
+          <li><a href="CLS-login.php">My Librarian Account</a></li>
           <li><a href="#">Check out Items</a></li>
         </ul>
         <!-- ################################################################################################ -->
@@ -50,6 +65,9 @@ Licence URI: http://www.os-templates.com/template-terms
   <!-- ################################################################################################ -->
   <div class="wrapper row3">
     <main class="container clear"> 
+      <?php 
+      session_start();
+      if (isset($_SESSION['loginSuccess'])) { ?>
       <!-- main body -->
       <!-- ################################################################################################ -->
       <div class="sidebar one_quarter first"> 
@@ -127,8 +145,14 @@ Licence URI: http://www.os-templates.com/template-terms
       </form>
       </fieldset>
       <div class="clear"></div>
+
+      <?php } else {
+          require_once('not_logged_in.html');
+        } ?>
     </main>
   </div>
+
+
   <?php require_once('CLS-footer.php'); ?>
   <!-- ################################################################################################ -->
   <!-- ################################################################################################ -->
