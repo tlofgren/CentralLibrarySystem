@@ -8,14 +8,12 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html lang="en">
   <head>
-    <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
-
-  <title>Check in | My Librarian Account | CLS</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
+    <title>Check in | My Librarian Account | CLS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body id="top">
     <?php 
@@ -29,10 +27,10 @@ Licence URI: http://www.os-templates.com/template-terms
         <nav id="mainav" class="fl_left">
           <ul class="clear">
             <li><a href="CLS-home.php">Home</a></li>
-        <li><a href="CLS-login.php">My Library Account</a></li>
-        <li class="active"><a href="CLS-search.php">Search Catalog</a></li>
+            <li class="active"><a href="CLS-login.php">My Library Account</a></li>
+            <li><a href="CLS-search.php">Search Catalog</a></li>
             <li><a href="#">Request a Room</a></li>
-        <li><a href="#">About The Library</a></li>
+            <li><a href="#">About The Library</a></li>
             <li><a href="#">Contact Us</a></li>
           </ul>
         </nav>
@@ -52,51 +50,36 @@ Licence URI: http://www.os-templates.com/template-terms
     </div>
     <!-- ################################################################################################ -->
     <div class="wrapper row3">
-      <main class="container clear"> 
-        <!-- main body -->
-        <?php
-          if (isset($_SESSION['loginSuccess'])) { ?>
+      <!-- main body -->
+      <main class="container clear">
+        <?php if (isset($_SESSION['loginSuccess'])) { ?>
         <!-- ################################################################################################ -->
+        <!-- sidebar nav -->
         <div class="sidebar one_quarter first"> 
-          <!-- ################################################################################################ -->
-          <!-- <h6>Lorem ipsum dolor</h6> -->
           <nav class="sdb_holder">
             <ul>
-              <li><a href="#">Check In</a></li>
-              <li><a href="checkout.php">Check Out</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Holds</a></li>
+              <li class="active"><a href="checkin.php">Check In</a></li>
+              <li><a href="checkout.php">Check Out</a></li>
+              <li><a href="holds.php">Holds</a></li>
               <li><a href="#">Fines</a></li>
               <li><a href="#">Manage Catalog</a>
                 <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a>
-                    <ul>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="#">Add Items</a></li>
+                  <li><a href="#">Edit/Remove Items</a></li>
                 </ul>
               </li>
             </ul>
           </nav>
-          <!-- ################################################################################################ -->
         </div>
         <!-- ################################################################################################ --><!--  <button name="submitItemID" id="submitItemID" value="Go" /> -->
         <!-- ################################################################################################ -->
         <div class="content three_quarter"> 
-          <!-- ################################################################################################ -->
           <h1>Check in items</h1>
           <div class="item-entry"> <!-- TODO: make custom css for this class? -->
             <form id="checkin-form">
               <label for="checkin-field">Item ID:</label>
               <input type="text" id="checkin-field" name="checkin-field" maxlength="15" />
               <span class="input-error-msg" id="itemID-error">Please enter a valid ID.</span>
-             
             </form>
           </div>
           <div class="scrollable">
@@ -110,19 +93,7 @@ Licence URI: http://www.os-templates.com/template-terms
                 </tr>
               </thead>
               <tbody>
-                <!-- <tr>
-                  <td>1984</td>
-                  <td>George Orwell</td>
-                  <td>AB C12.34 1948</td>
-                  <td>
-                    <select class='item_status' name="item_status_options" size="1" >
-                      <option value="Checked_in" selected>Checked in</option>
-                      <option value="Damaged">Damaged</option>
-                      <option value="Status3">Status 3</option>
-                    </select>
-                  </td>
-                  <td class="notes">notes</td>
-                </tr> -->
+              <!-- filled in as user enters items -->
               </tbody>
             </table>
           </div> <!-- scrollable -->

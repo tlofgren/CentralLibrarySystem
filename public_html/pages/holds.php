@@ -8,23 +8,18 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
-    <meta name="dcterms.created" content="Wed, 08 Apr 2015 19:50:53 GMT">
     <meta name="description" content="">
     <meta name="keywords" content="">
-
-  <title>Holds | My Librarian Account | CLS</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
+    <title>Holds | My Librarian Account | CLS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
 
    <!-- JAVASCRIPTS -->
   <script src="../layout/scripts/jquery.min.js"></script>
   <script src="../layout/scripts/jquery.backtotop.js"></script>
   <script src="../layout/scripts/jquery.mobilemenu.js"></script>
   <script src="./scripts/holds.js"></script>
-
 
   </head>
   <body id="top">
@@ -37,9 +32,9 @@ Licence URI: http://www.os-templates.com/template-terms
       <div id="breadcrumb" class="clear"> 
         <!-- ################################################################################################ -->
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">My Librarian Account</a></li>
-          <li><a href="#">Check In Items</a></li>
+          <li><a href="CLS-home.php">Home</a></li>
+          <li><a href="CLS-login.php">My Librarian Account</a></li>
+          <li><a href="holds.php">Manage Holds</a></li>
         </ul>
         <!-- ################################################################################################ -->
       </div>
@@ -51,17 +46,18 @@ Licence URI: http://www.os-templates.com/template-terms
   <div class="wrapper row3">
     <main class="container clear"> 
       <!-- main body -->
-      <!-- ################################################################################################ -->
+      <!-- sidebar nav -->
       <div class="sidebar one_quarter first"> 
-        <!-- ################################################################################################ -->
-        <!-- <h6>Lorem ipsum dolor</h6> -->
-          <nav class="sdb_holder">
+        <nav class="sdb_holder">
           <ul>
             <li><a href="checkin.php">Check In</a></li>
             <li><a href="checkout.php">Check Out</a>
-             
+              <ul>
+                <li><a href="#">Navigation - Level 2</a></li>
+                <li><a href="#">Navigation - Level 2</a></li>
+              </ul>
             </li>
-            <li><a href="holds.php">Holds</a></li>
+            <li class="active"><a href="holds.php">Holds</a></li>
             <li><a href="#">Fines</a></li>
             <li><a href="#">Manage Catalog</a>
               <ul>
@@ -76,7 +72,6 @@ Licence URI: http://www.os-templates.com/template-terms
             </li>
           </ul>
         </nav>
-        <!-- ################################################################################################ -->
       </div>
       <!-- ################################################################################################ -->
       <!-- ################################################################################################ -->
