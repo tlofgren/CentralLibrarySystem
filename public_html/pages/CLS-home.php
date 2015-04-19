@@ -33,8 +33,8 @@ Licence URI: http://www.os-templates.com/template-terms
             </li>
         		<li><a href="CLS-search.php">Search Catalog</a></li>
             <li><a href="#">Request a Room</a></li>
-    		    <li><a href="#">About The Library</a></li>
-            <li><a href="#">Contact Us</a></li>
+    		    <li><a href="about.php">About The Library</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
           </ul>
         </nav>
       </div>

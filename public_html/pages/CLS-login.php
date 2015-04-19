@@ -14,9 +14,10 @@ Licence URI: http://www.os-templates.com/template-terms
     <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body id="top">
-    <?php session_start(); ?>
-    <!-- ################################################################################################ -->
-    <?php require_once "../../DB_scripts/Queries.php"; ?>
+    <?php
+      session_start();
+      require_once "../../DB_scripts/Queries.php";
+    ?>
     <!-- ################################################################################################ -->
     <!-- include the banner section -->
     <?php require_once "CLS-banner.php"; ?>
@@ -30,8 +31,8 @@ Licence URI: http://www.os-templates.com/template-terms
     		    <li class="active"><a href="CLS-login.php">My Library Account</a></li>
     		    <li><a href="CLS-search.php">Search Catalog</a></li>
             <li><a href="#">Request a Room</a></li>
-    		    <li><a href="#">About The Library</a></li>
-            <li><a href="#">Contact Us</a></li>
+    		    <li><a href="about.php">About The Library</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
           </ul>
         </nav>
       </div>
@@ -96,31 +97,27 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- ################################################################################################ -->
     <div class="wrapper row3">
       <!-- main body -->
-    	<main class="container clear"> 
-    	  <!-- sidebar nav -->
+      <main class="container clear"> 
+        <!-- ################################################################################################ -->
+        <!-- sidebar nav -->
         <div class="sidebar one_quarter first"> 
           <nav class="sdb_holder">
             <ul>
               <li><a href="checkin.php">Check In</a></li>
-              <li><a href="checkout.php">Check Out</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                </ul>
-              </li>
+              <li><a href="checkout.php">Check Out</a></li>
               <li><a href="holds.php">Holds</a></li>
-              <li><a href="#">Fines</a></li>
-              <li><a href="#">Manage Catalog</a>
+              <li><a href="fines.php">Fines</a></li>
+              <li><a href="editItems.php">Manage Catalog</a> <!-- TODO: link to same page as Edit/Remove -->
                 <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a>
-                    <ul>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="addItem.php">Add Items</a></li>
+                  <li><a href="editItems.php">Edit/Remove Items</a></li>
                 </ul>
               </li>
+              <li><a href="addPatron.php">Manage Patrons</a>
+                <ul>
+                  <li><a href="addPatron.php">Add New Patron</a></li>
+                  <li><a href="editPatron.php">Edit Patron Profile</a></li>
+                </ul>
             </ul>
           </nav>
         </div>

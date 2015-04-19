@@ -51,6 +51,7 @@ $(document).ready(function(){
     event.preventDefault();
   });
 
+  //When user clicks textfield, text is selected for easy re-entry
   $('#checkin-field').click(function(){
     $(this).select();
   });

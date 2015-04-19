@@ -10,7 +10,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <head>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Check in | My Librarian Account | CLS</title>
+    <title>Check In Items | My Librarian Account | CLS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
@@ -62,7 +62,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <li><a href="checkout.php">Check Out</a></li>
               <li><a href="holds.php">Holds</a></li>
               <li><a href="fines.php">Fines</a></li>
-              <li><a href="editItems.php">Manage Catalog</a> <!-- TODO: link to same page as Edit/Remove -->
+              <li><a href="editItems.php">Manage Catalog</a>
                 <ul>
                   <li><a href="addItem.php">Add Items</a></li>
                   <li><a href="editItems.php">Edit/Remove Items</a></li>
@@ -80,7 +80,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <!-- ################################################################################################ -->
         <div class="content three_quarter"> 
           <h1>Check in items</h1>
-          <div class="item-entry"> <!-- TODO: make custom css for this class? -->
+          <div class="item-entry">
             <form id="checkin-form">
               <label for="checkin-field">Item ID:</label>
               <input type="text" id="checkin-field" name="checkin-field" maxlength="15" />
