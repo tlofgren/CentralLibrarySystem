@@ -27,6 +27,84 @@ function surround_in_quotes(&$arr)
 	array_walk($arr, create_function('&$str', '$str = "\'$str\'";'));
 }
 
+function surround_in_ticks(&$arr)
+{
+	array_walk($arr, create_function('&$str', '$str = "`$str`";'));
+}
+
+function required_fields_for_hardcopy_exist(&$arr)
+{
+	if(array_key_exists('barcode', $arr))
+	{
+//		if(array_key_exists('checkout_duration', $arr))
+//		{
+//			if(array_key_exists('renew_limit', $arr))
+//			{
+				return true;
+//			}
+//		}
+	}
+	
+	return false;
+}
+function required_fields_for_mediaitem_exist(&$arr)
+{
+	if(array_key_exists('title', $arr))
+	{
+		if(array_key_exists('media_type', $arr))
+		{
+			if(array_key_exists('isbn', $arr))
+			{
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
+function required_fields_for_tag_exist(&$arr)
+{
+	if(array_key_exists('name', $arr))
+	{
+		if(array_key_exists('type', $arr))
+		{
+//			if($arr['type'] != 'title' && $arr['type'] != 'subject' && $arr['type'] != 'genre' && $arr['type'] != 'language' && $arr['type'] != 'contributor')
+//			{
+//				return false;
+//			}
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+function clean_exists_make_empty_if_not($arr, $key)
+{
+	if(array_key_exists($key, $arr))
+	{
+		clean_string($arr[$key]);
+		return $arr[$key];
+	}
+	else
+	{
+		return '';
+	}
+}
+
+function clean_exists_make_null_if_not($arr, $key)
+{
+	if(array_key_exists($key, $arr))
+	{
+		clean_string($arr[$key]);
+		return $arr[$key];
+	}
+	else
+	{
+		return 'NULL';
+	}
+}
 
 function append_required_fields(&$arr,$tablename)
 { 
@@ -52,16 +130,18 @@ function append_required_fields(&$arr,$tablename)
 	}
 	if($tablename == 'contribution')
 	{
-		if(!array_key_exists('media_item',$arr))
-			$arr['media_item'] = 'NULL';
+		if(!array_key_exists('mediaitem_id',$arr))
+			$arr['mediaitem_id'] = 'NULL';
 		if(!array_key_exists('contributor_id',$arr))
 			$arr['contributor_id'] = 'NULL';
 		if(!array_key_exists('role_id',$arr))
 			$arr['role_id'] = 'NULL';
 	}
 	if($tablename == 'contributor')
+	{
 		if(!array_key_exists('last',$arr))
 			$arr['last'] = 'NULL';
+	}
 
 	if($tablename == 'fine')
 	{
@@ -204,5 +284,36 @@ function is_possible_enum_val($val,$field)
 		}
 	}
 	return false;
+}
+
+function get_hits($str,$tag_type,$results = array())
+{
+	global $mysqli;
+	
+	//Throws out useless words and parses string
+	$str = strtolower($str);
+	include 'Stoplist.php';
+	$str = preg_replace($stoplist, "", $str);
+	$words = $str.explode(" ",$str);
+	
+	//Build results array
+	foreach($words as $word)
+	{
+		$query_result = $mysqli->query("SELECT mediaitem_id FROM itemtag
+										JOIN tag ON tag_id = tag.id
+										JOIN mediaitem ON mediaitem_id = mediaitem.id
+										WHERE name = $word AND tag.type = '$tag_type'");
+		if($error = check_sql_error($query_result))
+			return $error;
+		while($row = $query_result->fetch_assoc())
+		{
+			$id = $row['mediaitem_id'];
+			if(array_key_exists($id,$results))
+				$results[$id]++;
+			else
+				$results[$id] = 1;
+		}
+		return arsort($results);
+	}
 }
 ?>

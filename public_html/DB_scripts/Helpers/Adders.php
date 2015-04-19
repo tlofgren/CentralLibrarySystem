@@ -36,6 +36,53 @@ function add_to_table($arr,$tablename)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
+// This function won't work if you don't properly include all files, don't even try it.
+function properly_add_and_return_tag($name, $type)
+{
+	$tag_description = array
+	(
+		'name' => $name,
+		'type' => $type
+	);
+	
+	$preexisting_tag = get_tag($tag_description);
+	
+	if(array_key_exists('error', $preexisting_tag))	// The tag doesn't exist, so create and find it.
+	{
+		$add_tag_result = add_tag($tag_description);
+		
+		if(array_key_exists('error', $add_tag_result))
+		{
+			$report[] = "Failed to add $tag_description to tag.";
+			continue;
+		}
+		
+		$preexisting_tag = get_tag($tag_description);
+	}
+	
+	$itemtag_description = array
+	(
+		'tag_id' 		=> $preexisting_tag[0]['id'],
+		'mediaitem_id' 	=> $mediaitem_id
+	);
+	
+	$preexisting_itemtag = get_itemtag($itemtag_description);
+	
+	if(array_key_exists('error', $preexisting_itemtag))	// The tag doesn't exist, so create and find it.
+	{
+		$add_itemtag_result = add_itemtag($itemtag_description);
+		
+		if(array_key_exists('error', $add_itemtag_result))
+		{
+			$report[] = "Failed to add $itemtag_description to contributor.";
+			continue;
+		}
+		
+		$preexisting_itemtag = get_itemtag($itemtag_description);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 function add_admin($arr)
 {
