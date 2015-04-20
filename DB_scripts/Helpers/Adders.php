@@ -33,7 +33,7 @@ function add_to_table($arr,$tablename)
 	$query = "INSERT INTO `$tablename`(`".implode("`, `", $fields)."`)
 		VALUES (".implode(", ", $vals).")";
 	
-	echo "<p>$query</p>";
+//	echo "<p>$query</p>";
 	
 	$result = $mysqli->query($query);
 

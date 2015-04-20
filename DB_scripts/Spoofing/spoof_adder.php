@@ -106,9 +106,89 @@ $new_item2 = array
 	'renew_limit' 		=> 1
 );
 
+
+$new_item3 = array
+(
+	'title' 		=> 	'A Christmas Carol',
+	'isbn'			=>	7777,
+	'media_type'	=> 	'Book',
+	'edition'		=>	2,
+	'volume'		=>	1,
+	'issue_no'		=>	402,
+	
+	'tags' => Array
+	(
+		0 => array
+		(
+			'name' => 'Christmas',
+			'type' => 'Subject'
+		)
+	),
+
+	'contributor' => Array
+	(
+		'Author' => Array
+		(
+			0 => Array
+			(
+				'first'	=> 'Charles',
+				'last' 	=> 'Dickens'
+			)
+
+		)
+	),
+	
+	'barcode' 			=> 111111,
+	'call_no' 			=> 32
+);
+
+$new_item4 = array
+(
+	'title' 		=> 	'Chicken Soup for the Soul',
+	'isbn'			=>	7778,
+	'media_type'	=> 	'Book',
+	'edition'		=>	2,
+	'volume'		=>	1,
+	'issue_no'		=>	402,
+	
+	'tags' => Array
+	(
+		0 => array
+		(
+			'name' => 'Self-help',
+			'type' => 'Subject'
+		)
+	),
+
+	'contributor' => Array
+	(
+		'Author' => Array
+		(
+			0 => Array
+			(
+				'first'	=> 'Jack',
+				'last' 	=> 'Canfield'
+			),
+			1 => Array
+			(
+				'first'	=> 'Mark Victor',
+				'last' 	=> 'Hansen'
+			)
+
+		)
+	),
+	
+	'barcode' 			=> 111112,
+	'call_no' 			=> 33
+);
+
+
 echo "<pre>";
 //$result = add_item($new_item);
-$result = add_item($new_item2);
+//$result = add_item($new_item2);
+
+$result = add_item($new_item4);
+
 print_r($result);
 echo "</pre>";
 

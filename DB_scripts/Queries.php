@@ -470,7 +470,7 @@ function remove_hold($mediaitem_id, $patron_id)
 
 function add_item($arr)
 {	
-	$debugging = true;
+//	$debugging = true;
 
 	$report = array();
 	

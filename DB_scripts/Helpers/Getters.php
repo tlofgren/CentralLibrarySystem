@@ -7,7 +7,7 @@ require_once "Helpers.php";
 
 function select_from_table($arr,$tablename)
 {
-	$debugging = true;		// Comment this out to stop debugging.
+//	$debugging = true;		// Comment this out to stop debugging.
 	
 	global $mysqli;
 	
