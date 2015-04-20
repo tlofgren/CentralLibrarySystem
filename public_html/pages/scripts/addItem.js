@@ -65,10 +65,15 @@ $(document).ready(function(){
 					// 	last: lname
 					// }
 				};
-				arrayOfContributors[i][role]={
+				// names=[];
+				arrayOfContributors[i][role]={};
+				var index = '['+[i]+']';
+				arrayOfContributors[i][role][index]={
+					
 					first: fname,
 					last: lname
-				};
+				
+								};
 
 		}
 
