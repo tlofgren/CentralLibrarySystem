@@ -6,6 +6,7 @@ require_once "Helpers/Adders.php";
 require_once "Helpers/Getters.php";
 require_once "Helpers/Removers.php";
 require_once "Helpers/Library_Defaults.php";
+require_once "Helpers/Stoplist.php";
 
 function login($username, $password, $table)
 {
@@ -478,6 +479,8 @@ function add_item($arr)
 	global $default_checkout_duration;
 	global $default_item_renew_limit;
 	
+	global $stoplist;
+	
 	if(!required_fields_for_mediaitem_exist($arr) || !required_fields_for_hardcopy_exist($arr))
 	{
 		return array
@@ -512,6 +515,15 @@ function add_item($arr)
 	$checkout_duration 	= clean_exists_make_empty_if_not($arr, 'checkout_duration'); 
 	$renew_limit 		= clean_exists_make_empty_if_not($arr, 'renew_limit'); 
 	
+	
+	if($edition == '')
+	{
+		$edition = 'NULL';
+	}
+	if($volume == '')
+	{
+		$volume = 'NULL';
+	}
 	if($issue_no == '')
 	{
 		$issue_no = 'NULL';
@@ -682,11 +694,16 @@ function add_item($arr)
 	
 	if($title != 'NULL')
 	{
+		$title = preg_replace($stoplist, "", $title);
+		$title = preg_replace("/[^0-9^a-zA-Z^\s]+/","",$title);
 		$potential_tags = preg_split("/[\s,]+/", $title);
 		
 		foreach($potential_tags as $tag_to_be)
 		{
-			//ToDo : Get help with stoplisting things.
+			if($tag_to_be == '')
+			{
+				continue;
+			}
 			
 			$tag_description = array
 			(
@@ -826,11 +843,19 @@ function add_item($arr)
 				// add and link tags for these contributors.
 				if($first != 'NULL')
 				{
+	
+					$first = preg_replace($stoplist, "", $first);
+					$first = preg_replace("/[^0-9^a-zA-Z^\s]+/","",$first);
 					$potential_tags = preg_split("/[\s,]+/", $first);
 					
 					foreach($potential_tags as $tag_to_be)
 					{
 						//ToDo : Get help with stoplisting things.
+						
+						if($tag_to_be == '')
+						{
+							continue;
+						}
 						
 						$tag_description = array
 						(
@@ -877,11 +902,16 @@ function add_item($arr)
 				}
 				if($last != 'NULL')
 				{
+					$last = preg_replace($stoplist, "", $last);
+					$last = preg_replace("/[^0-9^a-zA-Z^\s]+/","",$last);
 					$potential_tags = preg_split("/[\s,]+/", $last);
 					
 					foreach($potential_tags as $tag_to_be)
 					{
-						//ToDo : Get help with stoplisting things.
+						if($tag_to_be == '')
+						{
+							continue;
+						}
 						
 						$tag_description = array
 						(

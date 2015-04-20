@@ -10,7 +10,7 @@ Licence URI: http://www.os-templates.com/template-terms
   <head>
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title>Check in | My Librarian Account | CLS</title>
+    <title>Edit Patron Profile | My Librarian Account | CLS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="../layout/styles/content.css" rel="stylesheet" type="text/css" media="all">
@@ -43,7 +43,7 @@ Licence URI: http://www.os-templates.com/template-terms
           <ul>
             <li><a href="CLS-home.php">Home</a></li>
             <li><a href="CLS-login.php">My Librarian Account</a></li>
-            <li><a href="#">CURRENT PAGE</a></li>
+            <li><a href="editPatron.php">Edit Patron Profile</a></li>
           </ul>
         </div>
       </div>
@@ -58,11 +58,11 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="sidebar one_quarter first"> 
           <nav class="sdb_holder">
             <ul>
-              <li class="active"><a href="checkin.php">Check In</a></li>  <!-- CHANGE ACTIVE TO CURRENT PAGE -->
+              <li><a href="checkin.php">Check In</a></li>
               <li><a href="checkout.php">Check Out</a></li>
               <li><a href="holds.php">Holds</a></li>
               <li><a href="fines.php">Fines</a></li>
-              <li><a href="editItems.php">Manage Catalog</a> <!-- TODO: link to same page as Edit/Remove -->
+              <li><a href="editItems.php">Manage Catalog</a>
                 <ul>
                   <li><a href="addItem.php">Add Items</a></li>
                   <li><a href="editItems.php">Edit/Remove Items</a></li>
@@ -71,7 +71,7 @@ Licence URI: http://www.os-templates.com/template-terms
               <li><a href="addPatron.php">Manage Patrons</a>
                 <ul>
                   <li><a href="addPatron.php">Add New Patron</a></li>
-                  <li><a href="editPatron.php">Edit Patron Profile</a></li>
+                  <li class="active"><a href="editPatron.php">Edit Patron Profile</a></li>
                 </ul>
             </ul>
           </nav>
@@ -79,7 +79,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <!-- ################################################################################################ -->
         <!-- ################################################################################################ -->
         <div class="content three_quarter"> 
-          <h1>PAGE TITLE</h1>
+          <h1>Edit Patron Profile</h1>
           <div>
           </div>
           <!-- ################################################################################################ -->

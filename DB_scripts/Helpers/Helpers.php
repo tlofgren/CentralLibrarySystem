@@ -294,6 +294,7 @@ function get_hits($str,$tag_type,$results = array())
 	$str = strtolower($str);
 	include "Stoplist.php";
 	$str = preg_replace($stoplist, "", $str);
+	$str = preg_replace("/[^0-9^a-zA-Z^\s]+/","",$str);
 	$words = preg_split("/[\s,]+/",$str);
 	
 	//Build results array

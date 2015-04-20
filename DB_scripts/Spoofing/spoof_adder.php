@@ -40,7 +40,7 @@ $new_item = array
 		)
 	),
 
-	'contributors' => Array
+	'contributor' => Array
 	(
 		'Author' => Array
 		(
@@ -58,8 +58,57 @@ $new_item = array
 	'renew_limit' 		=> 1
 );
 
+
+$new_item2 = array
+(
+	'title' 		=> 	'The Journal of Highly Exciting Stuff and Things',
+	'year' 			=> 	2008,
+	'isbn'			=>	223322,
+	'media_type'	=> 	'Book',
+	'edition'		=>	2,
+	'volume'		=>	1,
+	'issue_no'		=>	404,
+	
+	'tags' => Array
+	(
+		0 => array
+		(
+			'name' => 'Stuff',
+			'type' => 'Subject'
+		),
+		1 => array
+		(
+			'name' => 'Journal',
+			'type' => 'Genre'
+		),
+		2 => array
+		(
+			'name' => 'Things',
+			'type' => 'Subject'
+		)
+	),
+
+	'contributor' => Array
+	(
+		'Author' => Array
+		(
+			0 => Array
+			(
+				'first'	=> '',
+				'last' 	=> 'The Institute of Stuff'
+			)
+
+		)
+	),
+	
+	'barcode' 			=> 132231,
+	'call_no' 			=> 131415,
+	'renew_limit' 		=> 1
+);
+
 echo "<pre>";
-$result = add_item($new_item);
+//$result = add_item($new_item);
+$result = add_item($new_item2);
 print_r($result);
 echo "</pre>";
 

@@ -23,137 +23,124 @@ Licence URI: http://www.os-templates.com/template-terms
 
   </head>
   <body id="top">
-  <?php require_once('CLS-banner.php'); ?>
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/02.png');">
-    <div class="overlay">
-      <div id="breadcrumb" class="clear"> 
-        <!-- ################################################################################################ -->
-        <ul>
-          <li><a href="CLS-home.php">Home</a></li>
-          <li><a href="CLS-login.php">My Librarian Account</a></li>
-          <li><a href="holds.php">Manage Holds</a></li>
-        </ul>
-        <!-- ################################################################################################ -->
-      </div>
-    </div>
-  </div>
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <div class="wrapper row3">
-    <main class="container clear"> 
-      <!-- main body -->
-      <!-- sidebar nav -->
-      <div class="sidebar one_quarter first"> 
-        <nav class="sdb_holder">
+    <?php require_once('CLS-banner.php'); ?>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row2 bgded" style="background-image:url('../images/demo/backgrounds/02.png');">
+      <div class="overlay">
+        <div id="breadcrumb" class="clear"> 
+          <!-- ################################################################################################ -->
           <ul>
-            <li><a href="checkin.php">Check In</a></li>
-            <li><a href="checkout.php">Check Out</a>
-              <ul>
-                <li><a href="#">Navigation - Level 2</a></li>
-                <li><a href="#">Navigation - Level 2</a></li>
-              </ul>
-            </li>
-            <li class="active"><a href="holds.php">Holds</a></li>
-            <li><a href="#">Fines</a></li>
-            <li><a href="#">Manage Catalog</a>
-              <ul>
-                <li><a href="#">Navigation - Level 2</a></li>
-                <li><a href="#">Navigation - Level 2</a>
-                  <ul>
-                    <li><a href="#">Navigation - Level 3</a></li>
-                    <li><a href="#">Navigation - Level 3</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+            <li><a href="CLS-home.php">Home</a></li>
+            <li><a href="CLS-login.php">My Librarian Account</a></li>
+            <li><a href="holds.php">Manage Holds</a></li>
           </ul>
-        </nav>
+          <!-- ################################################################################################ -->
+        </div>
       </div>
-      <!-- ################################################################################################ -->
-      <!-- ################################################################################################ -->
-      <div class="content three_quarter"> 
-        <!-- ################################################################################################ -->
-        
-  
-        <fieldset id='patronSelect'>
-    <div>
-      <label>Patron#: </label>
-      <input type='text' id='patronId'>
     </div>
-    </fieldset>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <div class="wrapper row3">
+      <!-- main body -->
+      <main class="container clear">
+        <?php if (isset($_SESSION['loginSuccess'])) { ?>
+        <!-- ################################################################################################ -->
+        <!-- sidebar nav -->
+        <div class="sidebar one_quarter first"> 
+          <nav class="sdb_holder">
+            <ul>
+              <li><a href="checkin.php">Check In</a></li>
+              <li><a href="checkout.php">Check Out</a></li>
+              <li class="active"><a href="holds.php">Holds</a></li>
+              <li><a href="fines.php">Fines</a></li>
+              <li><a href="editItems.php">Manage Catalog</a>
+                <ul>
+                  <li><a href="addItem.php">Add Items</a></li>
+                  <li><a href="editItems.php">Edit/Remove Items</a></li>
+                </ul>
+              </li>
+              <li><a href="addPatron.php">Manage Patrons</a>
+                <ul>
+                  <li><a href="addPatron.php">Add New Patron</a></li>
+                  <li><a href="editPatron.php">Edit Patron Profile</a></li>
+                </ul>
+            </ul>
+          </nav>
+        </div>
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <div class="content three_quarter"> 
+          <!-- ################################################################################################ -->
+          <h1>Manage Holds</h1>
+          <fieldset id='patronSelect'>
+            <div>
+              <label>Patron #</label>
+              <input type='text' id='patronId' />
+            </div>
+          </fieldset>
 
-  
-     <fieldset id='availableHoldsField'>
-      <form id='available-holds-form' >
     
-     <h2>Available Holds</h2>
-     <div class="scrollable">
+          <fieldset id='availableHoldsField'>
+            <form id='available-holds-form' >
+             <h2>Available Holds</h2>
+             <div class="scrollable">
+                <table id="availableHoldsTable">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Call Number</th>
+                      <th>Available Until</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <button>Cancel Holds</button>
+              </div>
+            </form>
+          </fieldset>
 
-        <table id="availableHoldsTable">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Call Number</th>
-              <th>Available Until</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <button>Cancel Holds</button>
-      </div>
-  
-      
-      </form>
-      </fieldset>
-
-
-      <fieldset id='unavailableHoldsField'>
-      <form id='unavailable-holds-form' >
-     <h2>Unavailable Holds</h2>
-     <div class="scrollable">
-
-        <table id="unavailableHoldsTable">
-          <thead>
-            <tr>
-              <th>Select</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Call Number</th>
-              <th>Position in queue</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <button>Cancel Holds</button>
-      </div>
-  
-      
-      </form>
-      </fieldset>
-      <div class="clear"></div>
-    </main>
-  </div>
-  <?php require_once('CLS-footer.php'); ?>
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+          <fieldset id='unavailableHoldsField'>
+            <form id='unavailable-holds-form' >
+             <h2>Unavailable Holds</h2>
+             <div class="scrollable">
+                <table id="unavailableHoldsTable">
+                  <thead>
+                    <tr>
+                      <th>Select</th>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Call Number</th>
+                      <th>Position in queue</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <button>Cancel Holds</button>
+              </div>
+            </form>
+          </fieldset>
+        </div>
+      </main>
+    <?php require_once('CLS-footer.php'); ?>
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ -->
+    <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
   
  
   
-    </body>
+  </body>
 </html>

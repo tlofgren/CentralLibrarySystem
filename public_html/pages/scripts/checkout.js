@@ -75,6 +75,11 @@ $(document).ready(function(){
         $("table input[type='checkbox']:checked").parent().parent().remove();
     });
 
+  //When user clicks textfield, text is selected for easy re-entry
+  $('#checkout-field').click(function() {
+    $(this).select();
+  });
+
 });
 
  
