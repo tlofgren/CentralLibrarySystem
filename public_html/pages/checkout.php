@@ -131,7 +131,7 @@ Licence URI: http://www.os-templates.com/template-terms
       </div>
     </main>
     
-    <?php require_once('CLS-footer.php'); ?>
+    <?php require_once 'CLS-footer.php'; ?>
     <!-- ################################################################################################ -->
     <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
   </body>
