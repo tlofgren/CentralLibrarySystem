@@ -39,6 +39,8 @@ $(document).ready(function(){
           else
           {
             console.log("error set in response from database");
+            console.log("Error code " + item.error_code + ": '" + item.error + 
+                        "' response returned from database when attempting to check in " + field.val());
             $('#itemID-error').html("There was an error connecting to the catalog. Please contact your web administrator.");
             field.siblings("#itemID-error").css("display", "block");
           }
