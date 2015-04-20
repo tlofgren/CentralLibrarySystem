@@ -83,7 +83,7 @@ $(document).ready(function(){
 			type:"POST",
 			data: {'title':title, 'year':year, 'isbn':isbn, 'media_type':mediaType, 'edition':edition, 'issue_no':issueNo, 'barcode':barcode,
 			'status': status, 'checkoutDur': checkoutDur, 'renewLim':renewLim, 'tag':jsonedTags, 'contributor': jsonedContributors, 'copy_no': copyNo, 'call_no': callNo, 'volume': volume}, 
-			url: "../../cls_scripts/check_out_items.php",
+			url: "../../cls_scripts/add_item.php",
 			success: function(data){
 				var succFail = JSON.parse(data);
 				alert(succFail);
