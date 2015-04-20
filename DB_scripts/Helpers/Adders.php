@@ -7,6 +7,14 @@ function add_to_table($arr,$tablename)
 {
 	global $mysqli;
 	
+	foreach($arr as $key => $value)
+	{
+		if($value === 'NULL')
+		{
+			unset($arr[$key]);
+		}
+	}
+	
 	surround_in_quotes($arr);
 	
 //	echo "<pre>";
@@ -25,7 +33,7 @@ function add_to_table($arr,$tablename)
 	$query = "INSERT INTO `$tablename`(`".implode("`, `", $fields)."`)
 		VALUES (".implode(", ", $vals).")";
 	
-//	echo "<p>$query</p>";
+	echo "<p>$query</p>";
 	
 	$result = $mysqli->query($query);
 
@@ -101,6 +109,14 @@ function add_contribution($arr)
 
 function add_contributor($arr)
 {
+	if(isset($arr['first']))
+	{
+		if($arr['first'] === '')
+		{
+			unset($arr[$key]);
+		}
+	}
+	
 	return add_to_table($arr,'contributor');
 }
 
@@ -146,6 +162,14 @@ function add_role($arr)
 
 function add_tag($arr)
 {
+	foreach($arr as $key => $value)
+	{
+		if($value === '')
+		{
+			unset($arr[$key]);
+		}
+	}
+	
 	return add_to_table($arr,'tag');
 }
 
