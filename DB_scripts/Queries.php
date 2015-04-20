@@ -300,7 +300,7 @@ function check_out($barcode,$patron_id)
 	clean_string($barcode);
 	clean_string($patron_id);
 	
-	$item = get_hardcopy_by_barcode($barcode);
+	$item = get_copy_info($barcode);
 	if(!$item)
 		return array('error'=>'barcode not found', 'error_code'=>4);
 	$patron = get_patron_by_id($patron_id);
@@ -351,7 +351,7 @@ function check_in($barcode)
 	
 	clean_string($barcode);
 	
-	$item = get_hardcopy_by_barcode($barcode);
+	$item = get_copy_info($barcode);
 	if(!$item)
 	{
 		return array('error'=>'barcode not found', 'error_code'=>4);
