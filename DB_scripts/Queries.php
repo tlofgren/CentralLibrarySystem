@@ -301,11 +301,16 @@ function check_out($barcode,$patron_id)
 	clean_string($patron_id);
 	
 	$item = get_copy_info($barcode);
-	if(!$item)
+	
+	if(array_key_exists('error', $item))
 		return array('error'=>'barcode not found', 'error_code'=>4);
-	$patron = get_patron_by_id($patron_id);
-	if(!$patron)
+	$patron = get_user_by_id($patron_id);
+	if(array_key_exists('error', $patron))
 		return array('error'=>'id not found', 'error_code'=>3);
+	
+//	echo "<pre>";
+//	print_r($item);
+//	echo "</pre>";
 	
 	$checkout_duration	= $item['checkout_duration'];
 	$renew_limit 		= $item['renew_limit'];
@@ -352,6 +357,7 @@ function check_in($barcode)
 	clean_string($barcode);
 	
 	$item = get_copy_info($barcode);
+
 	if(!$item)
 	{
 		return array('error'=>'barcode not found', 'error_code'=>4);

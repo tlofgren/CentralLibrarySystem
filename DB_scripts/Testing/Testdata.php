@@ -353,67 +353,46 @@
 			(	
 				array
 				(
-					1
+					11111
 				), 
 				array
 				(
-					'id' 			=> 	1,
-					'title' 		=> 	'The Book of Mormon',
-					'year' 			=> 	1900,
-					'isbn' 			=> 	0,
-					'media_type'	=> 	'Book',
-					'edition' 		=> 	'',
-					'volume' 		=> 	'',
-					'issue_no' 		=> 	'',
+					'id' => 145,
+					'title' => 'Harry Potter and the Sorcerer\'s Stone',
+					'year' => 1999,
+					'isbn' => 131415,
+					'media_type' => 'Book',
+					'edition' => 1,
+					'volume' => 1,
+					'issue_no' => '',
 					'tags' => Array
-					(
-						0 => 'Religious',
-						1 => 'Mormon'
-					),
+						(
+							'0' => 'Harry',
+							'1' => 'Potter',
+							'2' => 'Sorcerers',
+							'3' => 'Stone',
+							'4' => 'J',
+							'5' => 'K',
+							'6' => 'Rowling'
+						),
 
 					'contributors' => Array
-					(
-						'Author' => Array
 						(
-							0 => Array
-							(
-								'first'	=> 'Jesus',
-								'last' 	=> 'Christ'
-							)
-
 						),
-						'Director' => Array
-						(
-							'0' => Array
-							(
-								'first' => 'Jesus',
-								'last' 	=> 'Christ'
-							),
-							
-							'1' => Array
-							(
-								'first' => 'Michael',
-								'last' 	=> 'Bay'
-							)
-						)
 
-					),
-
-					'barcodes'=> Array
+					'barcodes' => Array
 						(
-							'0' => 1
+							'0' => 11111
 						),
-					
-					'num_holds'			=> 1,
-					'barcode' 			=> 1,
-					'mediaitem_id' 		=> 1,
-					'copy_no' 			=> 1,
-					'call_no' 			=> '',
-					'status' 			=> 'Lost',
-					'checkout_duration' => 0,
-					'renew_limit' 		=> 1,
-					'due_date' 			=> '2015-04-18',
-					'renew_count'		=> 0
+
+					'num_holds' => 0,
+					'barcode' => 11111,
+					'mediaitem_id' => 145,
+					'copy_no' => 1,
+					'call_no' => 131415,
+					'status' => 'Normal',
+					'checkout_duration' => 21,
+					'renew_limit' => 1
 				)
 			);
 			
@@ -531,8 +510,8 @@
 			(	
 				array
 				(
-					1,
-					1
+					11111,
+					2
 				), 
 				array
 				(
@@ -574,7 +553,7 @@
 			(	
 				array
 				(
-					1
+					11111
 				), 
 				array
 				(
