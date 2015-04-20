@@ -91,7 +91,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <ul>
           <li><a href="CLS-home.php">Home</a></li>
           <li><a href="CLS-login.php">My Librarian Account</a></li>
-          <li><a href="#">Check out Items</a></li>
+          <li><a href="#">Add Items</a></li>
         </ul>
         <!-- ################################################################################################ -->
       </div>
@@ -107,30 +107,28 @@ Licence URI: http://www.os-templates.com/template-terms
       if (isset($_SESSION['loginSuccess'])) { ?>
       <!-- main body -->
       <!-- ################################################################################################ -->
+     
       <div class="sidebar one_quarter first"> 
-        <!-- ################################################################################################ -->
-        <!-- <h6>Lorem ipsum dolor</h6> -->
         <nav class="sdb_holder">
           <ul>
             <li><a href="checkin.php">Check In</a></li>
-            <li><a href="checkout.php">Check Out</a>
-             
-            </li>
-      			<li><a href="holds.php">Holds</a></li>
-      			<li><a href="#">Fines</a></li>
-            <li><a href="#">Manage Catalog</a>
+            <li class="active"><a href="checkout.php">Check Out</a></li>
+            <li><a href="holds.php">Holds</a></li>
+            <li><a href="fines.php">Fines</a></li>
+            <li><a href="editItems.php">Manage Catalog</a> <!-- TODO: link to same page as Edit/Remove -->
               <ul>
-                <li><a href="#">Navigation - Level 2</a></li>
-                <li><a href="#">Navigation - Level 2</a>
-                  <ul>
-                    <li><a href="#">Navigation - Level 3</a></li>
-                    <li><a href="#">Navigation - Level 3</a></li>
-                  </ul>
-                </li>
+                <li><a href="addItem.php">Add Items</a></li>
+                <li><a href="editItems.php">Edit/Remove Items</a></li>
               </ul>
             </li>
+            <li><a href="addPatron.php">Manage Patrons</a>
+              <ul>
+                <li><a href="addPatron.php">Add New Patron</a></li>
+                <li><a href="editPatron.php">Edit Patron Profile</a></li>
+              </ul>
           </ul>
         </nav>
+      </div>
         <!-- ################################################################################################ -->
       </div>
       <!-- ################################################################################################ -->
