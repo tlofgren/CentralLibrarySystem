@@ -100,28 +100,26 @@ if(isset($_SESSION['loginSuccess'])) { ?>
 	<main class="container clear"> 
 	<!-- main body -->
         <div class="sidebar one_quarter first"> 
-          <nav class="sdb_holder">
-            <ul>
-              <li><a href="#">Check In</a></li>
-              <li><a href="#">Check Out</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                </ul>
-              </li>
-        			<li><a href="#">Holds</a></li>
-        			<li><a href="#">Fines</a></li>
-              <li><a href="#">Manage Catalog</a>
-                <ul>
-                  <li><a href="#">Navigation - Level 2</a></li>
-                  <li><a href="#">Navigation - Level 2</a>
-                    <ul>
-                      <li><a href="#">Navigation - Level 3</a></li>
-                     <li><a href="#">Navigation - Level 3</a></li>
-				</li>
-            </ul>
+        <nav class="sdb_holder">
+          <ul>
+            <li><a href="checkin.php">Check In</a></li>
+            <li class="active"><a href="checkout.php">Check Out</a></li>
+            <li><a href="holds.php">Holds</a></li>
+            <li><a href="fines.php">Fines</a></li>
+            <li><a href="editItems.php">Manage Catalog</a> <!-- TODO: link to same page as Edit/Remove -->
+              <ul>
+                <li><a href="addItem.php">Add Items</a></li>
+                <li><a href="editItems.php">Edit/Remove Items</a></li>
+              </ul>
+            </li>
+            <li><a href="addPatron.php">Manage Patrons</a>
+              <ul>
+                <li><a href="addPatron.php">Add New Patron</a></li>
+                <li><a href="editPatron.php">Edit Patron Profile</a></li>
+              </ul>
+          </ul>
         </nav>
-    </div>
+      </div>
 <div class="content three_quarter"> 
 <!-- ################################################################################################ -->
 <!-- main body content goes here -->

@@ -41,6 +41,7 @@ $(document).ready(function(){
 
   $("#checkout-form").submit(function(event){
     var idInput = $("#checkout-field").val();
+
    var patron_id = getCookie("patron_id");
     $.post("../../cls_scripts/check_out_items.php", {'itemId' : idInput, 'patron':patron_id}, function(data){
 

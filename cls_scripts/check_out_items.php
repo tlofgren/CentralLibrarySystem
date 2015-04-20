@@ -27,6 +27,7 @@ if (isset($_POST['patronId']))
 if (isset($_POST['itemId']))
 {
 	check_out($_POST['itemId'],$_POST['patron'] );
+
   $result = get_copy_info($_POST['itemId']);
   echo json_encode($result);	//TODO: change to $result
 }
