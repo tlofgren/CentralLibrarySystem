@@ -19,6 +19,10 @@ File: Layout CSS
 .row4, .row4 a{}
 .row5, .row5 a{}
 
+/* Right Buttons */
+fieldset.rightSide{position:absolute; top:240px; right:185px;}
+li.rightSide{list-style-type: none; margin:3px;}
+
 
 /* Header */
 #header{padding:28px 0;}
@@ -111,6 +115,7 @@ File: Layout CSS
 
 button.logout{padding:6px 12px 8px; border-radius:8px; font-size:16px; cursor:pointer; color:#FFFFFF; background-color:#93C0C5; box-shadow:none; border:none}
 
+button.searchItems{width:110px; height:23px; border-radius:8px; font-size:16px; cursor:pointer; color:#FFFFFF; background-color:#93C0C5; box-shadow:none; border:none; text-align:left}
 
 /* Copyright */
 #copyright{padding:10px 0;}
@@ -198,7 +203,7 @@ body{color:#888888; background-color:#2F2F2F;}
 a{color:#93C0C5;}
 hr, .borderedbox{border-color:#D7D7D7;}
 label span{color:#FF0000; background-color:inherit;}
-.overlay{color:#FFFFFF; background-color:#83B7BC;} /*originally rgba(147,192,197,.8) 60999E?*/
+.overlay{color:#FFFFFF; background-color:rgba(147,192,197,.8);}
 .btn{color:#FFFFFF; background-color:#93C0C5;}
 .bg-white{color:inherit; background-color:#FFFFFF;}
 
@@ -256,8 +261,6 @@ label span{color:#FF0000; background-color:inherit;}
 
 .container .sidebar nav a{color:inherit; border-color:#D7D7D7;}
 .container .sidebar nav a:hover{color:#93C0C5;}
-.sidebar .sdb_holder .active a{font-weight: bold; color:#3B7D83; background-color:inherit;}
-.sidebar .sdb_holder .active a:hover{color: #93C0C5;} /**lighter:3B7D83; darker: 0E4F55*/
 
 .pagination a, .pagination strong{border-color:#D7D7D7;}
 .pagination .current{color:#FFFFFF; background-color:#000000;}
