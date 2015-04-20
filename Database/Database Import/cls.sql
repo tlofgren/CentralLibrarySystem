@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2015 at 05:57 PM
+-- Generation Time: Apr 20, 2015 at 03:46 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -48,13 +48,6 @@ CREATE TABLE IF NOT EXISTS `checkedout` (
   `renew_count` tinyint(3) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `checkedout`
---
-
-INSERT INTO `checkedout` (`patron_id`, `hardcopy_barcode`, `due_date`, `renew_count`) VALUES
-(1, 1, '2015-04-18', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -72,10 +65,24 @@ CREATE TABLE IF NOT EXISTS `contribution` (
 --
 
 INSERT INTO `contribution` (`mediaitem_id`, `contributor_id`, `role_id`) VALUES
-(1, 1, 1),
-(1, 1, 7),
-(1, 17, 7),
-(149, 32, 1);
+(149, 32, 1),
+(150, 33, 1),
+(151, 34, 1),
+(151, 35, 1),
+(153, 36, 1),
+(155, 37, 1),
+(156, 38, 1),
+(173, 38, 1),
+(168, 39, 1),
+(176, 39, 1),
+(169, 40, 1),
+(170, 41, 1),
+(171, 42, 1),
+(172, 43, 1),
+(174, 44, 1),
+(175, 45, 1),
+(177, 46, 1),
+(178, 47, 1);
 
 -- --------------------------------------------------------
 
@@ -87,18 +94,30 @@ CREATE TABLE IF NOT EXISTS `contributor` (
 `id` int(10) unsigned NOT NULL,
   `first` varchar(35) DEFAULT NULL,
   `last` varchar(35) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `contributor`
 --
 
 INSERT INTO `contributor` (`id`, `first`, `last`) VALUES
-(19, NULL, 'Bay'),
 (32, '', 'The Institute of Stuff'),
+(41, 'Audrey', 'Niffenegger'),
+(33, 'Charles', 'Dickens'),
+(39, 'Cormac', 'McCarthy'),
+(38, 'Dan', 'Brown'),
+(44, 'Elizabeth', 'Gilbert'),
+(47, 'Eric', 'Schlosser'),
 (28, 'J. K.', 'Rowling'),
-(1, 'Jesus', 'Christ'),
-(17, 'Michael', 'Bay');
+(34, 'Jack', 'Canfield'),
+(36, 'John', 'Richardson'),
+(42, 'Khaled', 'Hosseini'),
+(46, 'Margaret', 'Atwood'),
+(35, 'Mark Victor', 'Hansen'),
+(37, 'Markus', 'Zusak'),
+(43, 'Rick', 'Riordan'),
+(45, 'Steven D.', 'Levitt'),
+(40, 'Stieg', 'Larsson');
 
 -- --------------------------------------------------------
 
@@ -136,8 +155,23 @@ CREATE TABLE IF NOT EXISTS `hardcopy` (
 --
 
 INSERT INTO `hardcopy` (`barcode`, `mediaitem_id`, `copy_no`, `call_no`, `status`, `checkout_duration`, `renew_limit`) VALUES
-(1, 1, 1, '', 'Lost', 0, 1),
 (11111, 145, 1, '131415', 'Normal', 21, 1),
+(111111, 150, 1, '32', 'Normal', 21, 3),
+(111112, 151, 1, '33', 'Normal', 21, 3),
+(111114, 153, 1, '34', 'Normal', 21, 3),
+(111115, 155, 1, '35', 'Normal', 21, 3),
+(111116, 156, 1, '37', 'Normal', 21, 3),
+(111117, 168, 1, '38', 'Normal', 21, 3),
+(111118, 169, 1, '38', 'Normal', 21, 3),
+(111119, 170, 1, '39', 'Normal', 21, 3),
+(111120, 171, 1, '40', 'Normal', 21, 3),
+(111121, 172, 1, '41', 'Normal', 21, 3),
+(111122, 173, 1, '42', 'Normal', 21, 3),
+(111123, 174, 1, '43', 'Normal', 21, 3),
+(111124, 175, 1, '44', 'Normal', 21, 3),
+(111125, 176, 1, '45', 'Normal', 21, 3),
+(111126, 177, 1, '46', 'Normal', 21, 3),
+(111127, 178, 1, '47', 'Normal', 21, 3),
 (132231, 149, 1, '131415', 'Normal', 21, 1);
 
 -- --------------------------------------------------------
@@ -152,13 +186,6 @@ CREATE TABLE IF NOT EXISTS `hold` (
   `time_placed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `expiration_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `hold`
---
-
-INSERT INTO `hold` (`patron_id`, `mediaitem_id`, `time_placed`, `expiration_date`) VALUES
-(1, 1, '2015-04-18 16:37:28', '2015-04-21');
 
 -- --------------------------------------------------------
 
@@ -176,8 +203,6 @@ CREATE TABLE IF NOT EXISTS `itemtag` (
 --
 
 INSERT INTO `itemtag` (`tag_id`, `mediaitem_id`) VALUES
-(1, 1),
-(2, 1),
 (73, 145),
 (74, 145),
 (75, 145),
@@ -191,7 +216,91 @@ INSERT INTO `itemtag` (`tag_id`, `mediaitem_id`) VALUES
 (102, 149),
 (103, 149),
 (104, 149),
-(105, 149);
+(105, 149),
+(106, 150),
+(107, 150),
+(108, 150),
+(109, 150),
+(110, 151),
+(111, 151),
+(112, 151),
+(113, 151),
+(114, 151),
+(115, 151),
+(116, 151),
+(117, 151),
+(75, 153),
+(120, 153),
+(121, 153),
+(122, 153),
+(123, 155),
+(124, 155),
+(125, 155),
+(126, 155),
+(127, 156),
+(128, 156),
+(129, 156),
+(130, 156),
+(131, 156),
+(132, 168),
+(133, 168),
+(134, 168),
+(135, 169),
+(136, 169),
+(137, 169),
+(138, 169),
+(139, 169),
+(140, 170),
+(141, 170),
+(142, 170),
+(143, 170),
+(144, 170),
+(145, 171),
+(146, 171),
+(147, 171),
+(148, 171),
+(124, 172),
+(149, 172),
+(150, 172),
+(151, 172),
+(130, 173),
+(131, 173),
+(152, 173),
+(153, 173),
+(154, 174),
+(155, 174),
+(156, 174),
+(157, 174),
+(158, 174),
+(159, 175),
+(160, 175),
+(161, 175),
+(162, 175),
+(163, 175),
+(164, 175),
+(165, 175),
+(166, 175),
+(167, 175),
+(168, 175),
+(133, 176),
+(134, 176),
+(169, 176),
+(170, 176),
+(171, 176),
+(172, 176),
+(173, 177),
+(174, 177),
+(175, 177),
+(176, 177),
+(164, 178),
+(177, 178),
+(178, 178),
+(179, 178),
+(180, 178),
+(181, 178),
+(182, 178),
+(183, 178),
+(184, 178);
 
 -- --------------------------------------------------------
 
@@ -240,17 +349,32 @@ CREATE TABLE IF NOT EXISTS `mediaitem` (
   `edition` tinyint(3) unsigned DEFAULT NULL,
   `volume` int(10) unsigned DEFAULT NULL,
   `issue_no` int(10) unsigned DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=150 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=179 ;
 
 --
 -- Dumping data for table `mediaitem`
 --
 
 INSERT INTO `mediaitem` (`id`, `title`, `year`, `isbn`, `media_type`, `edition`, `volume`, `issue_no`) VALUES
-(1, 'The Book of Mormon', 1900, 0, 'Book', NULL, NULL, NULL),
 (75, 'The Hunger Games', 2010, 24234256, 'Book', NULL, NULL, NULL),
-(145, 'Harry Potter and the Sorcerers Stone', 1999, 131415, 'Book', 1, 1, NULL),
-(149, 'The Journal of Highly Exciting Stuff and Things', 2008, 223322, 'Book', 2, 1, 404);
+(145, 'Harry Potter and the Sorcerer''s Stone', 1999, 131415, 'Book', 1, 1, NULL),
+(149, 'The Journal of Highly Exciting Stuff and Things', 2008, 223322, 'Book', 2, 1, 404),
+(150, 'A Christmas Carol', NULL, 7777, 'Book', 2, 1, 402),
+(151, 'Chicken Soup for the Soul', NULL, 7778, 'Book', 2, 1, 402),
+(153, 'The Sorcerer''s Apprentice', NULL, 7779, 'Book', NULL, NULL, NULL),
+(155, 'The Book Thief', NULL, 7780, 'Book', NULL, NULL, NULL),
+(156, ' The Da Vinci Code', NULL, 0, 'Book', NULL, NULL, NULL),
+(168, ' The Road', NULL, 200000, 'Book', NULL, NULL, NULL),
+(169, 'The Girl with the Dragon Tattoo', NULL, 200001, 'Book', NULL, NULL, NULL),
+(170, 'The Time Traveler''s Wife', NULL, 200002, 'Book', NULL, NULL, NULL),
+(171, 'The Kite Runner', NULL, 200003, 'Book', NULL, NULL, NULL),
+(172, 'The Lightning Thief', NULL, 200004, 'Book', NULL, NULL, NULL),
+(173, 'Angels & Demons', NULL, 200005, 'Book', NULL, NULL, NULL),
+(174, 'Eat, Pray, Love', NULL, 200006, 'Book', NULL, NULL, NULL),
+(175, 'Freakonomics: A Rogue Economist Explores the Hidden Side of Everything', NULL, 200007, 'Book', NULL, NULL, NULL),
+(176, 'No Country for Old Men', NULL, 200008, 'Book', NULL, NULL, NULL),
+(177, 'The Blind Assassin', NULL, 200009, 'Book', NULL, NULL, NULL),
+(178, 'Fast Food Nation: The Dark Side of the All-American Meal', NULL, 200010, 'Book', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -269,14 +393,14 @@ CREATE TABLE IF NOT EXISTS `patron` (
   `phone` bigint(20) DEFAULT NULL,
   `checkout_limit` smallint(6) NOT NULL,
   `renew_limit` tinyint(4) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `patron`
 --
 
 INSERT INTO `patron` (`id`, `username`, `password_hash`, `salt`, `first`, `last`, `email`, `phone`, `checkout_limit`, `renew_limit`) VALUES
-(1, 'Obama', '1337', 0, 'Barrack', 'Obama', NULL, NULL, 3, 3);
+(2, 'Someone', 'upthere', 2, 'Some', 'Guy', NULL, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -287,13 +411,14 @@ INSERT INTO `patron` (`id`, `username`, `password_hash`, `salt`, `first`, `last`
 CREATE TABLE IF NOT EXISTS `role` (
 `id` int(10) unsigned NOT NULL,
   `description` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id`, `description`) VALUES
+(19, '0'),
 (1, 'Author'),
 (7, 'Director'),
 (18, 'Producer');
@@ -308,39 +433,104 @@ CREATE TABLE IF NOT EXISTS `tag` (
 `id` int(10) unsigned NOT NULL,
   `name` varchar(20) NOT NULL,
   `type` enum('title','subject','genre','language','contributor') NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=106 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=185 ;
 
 --
 -- Dumping data for table `tag`
 --
 
 INSERT INTO `tag` (`id`, `name`, `type`) VALUES
-(62, 'Bay', 'contributor'),
-(60, 'Christ', 'contributor'),
-(64, 'Claus', 'contributor'),
+(181, 'AllAmerican', 'title'),
+(152, 'Angels', 'title'),
+(120, 'Apprentice', 'title'),
+(174, 'Assassin', 'title'),
+(176, 'Atwood', 'contributor'),
+(143, 'Audrey', 'contributor'),
+(173, 'Blind', 'title'),
+(123, 'Book', 'title'),
+(131, 'Brown', 'contributor'),
+(114, 'Canfield', 'contributor'),
+(107, 'Carol', 'title'),
+(108, 'Charles', 'contributor'),
+(110, 'Chicken', 'title'),
+(106, 'Christmas', 'title'),
+(129, 'Code', 'title'),
+(133, 'Cormac', 'contributor'),
+(170, 'Country', 'title'),
+(167, 'D', 'contributor'),
+(127, 'Da', 'title'),
+(130, 'Dan', 'contributor'),
+(180, 'Dark', 'title'),
+(153, 'Demons', 'title'),
+(109, 'Dickens', 'contributor'),
+(136, 'Dragon', 'title'),
+(154, 'Eat', 'title'),
+(161, 'Economist', 'title'),
+(157, 'Elizabeth', 'contributor'),
+(183, 'Eric', 'contributor'),
+(165, 'Everything', 'title'),
 (101, 'Exciting', 'title'),
+(162, 'Explores', 'title'),
+(177, 'Fast', 'title'),
+(178, 'Food', 'title'),
+(159, 'Freakonomics', 'title'),
+(158, 'Gilbert', 'contributor'),
+(135, 'Girl', 'title'),
+(117, 'Hansen', 'contributor'),
 (73, 'Harry', 'title'),
+(163, 'Hidden', 'title'),
 (100, 'Highly', 'title'),
+(148, 'Hosseini', 'contributor'),
 (104, 'Institute', 'contributor'),
 (77, 'J', 'contributor'),
-(59, 'Jesus', 'contributor'),
+(113, 'Jack', 'contributor'),
+(121, 'John', 'contributor'),
 (99, 'Journal', 'title'),
 (78, 'K', 'contributor'),
-(61, 'Michael', 'contributor'),
-(2, 'Mormon', 'subject'),
-(67, 'Other', 'language'),
+(147, 'Khaled', 'contributor'),
+(145, 'Kite', 'title'),
+(139, 'Larsson', 'contributor'),
+(168, 'Levitt', 'contributor'),
+(149, 'Lightning', 'title'),
+(156, 'Love', 'title'),
+(175, 'Margaret', 'contributor'),
+(115, 'Mark', 'contributor'),
+(125, 'Markus', 'contributor'),
+(134, 'McCarthy', 'contributor'),
+(182, 'Meal', 'title'),
+(172, 'Men', 'title'),
+(179, 'Nation', 'title'),
+(144, 'Niffenegger', 'contributor'),
+(169, 'No', 'title'),
+(171, 'Old', 'title'),
 (74, 'Potter', 'title'),
-(1, 'Religious', 'subject'),
-(66, 'Religious', 'genre'),
+(155, 'Pray', 'title'),
+(122, 'Richardson', 'contributor'),
+(150, 'Rick', 'contributor'),
+(151, 'Riordan', 'contributor'),
+(132, 'Road', 'title'),
+(160, 'Rogue', 'title'),
 (79, 'Rowling', 'contributor'),
-(63, 'Santa', 'contributor'),
+(146, 'Runner', 'title'),
+(184, 'Schlosser', 'contributor'),
+(164, 'Side', 'title'),
 (75, 'Sorcerers', 'title'),
+(112, 'Soul', 'title'),
+(111, 'Soup', 'title'),
+(166, 'Steven', 'contributor'),
+(138, 'Stieg', 'contributor'),
 (76, 'Stone', 'title'),
 (102, 'Stuff', 'title'),
 (105, 'Stuff', 'contributor'),
-(65, 'Stupid', 'genre'),
-(58, 'Test', 'title'),
-(103, 'Things', 'title');
+(137, 'Tattoo', 'title'),
+(124, 'Thief', 'title'),
+(103, 'Things', 'title'),
+(140, 'Time', 'title'),
+(141, 'Travelers', 'title'),
+(116, 'Victor', 'contributor'),
+(128, 'Vinci', 'title'),
+(142, 'Wife', 'title'),
+(126, 'Zusak', 'contributor');
 
 --
 -- Indexes for dumped tables
@@ -437,7 +627,7 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `contributor`
 --
 ALTER TABLE `contributor`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `librarian`
 --
@@ -447,22 +637,22 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `mediaitem`
 --
 ALTER TABLE `mediaitem`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=150;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=179;
 --
 -- AUTO_INCREMENT for table `patron`
 --
 ALTER TABLE `patron`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=106;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=185;
 --
 -- Constraints for dumped tables
 --
