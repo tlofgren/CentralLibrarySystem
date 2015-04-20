@@ -138,7 +138,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="content three_quarter"> 
         <!-- ################################################################################################ -->
 
-        <form action="addItem.php" method="post">
+        <form action="addItem.php" method="post" id="addItemForm">
           <fieldset>
             <legend>Add a media item</legend>
 
@@ -162,7 +162,7 @@ Licence URI: http://www.os-templates.com/template-terms
 
             <div>
               <label for='mediaType'>Media Type: </label>
-              <select name='mediaType'>
+              <select id='mediaType' name='mediaType'>
                 <option value='book'>Book</option>
                 <option value='dvd'>DVD</option>
                 <option value='vhs'>VHS</option>
@@ -185,7 +185,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </div>
 
             <div>
-              <label for='volume'>Edition: </label>
+              <label for='volume'>Volume: </label>
               <input type='text' id='volume' name='volume' <?php echo "$volume" ?> class='volume' />
               <span><?php echo "<p> $volumeError </p>" ?></span>
             </div>
@@ -197,32 +197,32 @@ Licence URI: http://www.os-templates.com/template-terms
             </div>
 
             <div id='tagsDiv'>
-              <label for='tag'>Tags: </label>
-              <select name='tag'>
+              <label for='tag0'>Tags: </label>
+              <select name='tag0' id="tagSelect0">
               <option value='title'>Title</option>
               <option value='subject'>Subject</option>
               <option value='genre'>Genre</option>
               <option value='language'>Language</option>
               <option value='contributor'>Contributor</option>
               </select>
-              <input type='text' id='tag' name='tag' <?php echo "$tag" ?> class='tag' />
+              <input type='text' id='tag0' name='tag0' <?php echo "$tag" ?> class='tag0' />
               <span><?php echo "<p> $tagError </p>" ?></span>
               <button type='button' id="addTagButton" onclick="addTag(); return false;">Add another tag</button>
             </div>
 
 
             <div id='contributorsDiv'>
-              <label for='contributor'>Contributor: </label>
-              <label for='role'>Role: </label>
-              <input type='text' id='role' name='role' <?php echo "$role" ?> class='role' />
+              <label for='contributor0'>Contributor: </label>
+              <label for='role0'>Role: </label>
+              <input type='text' id='role0' name='role0' <?php echo "$role" ?> class='role0' />
               <span><?php echo "<p> $roleError </p>" ?></span>
 
-              <label for='fname'>First Name: </label>
-              <input type='text' id='fname' name='fname' <?php echo "$fname" ?> class='fname' />
+              <label for='fname0'>First Name: </label>
+              <input type='text' id='fname0' name='fname0' <?php echo "$fname" ?> class='fname0' />
               <span><?php echo "<p> $fnameError </p>" ?></span>
 
-              <label for='lname'>Last Name: </label>
-              <input type='text' id='lname' name='lname' <?php echo "$lname" ?> class='lname' />
+              <label for='lname0'>Last Name: </label>
+              <input type='text' id='lname0' name='lname0' <?php echo "$lname" ?> class='lname0' />
               <span><?php echo "<p> $lnameError </p>" ?></span>
               <button type='button' id='addContributorButton' onclick="addContributor(); return false;">Add another Contributor</button>
             </div>
