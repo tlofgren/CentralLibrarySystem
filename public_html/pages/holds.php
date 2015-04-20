@@ -110,8 +110,8 @@ Licence URI: http://www.os-templates.com/template-terms
 
           <fieldset id='unavailableHoldsField'>
             <form id='unavailable-holds-form' >
-             <h2>Unavailable Holds</h2>
-             <div class="scrollable">
+              <h2>Unavailable Holds</h2>
+              <div class="scrollable">
                 <table id="unavailableHoldsTable">
                   <thead>
                     <tr>
@@ -132,11 +132,12 @@ Licence URI: http://www.os-templates.com/template-terms
               </div>
             </form>
           </fieldset>
-        </div>
+        </div> <!-- three quarter -->
+        <?php } else {
+          require_once('not_logged_in.html');
+        } ?>
       </main>
     <?php require_once('CLS-footer.php'); ?>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
   
