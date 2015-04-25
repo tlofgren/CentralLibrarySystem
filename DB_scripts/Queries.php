@@ -358,7 +358,7 @@ function check_in($barcode)
 	
 	$item = get_copy_info($barcode);
 
-	if(!$item)
+	if(array_key_exists('error', $item))
 	{
 		return array('error'=>'barcode not found', 'error_code'=>4);
 	}

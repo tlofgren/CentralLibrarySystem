@@ -262,72 +262,52 @@
 			(	
 				array
 				(
-					1
-				), 
-				array
-				(
-					'id' 			=> 	1,
-					'title' 		=> 	'The Book of Mormon',
-					'year' 			=> 	1900,
-					'isbn' 			=> 	0,
-					'media_type'	=> 	'Book',
-					'edition' 		=> 	'',
-					'volume' 		=> 	'',
-					'issue_no' 		=> 	'',
-					'tags' => Array
-						(
-							0 => 'Religious',
-							1 => 'Mormon'
-						),
-
-					'contributors' => Array
-					(
-						'Author' => Array
-						(
-							0 => Array
-								(
-									'first'	=> 'Jesus',
-									'last' 	=> 'Christ'
-								)
-
-						),
-						
-						'Director' => Array
-							(
-								'0' => Array
-									(
-										'first' => 'Jesus',
-										'last' => 'Christ'
-									),
-
-								'1' => Array
-									(
-										'first' => 'Michael',
-										'last' => 'Bay'
-									),
-
-							)
-
-						),
-
-					'barcodes'=> Array
-						(
-							'0' => 1
-						),
-						
-					'num_holds'			=> 1
-				)
-			);
-		$input_expected_output_pairs[] = generate_IEO_pair
-			(	
-				array
-				(
 					2
 				), 
 				array
 				(
 					'error' 	=> 'Not found',
 					'error_code'	=> 1
+				)
+			);
+			
+		$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				array
+				(
+					145
+				), 
+				array
+				(
+					'id' => 145,
+					'title' => 'Harry Potter and the Sorcerer\'s Stone',
+					'year' => 1999,
+					'isbn' => 131415,
+					'media_type' => 'Book',
+					'edition' => 1,
+					'volume' => 1,
+					'issue_no' => '',
+					'tags' => Array
+						(
+							'0' => 'Harry',
+							'1' => 'Potter',
+							'2' => 'Sorcerers',
+							'3' => 'Stone',
+							'4' => 'J',
+							'5' => 'K',
+							'6' => 'Rowling'
+						),
+
+					'contributors' => Array
+						(
+						),
+
+					'barcodes' => Array
+						(
+							'0' => 11111
+						),
+
+					'num_holds' => 0
 				)
 			);
 			
@@ -406,16 +386,16 @@
 			(	
 				array
 				(
-					1
+					2
 				), 
 				array
 				(
-					'first' 			=> 	'Barrack',
-					'last' 				=> 	'Obama',
+					'first' 			=> 	'Some',
+					'last' 				=> 	'Guy',
 					'email'				=>	"",
 					'phone'				=>	"",
-					'checkout_limit' 	=> 	3,
-					'renew_limit' 		=> 	3
+					'checkout_limit' 	=> 	10,
+					'renew_limit' 		=> 	0
 				)
 			);
 		$input_expected_output_pairs[] = generate_IEO_pair
@@ -434,7 +414,7 @@
 			(	
 				array
 				(
-					2
+					10000
 				), 
 				array
 				(
@@ -453,7 +433,7 @@
 			(	
 				array
 				(
-					1,
+					11111,
 					'Lost'
 				), 
 				array
@@ -490,13 +470,24 @@
 			(	
 				array
 				(
-					1,
+					11111,
 					'notarealstatus'
 				), 
 				array
 				(
 					'error' => 'Not a valid enum value',
 					'error_code' => 9
+				)
+			);
+		$input_expected_output_pairs[] = generate_IEO_pair
+			(	
+				array
+				(
+					11111,
+					'Normal'
+				), 
+				array
+				(
 				)
 			);
 			
@@ -571,8 +562,8 @@
 			(	
 				array
 				(
-					1,
-					1
+					145,
+					2
 				), 
 				array
 				(
@@ -583,8 +574,8 @@
 			(	
 				array
 				(
-					1,
-					2
+					145,
+					0
 				), 
 				array
 				(
@@ -629,8 +620,8 @@
 			(	
 				array
 				(
-					1,
-					1
+					145,
+					2
 				), 
 				array
 				(
@@ -1435,32 +1426,13 @@
 				array
 				(
 					'barcode'			=> 1337,
-					'mediaitem_id' 		=> 1
+					'mediaitem_id' 		=> 145
 				)
 			), 
 			array
 			(
 				'error' 		=> 'Column \'copy_no\' cannot be null', 
 				'error_code' 	=> 0
-			) 
-		);
-		$input_expected_output_pairs[] = generate_IEO_pair
-		(	
-			array
-			(	
-				array
-				(
-					'barcode'			=> 1337,
-					'mediaitem_id' 		=> 1, 
-					'copy_no' 			=> 2,
-					'call_no' 			=> 24234256,
-					'status' 			=> 'Normal',
-					'checkout_duration'	=> 10,
-					'renew_limit'		=> 0
-				)
-			), 
-			array
-			(
 			) 
 		);
 		
@@ -1476,8 +1448,8 @@
 			(	
 				array
 				(
-					'patron_id' 		=> 1,
-					'mediaitem_id' 		=> 1,
+					'patron_id' 		=> 2,
+					'mediaitem_id' 		=> 149,
 					'expiration_date' 	=> '2015-04-21'
 				)
 			), 
@@ -1490,8 +1462,8 @@
 			(	
 				array
 				(
-					'patron_id' 		=> 1,
-					'mediaitem_id' 		=> 1,
+					'patron_id' 		=> 2,
+					'mediaitem_id' 		=> 150,
 					'expiration_date' 	=> '2015-04-21'
 				)
 			), 
@@ -1499,21 +1471,6 @@
 			(
 				
 			) 
-		);
-		$input_expected_output_pairs[] = generate_IEO_pair
-		(	
-			array
-			(	
-				array
-				(
-					'patron_id' 		=> 2,
-					'mediaitem_id' 		=> 1,
-					'time_placed' 		=> '2015-04-18',
-					'expiration_date' 	=> '2015-04-21'
-				)
-			), 
-			array
-			()
 		);
 		$input_expected_output_pairs[] = generate_IEO_pair
 		(
@@ -1529,8 +1486,8 @@
 			), 
 			array
 			(
-				'error' 		=> 'Not found',
-				'error_code' 	=> 1
+				'error' 		=> 'Cannot add or update a child row: a foreign key constraint fails (`cls`.`hold`, CONSTRAINT `hold_ibfk_1` FOREIGN KEY (`patron_id`) REFERENCES `patron` (`id`))',
+				'error_code' 	=> 0
 			)
 		);
 		
@@ -1546,8 +1503,8 @@
 			(	
 				array
 				(
-					'tag_id' 		=> 7,
-					'mediaitem_id' 	=> 1
+					'tag_id' 		=> 73,
+					'mediaitem_id' 	=> 150
 				)
 			), 
 			array
@@ -1559,13 +1516,13 @@
 			(	
 				array
 				(	
-					'tag_id' 		=> 7,
-					'mediaitem_id' 	=> 1
+					'tag_id' 		=> 73,
+					'mediaitem_id' 	=> 150
 				)
 			), 
 			array
 			(
-				'error' 		=>	'Duplicate entry \'7-1\' for key \'PRIMARY\'',
+				'error' 		=>	'Duplicate entry \'73-150\' for key \'PRIMARY\'',
 				'error_code' 	=> 0
 			)
 		);
@@ -1597,7 +1554,7 @@
 			), 
 			array
 			(
-				'error' 		=> 'Cannot add or update a child row: a foreign key constraint fails (`cls`.`itemtag`, CONSTRAINT `itemtag_ibfk_2` FOREIGN KEY (`mediaitem_id`) REFERENCES `mediaitem` (`id`))',
+				'error' 		=> 'Cannot add or update a child row: a foreign key constraint fails (`cls`.`itemtag`, CONSTRAINT `itemtag_ibfk_1` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`id`))',
 				'error_code' 	=> 0
 			)
 		);
@@ -1684,7 +1641,7 @@
 			(	
 				array
 				(
-					'description' 			=> 'Director'
+					'description' 			=> 'Tester'
 				)
 			), 
 			array
@@ -1722,7 +1679,7 @@
 			), 
 			array
 			(
-				'error' 		=>	'Duplicate entry \'Stupid\' for key \'name\'',
+				'error' 		=>	'Duplicate entry \'Stupid-subject\' for key \'name\'',
 				'error_code' 	=> 0
 			)
 		);
@@ -1773,7 +1730,7 @@
 			(
 				array
 				(
-					'barcode' => 1
+					'barcode' => 11111
 				),
 				
 				'hardcopy'
@@ -1782,12 +1739,12 @@
 			(
 				array
 				(
-					'barcode' 			=> 1,
-					'mediaitem_id' 		=> 1,
+					'barcode' 			=> 11111,
+					'mediaitem_id' 		=> 145,
 					'copy_no' 			=> 1,
-					'call_no' 			=> '',
-					'status' 			=> 'Lost',
-					'checkout_duration' => 0,
+					'call_no' 			=> 131415,
+					'status' 			=> 'Normal',
+					'checkout_duration' => 21,
 					'renew_limit' 		=> 1
 				)
 			)
@@ -1805,17 +1762,8 @@
 			), 
 			array
 			(
-				array
-				(
-					'id' 			=> 1,
-					'title' 		=> 'The Book of Mormon',
-					'year' 			=> 1900,
-					'isbn' 			=> 0,
-					'media_type' 	=> 'Book',
-					'edition' 		=> '',
-					'volume' 		=> '',
-					'issue_no' 		=> ''
-				)
+				'error' 		=> 'Not found',
+				'error_code'	=> 1
 			)
 		);
 		$input_expected_output_pairs[] = generate_IEO_pair
@@ -1841,7 +1789,7 @@
 			(
 				array
 				(
-					'id' => 1,
+					'id' => 145,
 					'media_type' => 'Book'
 				),
 				
@@ -1851,13 +1799,13 @@
 			(
 				array
 				(
-					'id' 			=> 1,
-					'title' 		=> 'The Book of Mormon',
-					'year' 			=> 1900,
-					'isbn' 			=> 0,
+					'id' 			=> 145,
+					'title' 		=> 'Harry Potter and the Sorcerer\'s Stone',
+					'year' 			=> 1999,
+					'isbn' 			=> 131415,
 					'media_type' 	=> 'Book',
-					'edition' 		=> '',
-					'volume' 		=> '',
+					'edition' 		=> 1,
+					'volume' 		=> 1,
 					'issue_no' 		=> ''
 				)
 			)
@@ -1876,20 +1824,20 @@
 			(
 				array
 				(
-					'id' => 1
+					'id' => 145
 				)
 			), 
 			array
 			(
 				array
 				(
-					'id' 			=> 1,
-					'title' 		=> 'The Book of Mormon',
-					'year' 			=> 1900,
-					'isbn' 			=> 0,
+					'id' 			=> 145,
+					'title' 		=> 'Harry Potter and the Sorcerer\'s Stone',
+					'year' 			=> 1999,
+					'isbn' 			=> 131415,
 					'media_type' 	=> 'Book',
-					'edition' 		=> '',
-					'volume' 		=> '',
+					'edition' 		=> 1,
+					'volume' 		=> 1,
 					'issue_no' 		=> ''
 				)
 			)
@@ -1900,7 +1848,7 @@
 			(
 				array
 				(
-					'id' => 1,
+					'id' => 145,
 					'media_type' => 'Book'
 				),
 				
@@ -1910,13 +1858,13 @@
 			(
 				array
 				(
-					'id' 			=> 1,
-					'title' 		=> 'The Book of Mormon',
-					'year' 			=> 1900,
-					'isbn' 			=> 0,
+					'id' 			=> 145,
+					'title' 		=> 'Harry Potter and the Sorcerer\'s Stone',
+					'year' 			=> 1999,
+					'isbn' 			=> 131415,
 					'media_type' 	=> 'Book',
-					'edition' 		=> '',
-					'volume' 		=> '',
+					'edition' 		=> 1,
+					'volume' 		=> 1,
 					'issue_no' 		=> ''
 				)
 			)
