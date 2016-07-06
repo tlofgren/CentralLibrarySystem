@@ -8,7 +8,7 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html>
   <head>
-    <title>Search</title>
+    <title>Search | CLS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -37,9 +37,9 @@ Licence URI: http://www.os-templates.com/template-terms
         </nav>
       </div>
     </div>
-    <!-- ################################################################################################ -->
+    <!-- ################################################################################################ 
     <?php 
-    if(isset($_SESSION['loginSuccess'])) { ?>
+    if(isset($_SESSION['loginSuccess'])) { ?>-->
     <div class="wrapper row2 bgded">
       <div class="overlay">
         <div id="breadcrumb" class="clear"> 
@@ -76,7 +76,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <!-- main body content goes here -->
       <!-- This page displays the results of a search -->
       <?php 
-      if(isset($_SESSION['loginSuccess'])) {
+      //if(isset($_SESSION['loginSuccess'])) {
         if(isset($_GET['searchString'])) {
           // echo $_GET['searchString'];
           $searchString = $_GET['searchString'];
@@ -126,7 +126,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </form>
           </div>
         </div>
-      <?php } ?>
+      <!--<?php } ?> -->
       <fieldset class="rightSide">
         <ul>
           <li class="rightSide">
@@ -161,7 +161,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <div class="clear"></div>
     </main>
     </div> <!-- row3 -->
-    <?php } ?>
+    <?php //} ?>
     <!-- ################################################################################################ -->
     <!-- include the footer section -->
     <?php require_once "CLS-footer.php"; ?>
